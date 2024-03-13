@@ -1,0 +1,45 @@
+/* Adjusts homepage figure element */
+.homepage-figure {
+    width: 100%;
+    max-height: 65vh;
+    display: block;
+    text-align: center; /* Center the image if it's not filling the width */
+    object-fit: cover;
+    border-radius: 8px; /* Adds rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+}
+
+/* This media query applies styles for screens with a viewport width of up to 1152 pixels, which is around 12 inches wide */
+@media (min-width: 1152px) {
+    .sm\:py-10 {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+
+    .py-10 {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translate3d(0, 40px, 0);
+        opacity: 0;
+    }
+    to {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}
+
+.slide-up {
+    /* Other styles */
+    animation: fadeInUp 1.5s ease both;
+}
+
+/* Generic Customizations */
+.margin-top {
+    margin-top: 0.7rem;
+}

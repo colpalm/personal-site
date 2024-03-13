@@ -11,19 +11,29 @@
 # ordered by weight from lowest to highest.
 
 [[main]]
-  name = "Blog"
-  pageRef = "posts"
+  name = "About"
+  pageRef = "about"
+  weight = 5
+
+[[main]]
+  name = "Projects"
+  pageRef = "Projects"
   weight = 10
 
 [[main]]
-  name = "Categories"
-  pageRef = "categories"
+  name = "Reading"
+  pageRef = "reading"
   weight = 20
+
+[[main]]
+name = "Writing"
+pageRef = "writing"
+weight = 30
 
 [[main]]
   name = "Tags"
   pageRef = "tags"
-  weight = 30
+  weight = 40
 
 [[main]]
   identifier = "search"
