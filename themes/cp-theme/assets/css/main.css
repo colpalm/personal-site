@@ -1,26 +1,54 @@
+/* Color Variables */
+:root {
+  --color-background: #FDFBF7; /* Warm off-white */
+  --color-text: #2A2A2A; /* Softer than pure black */
+  --color-text-secondary: #666; /* Medium gray for secondary text */
+  --color-primary: #86A397; /* Muted sage/teal */
+  --color-secondary: #D9C8B4; /* Sandy beige */
+  --color-accent: #E4B363; /* Warm gold accent */
+  --color-light: #F5F1E9; /* Light sand for sections */
+  --color-border: #E2DDD5; /* Subtle border color */
+}
+
 body {
-  color: #222;
+  color: var(--color-text);
   font-family: sans-serif;
   line-height: 1.5;
   margin: 0 auto;
   padding: 0 2rem;
   max-width: 1000px;
   width: 90%;
+  background-color: var(--color-background);
 }
 
 header {
-  border-bottom: 1px solid #222;
+  border-bottom: 1px solid var(--color-border);
   margin-bottom: 1rem;
 }
 
 footer {
-  border-top: 1px solid #222;
+  border-top: 1px solid var(--color-border);
   margin-top: 1rem;
+  padding: 1rem 0;
+  color: var(--color-text);
+  font-size: 0.9rem;
 }
 
 a {
-  color: #00e;
+  color: var(--color-primary);
   text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-accent);
+}
+
+time {
+  display: block;
+  color: var(--color-text-secondary);
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
 }
 
 /* Header styles */
@@ -44,7 +72,7 @@ a {
 .site-title {
   font-size: 1.8rem;
   font-weight: bold;
-  color: #222;
+  color: var(--color-text);
   text-decoration: none;
 }
 
@@ -81,7 +109,35 @@ a {
   left: 0;
   width: 100%;
   height: 2px;
-  background-color: #00e;
+  background-color: var(--color-accent);
+}
+
+/* Article/post card styling */
+article, .post-summary {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Button styling */
+.button {
+  display: inline-block;
+  background-color: var(--color-primary);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.button:hover {
+  background-color: var(--color-accent);
+}
+
+/* Simple image styling */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
 }
 
 /* Media query for responsive design */
