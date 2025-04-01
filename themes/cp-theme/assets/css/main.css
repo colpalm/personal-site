@@ -1,6 +1,6 @@
 /* Color Variables */
 :root {
-  --color-background: #FDFBF7; /* Warm off-white */
+  --color-background: #FCFCFC; /* Close to white with slight softness */
   --color-text: #2A2A2A; /* Softer than pure black */
   --color-text-secondary: #666; /* Medium gray for secondary text */
   --color-primary: #86A397; /* Muted sage/teal */
