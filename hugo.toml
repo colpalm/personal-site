@@ -2,3 +2,8 @@ baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = 'My New Hugo Site'
 theme = 'cp-theme'
+
+
+[params]
+# Site logo path (relative to the static folder)
+ logo = "images/pineapple.png"
