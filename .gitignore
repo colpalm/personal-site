@@ -19,3 +19,6 @@ hugo.linux
 
 # Editor
 .idea/
+
+# OS Files/Directories
+**/.DS_Store
