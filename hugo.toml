@@ -1,4 +1,4 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://colpalm.github.io/personal-site/'
 languageCode = 'en-us'
 title = 'ColPalm'
 theme = 'cp-theme'
