@@ -27,3 +27,7 @@ weight = 30
 name = 'TAGS'
 pageRef = '/tags'
 weight = 40
+
+[caches]
+ [caches.images]
+  dir = ':cacheDir/images'
