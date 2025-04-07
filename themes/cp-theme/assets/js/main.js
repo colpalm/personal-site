@@ -53,6 +53,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchIcon = document.querySelector('.search-icon');
     searchIcon.addEventListener('click', function() {
         // This is a placeholder - TODO: add search functionality
-        alert('Search functionality would open here.');
+        alert('Search functionality coming soon.');
     });
 });
