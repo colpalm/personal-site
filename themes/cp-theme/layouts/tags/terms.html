@@ -1,0 +1,10 @@
+{{ define "main" }}
+<h1 class="page-title">{{ .Title }}</h1>
+{{ .Content }}
+
+<div class="taxonomy-list">
+    {{ range .Pages }}
+    <a href="{{ .RelPermalink }}" class="taxonomy-item">{{ .LinkTitle }}</a>
+    {{ end }}
+</div>
+{{ end }}
