@@ -315,6 +315,36 @@ header, footer, a, .header-icon {
   margin-right: 0.5rem;
 }
 
+/* Post Content CSS */
+/* Post metadata container */
+.post-metadata-container {
+  width: 65%;
+  margin: 0 auto;
+  max-width: 850px; /* Just slightly wider than content */
+}
+
+/* Width and Center */
+.post-content-container {
+  width: 60%;
+  margin: 0 auto;
+  max-width: 800px; /* Could remove (remove .post-metadata-container max-width if you do */
+}
+
+/* Feature image */
+.post-featured-image {
+  width: 75%;
+  margin: 1.5rem auto;
+  text-align: center;
+}
+
+.post-featured-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
 /* Media query for responsive design */
 @media (max-width: 768px) {
   body {
@@ -370,5 +400,14 @@ header, footer, a, .header-icon {
 
   footer {
     padding: 0.3rem 0;
+  }
+
+  .post-content-container {
+    width: 90%;
+  }
+
+  .post-featured-image,
+  .post-metadata-container {
+    width: 100%;
   }
 }
