@@ -39,9 +39,8 @@ main {
 
 footer {
   border-top: 1px solid var(--color-border);
-  margin-top: auto;
+  margin-top: 1rem;
   margin-bottom: 0;
-  padding: 0.5rem 0;
   color: var(--color-text);
   font-size: 0.9rem;
   flex-shrink: 0;
@@ -396,10 +395,6 @@ header, footer, a, .header-icon {
 
   .social-icons {
     margin-top: 0.5rem;
-  }
-
-  footer {
-    padding: 0.3rem 0;
   }
 
   .post-featured-image,
