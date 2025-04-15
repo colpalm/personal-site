@@ -402,12 +402,9 @@ header, footer, a, .header-icon {
     padding: 0.3rem 0;
   }
 
-  .post-content-container {
-    width: 90%;
-  }
-
   .post-featured-image,
-  .post-metadata-container {
+  .post-metadata-container,
+  .post-content-container {
     width: 100%;
   }
 }
