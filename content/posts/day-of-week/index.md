@@ -2,7 +2,7 @@
 title = 'Best Day Off in the Week'
 date = 2025-04-12
 draft = true
-featured_image = "cal.jpg"
+featured_image = "cal.png"
 tags = ['misc']
 +++
 

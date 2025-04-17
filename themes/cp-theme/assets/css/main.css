@@ -317,9 +317,9 @@ header, footer, a, .header-icon {
 /* Post Content CSS */
 /* Post metadata container */
 .post-metadata-container {
-  width: 65%;
+  width: 60%;
   margin: 0 auto;
-  max-width: 850px; /* Just slightly wider than content */
+  max-width: 800px;
 }
 
 /* Width and Center */
@@ -327,11 +327,12 @@ header, footer, a, .header-icon {
   width: 60%;
   margin: 0 auto;
   max-width: 800px; /* Could remove (remove .post-metadata-container max-width if you do */
+  font-size: 1.1rem;
 }
 
 /* Feature image */
 .post-featured-image {
-  width: 75%;
+  width: 65%;
   margin: 1.5rem auto;
   text-align: center;
 }
