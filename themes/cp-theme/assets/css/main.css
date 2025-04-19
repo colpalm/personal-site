@@ -314,6 +314,22 @@ header, footer, a, .header-icon {
   margin-right: 0.5rem;
 }
 
+/*About Page*/
+.about-featured-image {
+  width:90%;
+  margin: 0 auto;
+  text-align: center;
+  height: 50vh;
+  overflow: hidden;
+}
+
+.about-featured-image img {
+  width: 100%;
+  height: 100%; /* Maintain aspect ratio */
+  object-fit: cover; /* This makes the image cover the container while maintaining aspect ratio */
+  object-position: center 40% /* This centers the image in the container */
+}
+
 /* Post Content CSS */
 /* Post metadata container */
 .post-metadata-container {
