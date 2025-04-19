@@ -325,9 +325,9 @@ header, footer, a, .header-icon {
 
 .about-featured-image img {
   width: 100%;
-  height: 100%; /* Maintain aspect ratio */
-  object-fit: cover; /* This makes the image cover the container while maintaining aspect ratio */
-  object-position: center 40% /* This centers the image in the container */
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%
 }
 
 /* Post Content CSS */
@@ -418,5 +418,10 @@ header, footer, a, .header-icon {
   .post-metadata-container,
   .post-content-container {
     width: 100%;
+  }
+
+  .about-featured-image {
+    width: 100%; /* Full width on mobile */
+    height: auto; /* Slightly reduced height on mobile */
   }
 }
