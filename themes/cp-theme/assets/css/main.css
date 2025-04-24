@@ -1,3 +1,6 @@
+/* Import Open Sans from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
 /* Color Variables */
 :root {
   --color-background: #FCFCFC; /* Close to white with slight softness */
@@ -15,7 +18,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   color: var(--color-text);
-  font-family: sans-serif;
+  font-family: 'Open Sans', sans-serif;
   line-height: 1.5;
   margin: 0 auto;
   padding: 0 2rem;
@@ -362,7 +365,7 @@ header, footer, a, .header-icon {
   width: 60%;
   margin: 0 auto;
   max-width: 800px; /* Could remove (remove .post-metadata-container max-width if you do */
-  font-size: 1.1rem;
+  font-size: 0.9rem;
 }
 
 /* Feature image */
