@@ -322,7 +322,6 @@ header, footer, a, .header-icon {
   margin: 0 auto;
   text-align: center;
   height: 50vh;
-  overflow: hidden;
   /*position: relative;*/ /* needed for the gradient below */
 }
 
