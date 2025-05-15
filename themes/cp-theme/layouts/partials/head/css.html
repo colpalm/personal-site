@@ -7,3 +7,28 @@
     {{- end }}
   {{- end }}
 {{- end }}
+
+<!-- solarized theme for code syntax based on light/dark theme -->
+{{/* Solarized-Light: default */}}
+{{ $light := resources.Get "css/syntax/solarized-light.css" | minify | fingerprint }}
+<link id="syntax-light-css"
+      rel="stylesheet"
+      href="{{ $light.Permalink }}"
+      integrity="{{ $light.Data.Integrity }}"
+      crossorigin="anonymous">
+
+{{/* Solarized-Dark: present but disabled – JS will flip it on */}}
+{{ $dark := resources.Get "css/syntax/solarized-dark.css" | minify | fingerprint }}
+<link id="syntax-dark-css"
+      rel="stylesheet"
+      href="{{ $dark.Permalink }}"
+      integrity="{{ $dark.Data.Integrity }}"
+      crossorigin="anonymous"
+      disabled>
+
+{{/* Specific code syntax css - always applied */}}
+{{ $ovr := resources.Get "css/syntax.css" | minify | fingerprint }}
+<link rel="stylesheet"
+      href="{{ $ovr.Permalink }}"
+      integrity="{{ $ovr.Data.Integrity }}"
+      crossorigin="anonymous">
