@@ -32,7 +32,71 @@ if __name__ == "__main__":
 ```
 
 ## Chart
+### Bar Chart
 
+{{< chart type="bar" height="350" >}}
+{
+    "data": {
+        "labels": ["January", "February", "March", "April", "May"],
+        "datasets": [{
+            "label": "Monthly Sales",
+            "data": [65, 59, 80, 81, 56],
+            "backgroundColor": [
+                "rgba(134, 163, 151, 0.7)",
+                "rgba(134, 163, 151, 0.7)",
+                "rgba(134, 163, 151, 0.7)",
+                "rgba(134, 163, 151, 0.7)",
+                "rgba(134, 163, 151, 0.7)"
+            ],
+            "borderColor": [
+                "rgba(134, 163, 151, 1)",
+                "rgba(134, 163, 151, 1)",
+                "rgba(134, 163, 151, 1)",
+                "rgba(134, 163, 151, 1)",
+                "rgba(134, 163, 151, 1)"
+            ],
+            "borderWidth": 1
+        }]
+    },
+    "options": {
+        "plugins": {
+            "title": {
+                "display": true,
+                "text": "Monthly Sales Data"
+            }
+        },
+        "scales": {
+            "y": {
+                "beginAtZero": true
+            }
+        }
+    }
+}
+{{< /chart >}}
+
+### Line Chart
+{{< chart type="line" height="350" >}}
+{
+    "data": {
+        "labels": ["January", "February", "March", "April", "May", "June"],
+        "datasets": [{
+            "label": "Website Visitors",
+            "data": [4500, 5900, 7000, 8100, 9600, 11200],
+            "fill": false,
+            "borderColor": "rgba(228, 179, 99, 1)",
+            "tension": 0.1
+        }]
+    },
+    "options": {
+        "plugins": {
+            "title": {
+                "display": true,
+                "text": "Monthly Website Traffic"
+            }
+        }
+    }
+}
+{{< /chart >}}
 
 
 ## Block Quote

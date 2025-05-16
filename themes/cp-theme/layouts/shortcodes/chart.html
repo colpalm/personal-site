@@ -1,0 +1,69 @@
+<!-- themes/cp-theme/layouts/shortcodes/chart.html -->
+{{ $chartID := default (printf "chart-%d" (now.UnixNano)) (.Get "id") }}
+{{ $chartType := default "bar" (.Get "type") }}
+{{ $height := default "400" (.Get "height") }}
+{{ $width := default "100%" (.Get "width") }}
+{{ $data := .Inner }}
+
+<div class="chart-container" style="height: {{ $height }}px; width: {{ $width }};">
+    <canvas id="{{ $chartID }}"></canvas>
+</div>
+
+<script type="module">
+    import ThemeHelper from '/js/theme-helper.js';
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const ctx = document.getElementById('{{ $chartID }}').getContext('2d');
+        const chartData = {{ $data | safeJS }};
+
+        // Get theme colors
+        const colors = ThemeHelper.getThemeColors();
+
+        // Apply theme-based colors if not specified in the data
+        if (chartData.options && chartData.options.scales) {
+            // X-axis
+            if (chartData.options.scales.x) {
+                if (!chartData.options.scales.x.ticks) chartData.options.scales.x.ticks = {};
+                if (!chartData.options.scales.x.ticks.color) chartData.options.scales.x.ticks.color = colors.text;
+                if (!chartData.options.scales.x.grid) chartData.options.scales.x.grid = {};
+                if (!chartData.options.scales.x.grid.color) chartData.options.scales.x.grid.color = colors.grid;
+            }
+            // Y-axis
+            if (chartData.options.scales.y) {
+                if (!chartData.options.scales.y.ticks) chartData.options.scales.y.ticks = {};
+                if (!chartData.options.scales.y.ticks.color) chartData.options.scales.y.ticks.color = colors.text;
+                if (!chartData.options.scales.y.grid) chartData.options.scales.y.grid = {};
+                if (!chartData.options.scales.y.grid.color) chartData.options.scales.y.grid.color = colors.grid;
+            }
+            // Radar charts have r scale
+            if (chartData.options.scales.r) {
+                if (!chartData.options.scales.r.ticks) chartData.options.scales.r.ticks = {};
+                if (!chartData.options.scales.r.ticks.color) chartData.options.scales.r.ticks.color = colors.text;
+                if (!chartData.options.scales.r.grid) chartData.options.scales.r.grid = {};
+                if (!chartData.options.scales.r.grid.color) chartData.options.scales.r.grid.color = colors.grid;
+            }
+        }
+
+        // Apply default title color if not specified
+        if (chartData.options && chartData.options.plugins && chartData.options.plugins.title) {
+            if (!chartData.options.plugins.title.color) {
+                chartData.options.plugins.title.color = colors.text;
+            }
+        }
+
+        // Apply default legend color if not specified
+        if (chartData.options && chartData.options.plugins && chartData.options.plugins.legend) {
+            if (!chartData.options.plugins.legend.labels) chartData.options.plugins.legend.labels = {};
+            if (!chartData.options.plugins.legend.labels.color) {
+                chartData.options.plugins.legend.labels.color = colors.text;
+            }
+        }
+
+        // Create the chart
+        new Chart(ctx, {
+            type: '{{ $chartType }}',
+            data: chartData.data,
+            options: chartData.options || {}
+        });
+    });
+</script>

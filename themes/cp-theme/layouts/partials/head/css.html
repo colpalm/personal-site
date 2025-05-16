@@ -8,6 +8,17 @@
   {{- end }}
 {{- end }}
 
+<!-- Chart CSS -->
+{{- with resources.Get "css/chart.css" }}
+  {{- if eq hugo.Environment "development" }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}">
+  {{- else }}
+    {{- with . | minify | fingerprint }}
+      <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+    {{- end }}
+  {{- end }}
+{{- end }}
+
 <!-- solarized theme for code syntax based on light/dark theme -->
 {{/* Solarized-Light: default */}}
 {{ $light := resources.Get "css/syntax/solarized-light.css" | minify | fingerprint }}
