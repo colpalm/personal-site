@@ -364,7 +364,7 @@ header, footer, a, .header-icon {
   width: 60%;
   margin: 0 auto;
   max-width: 800px; /* Could remove (remove .post-metadata-container max-width if you do */
-  font-size: 0.9rem;
+  /* Set post font size here if desired (e.g. 0.9rem)*/
 }
 
 /* Feature image */
