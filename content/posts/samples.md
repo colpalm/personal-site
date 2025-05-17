@@ -5,7 +5,7 @@ draft = true
 tags = ['misc']
 +++
 
-Test out partials/shortcodes
+Test out partials/shortcodes. Testing out the width of the page as well to see if the charts go to the right. Does it go further?
 
 # Visuals
 
@@ -41,20 +41,6 @@ if __name__ == "__main__":
         "datasets": [{
             "label": "Monthly Sales",
             "data": [65, 59, 80, 81, 56],
-            "backgroundColor": [
-                "rgba(134, 163, 151, 0.7)",
-                "rgba(134, 163, 151, 0.7)",
-                "rgba(134, 163, 151, 0.7)",
-                "rgba(134, 163, 151, 0.7)",
-                "rgba(134, 163, 151, 0.7)"
-            ],
-            "borderColor": [
-                "rgba(134, 163, 151, 1)",
-                "rgba(134, 163, 151, 1)",
-                "rgba(134, 163, 151, 1)",
-                "rgba(134, 163, 151, 1)",
-                "rgba(134, 163, 151, 1)"
-            ],
             "borderWidth": 1
         }]
     },
@@ -74,6 +60,36 @@ if __name__ == "__main__":
 }
 {{< /chart >}}
 
+{{< chart type="bar" height="350" >}}
+{
+    "data": {
+        "labels": ["January", "February", "March", "April", "May"],
+        "datasets": [
+            {
+                "label": "2023 Sales",
+                "data": [65, 59, 80, 81, 56]
+            },
+            {
+                "label": "2024 Sales",
+                "data": [45, 79, 50, 91, 66]
+            },
+            {
+            "label": "2025 Sales",
+            "data": [20, 85, 45, 60, 100]
+            }
+        ]
+    },
+    "options": {
+        "plugins": {
+            "title": {
+                "display": true,
+                "text": "Sales Comparison"
+            }
+        }
+    }
+}
+{{< /chart >}}
+
 ### Line Chart
 {{< chart type="line" height="350" >}}
 {
@@ -83,7 +99,6 @@ if __name__ == "__main__":
             "label": "Website Visitors",
             "data": [4500, 5900, 7000, 8100, 9600, 11200],
             "fill": false,
-            "borderColor": "rgba(228, 179, 99, 1)",
             "tension": 0.1
         }]
     },

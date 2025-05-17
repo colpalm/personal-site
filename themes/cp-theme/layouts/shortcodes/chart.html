@@ -1,7 +1,9 @@
+<!-- themes/cp-theme/layouts/shortcodes/chart.html -->
 {{ $chartID := default (printf "chart-%d" (now.UnixNano)) (.Get "id") }}
 {{ $chartType := default "bar" (.Get "type") }}
 {{ $height := default "400" (.Get "height") }}
 {{ $width := default "100%" (.Get "width") }}
+{{ $useDefaultColors := default "true" (.Get "useDefaultColors") | lower }}
 {{ $data := .Inner }}
 
 <div class="chart-container" style="height: {{ $height }}px; width: {{ $width }};">
@@ -13,7 +15,7 @@
         const ctx = document.getElementById('{{ $chartID }}').getContext('2d');
         const chartData = {{ $data | safeJS }};
 
-        // Get theme colors - directly using CSS variables for better compatibility
+        // Get theme colors from CSS variables
         const style = getComputedStyle(document.body);
         const colors = {
             text: style.getPropertyValue('--color-text').trim(),
@@ -27,7 +29,91 @@
             grid: style.getPropertyValue('--color-border').trim()
         };
 
-        // Apply theme-based colors if not specified in the data
+        // Helper function to convert hex to rgba based on CSS theme colors
+        function hexToRgba(hex, alpha = 1) {
+            hex = hex.replace('#', '');
+
+            // Handle shorthand hex format (e.g., #FFF)
+            if (hex.length === 3) {
+                hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+            }
+
+            // Parse the hex values
+            const r = parseInt(hex.substring(0, 2), 16);
+            const g = parseInt(hex.substring(2, 4), 16);
+            const b = parseInt(hex.substring(4, 6), 16);
+
+            // Return rgba format
+            return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+        }
+
+        // Default palette based directly on theme CSS variables
+        const defaultPalette = [
+            {
+                backgroundColor: hexToRgba(colors.primary, 0.7),
+                borderColor: hexToRgba(colors.primary, 1)
+            },
+            {
+                backgroundColor: hexToRgba(colors.accent, 0.7),
+                borderColor: hexToRgba(colors.accent, 1)
+            },
+            {
+                backgroundColor: hexToRgba(colors.secondary, 0.7),
+                borderColor: hexToRgba(colors.secondary, 1)
+            },
+            {
+                backgroundColor: hexToRgba(colors.textSecondary, 0.7),
+                borderColor: hexToRgba(colors.textSecondary, 1)
+            },
+            // Create a fifth color by mixing primary and accent
+            {
+                backgroundColor: hexToRgba(colors.primary, 0.5),
+                borderColor: hexToRgba(colors.accent, 0.9)
+            }
+        ];
+
+        // Apply default colors to datasets if useDefaultColors is true and colors aren't specified
+        if ("{{ $useDefaultColors }}" === "true" && chartData.data && chartData.data.datasets) {
+            chartData.data.datasets.forEach((dataset, index) => {
+                const paletteIndex = index % defaultPalette.length;
+                const defaultColor = defaultPalette[paletteIndex];
+
+                // For different chart types, set appropriate color properties
+                if ("{{ $chartType }}" === "line") {
+                    // Line charts typically use borderColor for the line
+                    if (!dataset.borderColor) dataset.borderColor = defaultColor.borderColor;
+                    if (!dataset.backgroundColor && !dataset.fill) dataset.backgroundColor = 'transparent';
+                    // Set point colors if not already set
+                    if (!dataset.pointBackgroundColor) dataset.pointBackgroundColor = defaultColor.borderColor;
+                }
+                else if ("{{ $chartType }}" === "pie" || "{{ $chartType }}" === "doughnut") {
+                    // Pie/doughnut charts use arrays of colors for segments
+                    if (!dataset.backgroundColor) {
+                        dataset.backgroundColor = defaultPalette.map(color => color.backgroundColor);
+                    }
+                    if (!dataset.borderColor) {
+                        dataset.borderColor = defaultPalette.map(color => color.borderColor);
+                    }
+                }
+                else {
+                    // Bar charts and others
+                    if (!dataset.backgroundColor) {
+                        // Check if we need an array of colors or a single color
+                        const isArrayOfData = Array.isArray(dataset.data);
+                        if (isArrayOfData && "{{ $chartType }}" === "bar") {
+                            // If it's a bar chart with multiple data points, repeat the same color
+                            dataset.backgroundColor = Array(dataset.data.length).fill(defaultColor.backgroundColor);
+                            dataset.borderColor = Array(dataset.data.length).fill(defaultColor.borderColor);
+                        } else {
+                            dataset.backgroundColor = defaultColor.backgroundColor;
+                            dataset.borderColor = defaultColor.borderColor;
+                        }
+                    }
+                }
+            });
+        }
+
+        // Apply theme-based colors to scales and plugins
         if (chartData.options && chartData.options.scales) {
             // X-axis
             if (chartData.options.scales.x) {
@@ -76,10 +162,5 @@
                 responsive: true
             }, chartData.options || {})
         });
-    });
-
-    // Listen for theme changes
-    document.addEventListener('themeChanged', function(event) {
-        // The Chart.js instance will be updated by chart.js script
     });
 </script>
