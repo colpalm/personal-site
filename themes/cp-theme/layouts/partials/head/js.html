@@ -1,19 +1,19 @@
-<!-- Main JS -->
-{{- with resources.Get "js/main.js" }}
+<!-- Theme Helper - Load first since it's imported by main.js -->
+{{- with resources.Get "js/theme-helper.js" }}
   {{- if eq hugo.Environment "development" }}
-    {{- with . | js.Build }}
-      <script src="{{ .RelPermalink }}"></script>
+    {{- with . | js.Build (dict "format" "esm") }}
+      <script type="module" src="{{ .RelPermalink }}"></script>
     {{- end }}
   {{- else }}
-    {{- $opts := dict "minify" true }}
+    {{- $opts := dict "minify" true "format" "esm" }}
     {{- with . | js.Build $opts | fingerprint }}
-      <script src="{{ .RelPermalink }}" integrity="{{- .Data.Integrity }}" crossorigin="anonymous"></script>
+      <script type="module" src="{{ .RelPermalink }}" integrity="{{- .Data.Integrity }}" crossorigin="anonymous"></script>
     {{- end }}
   {{- end }}
 {{- end }}
 
-<!-- Theme Helper -->
-{{- with resources.Get "js/theme-helper.js" }}
+<!-- Main JS - Updated from Hugo default to be a module -->
+{{- with resources.Get "js/main.js" }}
   {{- if eq hugo.Environment "development" }}
     {{- with . | js.Build (dict "format" "esm") }}
       <script type="module" src="{{ .RelPermalink }}"></script>

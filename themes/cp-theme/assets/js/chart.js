@@ -10,11 +10,11 @@ document.addEventListener('DOMContentLoaded', function() {
         updateChartsForTheme(isDark);
     });
 
-    // Function to update charts when theme changes
+    // Function to update charts when the theme changes
     function updateChartsForTheme(isDark) {
         // Get all chart canvases
         const chartCanvases = document.querySelectorAll('canvas[id^="chart-"]');
-        if (chartCanvases.length === 0) return; // No charts on page
+        if (chartCanvases.length === 0) return; // No charts on the page
 
         // Get theme colors
         const colors = ThemeHelper.getThemeColors();

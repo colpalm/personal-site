@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Update the icon based on the current theme
     function updateThemeIcon(isDark) {
         if (isDark) {
-            // When in dark mode, show sun icon (indicating "click for light mode")
+            // When in dark mode, show the sun icon (indicating "click for light mode")
             themeToggle.innerHTML = `
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="5"></circle>
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </svg>
             `;
         } else {
-            // When in light mode, show moon icon (indicating "click for dark mode")
+            // When in light mode, show the moon icon (indicating "click for dark mode")
             themeToggle.innerHTML = `
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>

@@ -11,7 +11,7 @@ const ThemeHelper = {
         const currentTheme = localStorage.getItem('theme') ||
             (prefersDarkScheme.matches ? 'dark' : 'light');
 
-        // Set initial theme
+        // Set the initial theme
         const isDark = currentTheme === 'dark';
         if (isDark) {
             document.body.classList.add('dark-theme');

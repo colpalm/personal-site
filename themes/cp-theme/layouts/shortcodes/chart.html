@@ -1,4 +1,3 @@
-<!-- themes/cp-theme/layouts/shortcodes/chart.html -->
 {{ $chartID := default (printf "chart-%d" (now.UnixNano)) (.Get "id") }}
 {{ $chartType := default "bar" (.Get "type") }}
 {{ $height := default "400" (.Get "height") }}
