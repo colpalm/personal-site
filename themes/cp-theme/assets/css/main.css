@@ -9,7 +9,7 @@
   --color-primary: #86A397; /* Muted sage/teal */
   --color-secondary: #D9C8B4; /* Sandy beige */
   --color-accent: #E4B363; /* Warm gold accent */
-  --color-light: #F5F1E9; /* Light sand for sections */
+  --color-section-background: #F5F1E9; /* Light sand for sections */
   --color-border: #E2DDD5; /* Subtle border color */
 }
 
@@ -189,7 +189,7 @@ img {
   --color-primary: #9DB8AA; /* Lighter version of primary color */
   --color-secondary: #E8D7C3; /* Lighter version of secondary color */
   --color-accent: #F1C470; /* Brighter accent for dark mode */
-  --color-light: #333; /* Darker background for sections */
+  --color-section-background: #333; /* Darker background for sections */
   --color-border: #444; /* Darker border color */
 }
 

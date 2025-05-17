@@ -4,7 +4,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 1.5rem;
     border-radius: 8px;
-    background-color: var(--color-light);
+    background-color: var(--color-section-background);
     transition: background-color 0.3s ease;
     display: flex;
     justify-content: center;
@@ -14,7 +14,7 @@
 }
 
 .dark-theme .chart-container {
-    background-color: var(--color-light);
+    background-color: var(--color-section-background);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 

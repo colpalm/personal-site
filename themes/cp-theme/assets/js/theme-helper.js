@@ -60,7 +60,7 @@ const ThemeHelper = {
             primary: style.getPropertyValue('--color-primary').trim(),
             secondary: style.getPropertyValue('--color-secondary').trim(),
             accent: style.getPropertyValue('--color-accent').trim(),
-            light: style.getPropertyValue('--color-light').trim(),
+            light: style.getPropertyValue('--color-section-background').trim(),
             border: style.getPropertyValue('--color-border').trim(),
             grid: style.getPropertyValue('--color-border').trim()
         };
