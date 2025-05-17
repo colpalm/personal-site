@@ -54,8 +54,9 @@ const ThemeHelper = {
         // Get colors directly from CSS variables for consistency
         const style = getComputedStyle(document.body);
 
-        // Base colors from CSS variables
-        const colors = {
+        // Get all theme colors from CSS variables
+        return {
+            // Base theme colors
             text: style.getPropertyValue('--color-text').trim(),
             textSecondary: style.getPropertyValue('--color-text-secondary').trim(),
             background: style.getPropertyValue('--color-background').trim(),
@@ -63,19 +64,17 @@ const ThemeHelper = {
             secondary: style.getPropertyValue('--color-secondary').trim(),
             accent: style.getPropertyValue('--color-accent').trim(),
             sectionBackground: style.getPropertyValue('--color-section-background').trim(),
-            border: style.getPropertyValue('--color-border').trim()
-        };
+            border: style.getPropertyValue('--color-border').trim(),
 
-        // Add chart-specific colors that ensure proper contrast in both themes
-        const isDark = this.isDarkTheme();
-
-        return {
-            ...colors,
-            // Use explicit colors for chart elements to ensure visibility in both themes
-            chartGrid: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)',
-            chartText: isDark ? '#E0E0E0' : '#333333', // Ensure high contrast for text
-            chartTitle: isDark ? '#F0F0F0' : '#222222', // Bolder text for titles
-            chartTicks: isDark ? '#BBBBBB' : '#666666' // Axis tick marks and labels
+            // Chart-specific colors
+            chartGrid: style.getPropertyValue('--chart-grid').trim(),
+            chartText: style.getPropertyValue('--chart-text').trim(),
+            chartTitle: style.getPropertyValue('--chart-title').trim(),
+            chartTicks: style.getPropertyValue('--chart-ticks').trim(),
+            chartTooltipBg: style.getPropertyValue('--chart-tooltip-bg').trim(),
+            chartTooltipTitle: style.getPropertyValue('--chart-tooltip-title').trim(),
+            chartTooltipBody: style.getPropertyValue('--chart-tooltip-body').trim(),
+            chartBgOpacity: parseFloat(style.getPropertyValue('--chart-bg-opacity').trim())
         };
     },
 
@@ -108,10 +107,7 @@ const ThemeHelper = {
      */
     getChartColorPalette: function() {
         const colors = this.getThemeColors();
-        const isDark = this.isDarkTheme();
-
-        // Increase opacity for better visibility in dark mode
-        const bgOpacity = isDark ? 0.8 : 0.7;
+        const bgOpacity = colors.chartBgOpacity || 0.7; // Fallback if CSS variable not available
 
         return [
             {
@@ -132,7 +128,7 @@ const ThemeHelper = {
             },
             // Create a fifth color by mixing primary and accent
             {
-                backgroundColor: this.hexToRgba(colors.primary, 0.6),
+                backgroundColor: this.hexToRgba(colors.primary, bgOpacity - 0.1),
                 borderColor: this.hexToRgba(colors.accent, 0.9)
             }
         ];
@@ -250,18 +246,16 @@ const ThemeHelper = {
 
         // Apply tooltip colors
         if (options.plugins && options.plugins.tooltip) {
-            const isDark = this.isDarkTheme();
-
             if (!options.plugins.tooltip.backgroundColor) {
-                options.plugins.tooltip.backgroundColor = isDark ? 'rgba(0, 0, 0, 0.8)' : 'rgba(255, 255, 255, 0.8)';
+                options.plugins.tooltip.backgroundColor = colors.chartTooltipBg;
             }
 
             if (!options.plugins.tooltip.titleColor) {
-                options.plugins.tooltip.titleColor = isDark ? '#FFFFFF' : '#000000';
+                options.plugins.tooltip.titleColor = colors.chartTooltipTitle;
             }
 
             if (!options.plugins.tooltip.bodyColor) {
-                options.plugins.tooltip.bodyColor = isDark ? '#EEEEEE' : '#222222';
+                options.plugins.tooltip.bodyColor = colors.chartTooltipBody;
             }
         }
 

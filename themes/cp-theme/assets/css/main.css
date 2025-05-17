@@ -3,6 +3,7 @@
 
 /* Color Variables */
 :root {
+  /* Base theme colors */
   --color-background: #FCFCFC; /* Close to white with slight softness */
   --color-text: #2A2A2A; /* Softer than pure black */
   --color-text-secondary: #666; /* Medium gray for secondary text */
@@ -11,6 +12,16 @@
   --color-accent: #E4B363; /* Warm gold accent */
   --color-section-background: #F5F1E9; /* Light sand for sections */
   --color-border: #E2DDD5; /* Subtle border color */
+
+  /* Chart Specific Colors */
+  --chart-grid: rgba(0, 0, 0, 0.1); /* Light mode grid lines */
+  --chart-text: #333333; /* Light mode chart text */
+  --chart-title: #222222; /* Light mode chart title */
+  --chart-ticks: #666666; /* Light mode axis ticks */
+  --chart-tooltip-bg: rgba(255, 255, 255, 0.8); /* Light mode tooltip background */
+  --chart-tooltip-title: #000000; /* Light mode tooltip title */
+  --chart-tooltip-body: #222222; /* Light mode tooltip body */
+  --chart-bg-opacity: 0.7; /* Background color opacity for chart elements */
 }
 
 body {
@@ -183,6 +194,7 @@ img {
 
 /* Dark Theme Styles */
 .dark-theme {
+  /* Base theme colors for dark mode */
   --color-background: #222;
   --color-text: #F0F0F0;
   --color-text-secondary: #AAA;
@@ -191,6 +203,16 @@ img {
   --color-accent: #F1C470; /* Brighter accent for dark mode */
   --color-section-background: #333; /* Darker background for sections */
   --color-border: #444; /* Darker border color */
+
+  /* Chart-specific colors for dark mode */
+  --chart-grid: rgba(255, 255, 255, 0.1); /* Dark mode grid lines */
+  --chart-text: #E0E0E0; /* Dark mode chart text */
+  --chart-title: #F0F0F0; /* Dark mode chart title */
+  --chart-ticks: #BBBBBB; /* Dark mode axis ticks */
+  --chart-tooltip-bg: rgba(0, 0, 0, 0.8); /* Dark mode tooltip background */
+  --chart-tooltip-title: #FFFFFF; /* Dark mode tooltip title */
+  --chart-tooltip-body: #EEEEEE; /* Dark mode tooltip body */
+  --chart-bg-opacity: 0.8; /* Increased opacity for better visibility in dark mode */
 }
 
 .dark-theme body {
