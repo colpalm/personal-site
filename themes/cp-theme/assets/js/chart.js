@@ -16,51 +16,23 @@ document.addEventListener('DOMContentLoaded', function() {
         const chartCanvases = document.querySelectorAll('canvas[id^="chart-"]');
         if (chartCanvases.length === 0) return; // No charts on the page
 
-        // Get theme colors
-        const colors = ThemeHelper.getThemeColors();
-
         // Update each chart with new theme colors
         chartCanvases.forEach(canvas => {
             const chartInstance = Chart.getChart(canvas.id);
             if (!chartInstance) return; // Skip if no chart instance found
 
-            // Update options with new theme colors
-            if (chartInstance.options.scales) {
-                // X-axis
-                if (chartInstance.options.scales.x) {
-                    if (!chartInstance.options.scales.x.ticks) chartInstance.options.scales.x.ticks = {};
-                    chartInstance.options.scales.x.ticks.color = colors.text;
-                    if (!chartInstance.options.scales.x.grid) chartInstance.options.scales.x.grid = {};
-                    chartInstance.options.scales.x.grid.color = colors.grid;
-                }
-
-                // Y-axis
-                if (chartInstance.options.scales.y) {
-                    if (!chartInstance.options.scales.y.ticks) chartInstance.options.scales.y.ticks = {};
-                    chartInstance.options.scales.y.ticks.color = colors.text;
-                    if (!chartInstance.options.scales.y.grid) chartInstance.options.scales.y.grid = {};
-                    chartInstance.options.scales.y.grid.color = colors.grid;
-                }
-
-                // Radar charts have r scale
-                if (chartInstance.options.scales.r) {
-                    if (!chartInstance.options.scales.r.ticks) chartInstance.options.scales.r.ticks = {};
-                    chartInstance.options.scales.r.ticks.color = colors.text;
-                    if (!chartInstance.options.scales.r.grid) chartInstance.options.scales.r.grid = {};
-                    chartInstance.options.scales.r.grid.color = colors.grid;
-                }
+            // Update dataset colors based on chart type
+            if (chartInstance.data && chartInstance.data.datasets) {
+                ThemeHelper.applyChartDatasetColors(
+                    chartInstance.data.datasets,
+                    chartInstance.config.type,
+                    true
+                );
             }
 
-            // Update title color
-            if (chartInstance.options.plugins && chartInstance.options.plugins.title) {
-                chartInstance.options.plugins.title.color = colors.text;
-            }
-
-            // Update legend colors
-            if (chartInstance.options.plugins && chartInstance.options.plugins.legend) {
-                if (!chartInstance.options.plugins.legend.labels)
-                    chartInstance.options.plugins.legend.labels = {};
-                chartInstance.options.plugins.legend.labels.color = colors.text;
+            // Update chart options (axes, title, legend)
+            if (chartInstance.options) {
+                ThemeHelper.applyChartOptionsColors(chartInstance.options);
             }
 
             // Apply the updates

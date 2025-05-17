@@ -1,5 +1,7 @@
-// Import at the top of the file
 import ThemeHelper from './theme-helper.js';
+
+// Make ThemeHelper available globally for use in inline scripts (e.g. chart shortcode)
+window.ThemeHelper = ThemeHelper;
 
 // Theme toggle functionality
 document.addEventListener('DOMContentLoaded', function() {

@@ -14,142 +14,14 @@
         const ctx = document.getElementById('{{ $chartID }}').getContext('2d');
         const chartData = {{ $data | safeJS }};
 
-        // Get theme colors from CSS variables
-        const style = getComputedStyle(document.body);
-        const colors = {
-            text: style.getPropertyValue('--color-text').trim(),
-            textSecondary: style.getPropertyValue('--color-text-secondary').trim(),
-            background: style.getPropertyValue('--color-background').trim(),
-            primary: style.getPropertyValue('--color-primary').trim(),
-            secondary: style.getPropertyValue('--color-secondary').trim(),
-            accent: style.getPropertyValue('--color-accent').trim(),
-            light: style.getPropertyValue('--color-section-background').trim(),
-            border: style.getPropertyValue('--color-border').trim(),
-            grid: style.getPropertyValue('--color-border').trim()
-        };
-
-        // Helper function to convert hex to rgba based on CSS theme colors
-        function hexToRgba(hex, alpha = 1) {
-            hex = hex.replace('#', '');
-
-            // Handle shorthand hex format (e.g., #FFF)
-            if (hex.length === 3) {
-                hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
-            }
-
-            // Parse the hex values
-            const r = parseInt(hex.substring(0, 2), 16);
-            const g = parseInt(hex.substring(2, 4), 16);
-            const b = parseInt(hex.substring(4, 6), 16);
-
-            // Return rgba format
-            return `rgba(${r}, ${g}, ${b}, ${alpha})`;
-        }
-
-        // Default palette based directly on theme CSS variables
-        const defaultPalette = [
-            {
-                backgroundColor: hexToRgba(colors.primary, 0.7),
-                borderColor: hexToRgba(colors.primary, 1)
-            },
-            {
-                backgroundColor: hexToRgba(colors.accent, 0.7),
-                borderColor: hexToRgba(colors.accent, 1)
-            },
-            {
-                backgroundColor: hexToRgba(colors.secondary, 0.7),
-                borderColor: hexToRgba(colors.secondary, 1)
-            },
-            {
-                backgroundColor: hexToRgba(colors.textSecondary, 0.7),
-                borderColor: hexToRgba(colors.textSecondary, 1)
-            },
-            // Create a fifth color by mixing primary and accent
-            {
-                backgroundColor: hexToRgba(colors.primary, 0.5),
-                borderColor: hexToRgba(colors.accent, 0.9)
-            }
-        ];
-
-        // Apply default colors to datasets if useDefaultColors is true and colors aren't specified
+        // Apply theme colors to datasets
         if ("{{ $useDefaultColors }}" === "true" && chartData.data && chartData.data.datasets) {
-            chartData.data.datasets.forEach((dataset, index) => {
-                const paletteIndex = index % defaultPalette.length;
-                const defaultColor = defaultPalette[paletteIndex];
-
-                // For different chart types, set appropriate color properties
-                if ("{{ $chartType }}" === "line") {
-                    // Line charts typically use borderColor for the line
-                    if (!dataset.borderColor) dataset.borderColor = defaultColor.borderColor;
-                    if (!dataset.backgroundColor && !dataset.fill) dataset.backgroundColor = 'transparent';
-                    // Set point colors if not already set
-                    if (!dataset.pointBackgroundColor) dataset.pointBackgroundColor = defaultColor.borderColor;
-                }
-                else if ("{{ $chartType }}" === "pie" || "{{ $chartType }}" === "doughnut") {
-                    // Pie/doughnut charts use arrays of colors for segments
-                    if (!dataset.backgroundColor) {
-                        dataset.backgroundColor = defaultPalette.map(color => color.backgroundColor);
-                    }
-                    if (!dataset.borderColor) {
-                        dataset.borderColor = defaultPalette.map(color => color.borderColor);
-                    }
-                }
-                else {
-                    // Bar charts and others
-                    if (!dataset.backgroundColor) {
-                        // Check if we need an array of colors or a single color
-                        const isArrayOfData = Array.isArray(dataset.data);
-                        if (isArrayOfData && "{{ $chartType }}" === "bar") {
-                            // If it's a bar chart with multiple data points, repeat the same color
-                            dataset.backgroundColor = Array(dataset.data.length).fill(defaultColor.backgroundColor);
-                            dataset.borderColor = Array(dataset.data.length).fill(defaultColor.borderColor);
-                        } else {
-                            dataset.backgroundColor = defaultColor.backgroundColor;
-                            dataset.borderColor = defaultColor.borderColor;
-                        }
-                    }
-                }
-            });
+            window.ThemeHelper.applyChartDatasetColors(chartData.data.datasets, "{{ $chartType }}", true);
         }
 
-        // Apply theme-based colors to scales and plugins
-        if (chartData.options && chartData.options.scales) {
-            // X-axis
-            if (chartData.options.scales.x) {
-                if (!chartData.options.scales.x.ticks) chartData.options.scales.x.ticks = {};
-                if (!chartData.options.scales.x.ticks.color) chartData.options.scales.x.ticks.color = colors.text;
-                if (!chartData.options.scales.x.grid) chartData.options.scales.x.grid = {};
-                if (!chartData.options.scales.x.grid.color) chartData.options.scales.x.grid.color = colors.grid;
-            }
-            // Y-axis
-            if (chartData.options.scales.y) {
-                if (!chartData.options.scales.y.ticks) chartData.options.scales.y.ticks = {};
-                if (!chartData.options.scales.y.ticks.color) chartData.options.scales.y.ticks.color = colors.text;
-                if (!chartData.options.scales.y.grid) chartData.options.scales.y.grid = {};
-                if (!chartData.options.scales.y.grid.color) chartData.options.scales.y.grid.color = colors.grid;
-            }
-            // Radar charts have r scale
-            if (chartData.options.scales.r) {
-                if (!chartData.options.scales.r.ticks) chartData.options.scales.r.ticks = {};
-                if (!chartData.options.scales.r.ticks.color) chartData.options.scales.r.ticks.color = colors.text;
-                if (!chartData.options.scales.r.grid) chartData.options.scales.r.grid = {};
-                if (!chartData.options.scales.r.grid.color) chartData.options.scales.r.grid.color = colors.grid;
-            }
-        }
-
-        // Apply default title color if not specified
-        if (chartData.options && chartData.options.plugins && chartData.options.plugins.title) {
-            if (!chartData.options.plugins.title.color) {
-                chartData.options.plugins.title.color = colors.text;
-            }
-        }
-
-        // Apply default legend color if not specified
-        if (chartData.options && chartData.options.plugins && chartData.options.plugins.legend) {
-            if (!chartData.options.plugins.legend.labels) chartData.options.plugins.legend.labels = {};
-            if (!chartData.options.plugins.legend.labels.color) {
-                chartData.options.plugins.legend.labels.color = colors.text;
-            }
+        // Apply theme colors to chart options
+        if (chartData.options) {
+            window.ThemeHelper.applyChartOptionsColors(chartData.options);
         }
 
         // Create the chart with maintainAspectRatio: false to prevent extending beyond container
