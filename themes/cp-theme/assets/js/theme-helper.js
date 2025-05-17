@@ -51,17 +51,18 @@ const ThemeHelper = {
      * @returns {Object} Theme colors object
      */
     getThemeColors: function() {
-        const isDark = this.isDarkTheme();
+        // Get colors directly from CSS variables for consistency
+        const style = getComputedStyle(document.body);
         return {
-            text: isDark ? '#F0F0F0' : '#2A2A2A',
-            textSecondary: isDark ? '#AAA' : '#666',
-            background: isDark ? '#222' : '#FCFCFC',
-            primary: isDark ? '#9DB8AA' : '#86A397',
-            secondary: isDark ? '#E8D7C3' : '#D9C8B4',
-            accent: isDark ? '#F1C470' : '#E4B363',
-            light: isDark ? '#333' : '#F5F1E9',
-            border: isDark ? '#444' : '#E2DDD5',
-            grid: isDark ? '#444' : '#E2DDD5'
+            text: style.getPropertyValue('--color-text').trim(),
+            textSecondary: style.getPropertyValue('--color-text-secondary').trim(),
+            background: style.getPropertyValue('--color-background').trim(),
+            primary: style.getPropertyValue('--color-primary').trim(),
+            secondary: style.getPropertyValue('--color-secondary').trim(),
+            accent: style.getPropertyValue('--color-accent').trim(),
+            light: style.getPropertyValue('--color-light').trim(),
+            border: style.getPropertyValue('--color-border').trim(),
+            grid: style.getPropertyValue('--color-border').trim()
         };
     }
 };

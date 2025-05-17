@@ -1,4 +1,3 @@
-<!-- themes/cp-theme/layouts/shortcodes/chart.html -->
 {{ $chartID := default (printf "chart-%d" (now.UnixNano)) (.Get "id") }}
 {{ $chartType := default "bar" (.Get "type") }}
 {{ $height := default "400" (.Get "height") }}
@@ -9,15 +8,24 @@
     <canvas id="{{ $chartID }}"></canvas>
 </div>
 
-<script type="module">
-    import ThemeHelper from '/js/theme-helper.js';
-
+<script>
     document.addEventListener('DOMContentLoaded', function() {
         const ctx = document.getElementById('{{ $chartID }}').getContext('2d');
         const chartData = {{ $data | safeJS }};
 
-        // Get theme colors
-        const colors = ThemeHelper.getThemeColors();
+        // Get theme colors - directly using CSS variables for better compatibility
+        const style = getComputedStyle(document.body);
+        const colors = {
+            text: style.getPropertyValue('--color-text').trim(),
+            textSecondary: style.getPropertyValue('--color-text-secondary').trim(),
+            background: style.getPropertyValue('--color-background').trim(),
+            primary: style.getPropertyValue('--color-primary').trim(),
+            secondary: style.getPropertyValue('--color-secondary').trim(),
+            accent: style.getPropertyValue('--color-accent').trim(),
+            light: style.getPropertyValue('--color-light').trim(),
+            border: style.getPropertyValue('--color-border').trim(),
+            grid: style.getPropertyValue('--color-border').trim()
+        };
 
         // Apply theme-based colors if not specified in the data
         if (chartData.options && chartData.options.scales) {
@@ -59,11 +67,19 @@
             }
         }
 
-        // Create the chart
+        // Create the chart with maintainAspectRatio: false to prevent extending beyond container
         new Chart(ctx, {
             type: '{{ $chartType }}',
             data: chartData.data,
-            options: chartData.options || {}
+            options: Object.assign({
+                maintainAspectRatio: false,
+                responsive: true
+            }, chartData.options || {})
         });
+    });
+
+    // Listen for theme changes
+    document.addEventListener('themeChanged', function(event) {
+        // The Chart.js instance will be updated by chart.js script
     });
 </script>

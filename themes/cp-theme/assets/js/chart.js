@@ -1,6 +1,9 @@
 import ThemeHelper from './theme-helper.js';
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize charts with the current theme
+    updateChartsForTheme(ThemeHelper.isDarkTheme());
+
     // Listen for theme changes
     document.addEventListener('themeChanged', function(event) {
         const isDark = event.detail.isDark;

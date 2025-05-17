@@ -1,24 +1,17 @@
+// Import at the top of the file
+import ThemeHelper from './theme-helper.js';
+
 // Theme toggle functionality
 document.addEventListener('DOMContentLoaded', function() {
     const themeToggle = document.querySelector('.theme-toggle');
-    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
-    // Check for saved theme preference or use the system preference
-    const currentTheme = localStorage.getItem('theme') ||
-        (prefersDarkScheme.matches ? 'dark' : 'light');
-
-    // Set initial theme
-    if (currentTheme === 'dark') {
-        document.body.classList.add('dark-theme');
-        updateThemeIcon(true);
-    } else {
-        updateThemeIcon(false);
-    }
+    // Initialize theme from ThemeHelper
+    const isDark = ThemeHelper.initialize();
+    updateThemeIcon(isDark);
 
     // Toggle theme when clicked
     themeToggle.addEventListener('click', function() {
-        let isDark = document.body.classList.toggle('dark-theme');
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        const isDark = ThemeHelper.toggleTheme();
         updateThemeIcon(isDark);
     });
 
