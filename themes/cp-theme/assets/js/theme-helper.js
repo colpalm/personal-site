@@ -241,68 +241,84 @@ const ThemeHelper = {
 
         // Apply theme-based colors to scales
         if (options.scales) {
-            // X-axis
-            if (options.scales.x) {
-                if (!options.scales.x.ticks) options.scales.x.ticks = {};
-                options.scales.x.ticks.color = colors.chartTicks;
-                if (!options.scales.x.grid) options.scales.x.grid = {};
-                options.scales.x.grid.color = colors.chartGrid;
-                if (options.scales.x.title) {
-                    options.scales.x.title.color = colors.chartText;
-                }
-            }
-
-            // Y-axis
-            if (options.scales.y) {
-                if (!options.scales.y.ticks) options.scales.y.ticks = {};
-                options.scales.y.ticks.color = colors.chartTicks;
-                if (!options.scales.y.grid) options.scales.y.grid = {};
-                options.scales.y.grid.color = colors.chartGrid;
-                if (options.scales.y.title) {
-                    options.scales.y.title.color = colors.chartText;
-                }
-            }
-
-            // Radar charts have r scale
-            if (options.scales.r) {
-                if (!options.scales.r.ticks) options.scales.r.ticks = {};
-                options.scales.r.ticks.color = colors.chartTicks;
-                if (!options.scales.r.grid) options.scales.r.grid = {};
-                options.scales.r.grid.color = colors.chartGrid;
-                if (options.scales.r.pointLabels) {
-                    options.scales.r.pointLabels.color = colors.chartText;
-                }
-            }
+            this._applyScaleColors(options.scales, colors);
         }
 
-        // Apply chart title color
-        if (options.plugins && options.plugins.title) {
-            options.plugins.title.color = colors.chartTitle;
-        }
-
-        // Apply legend colors
-        if (options.plugins && options.plugins.legend) {
-            if (!options.plugins.legend.labels) options.plugins.legend.labels = {};
-            options.plugins.legend.labels.color = colors.chartText;
-        }
-
-        // Apply tooltip colors
-        if (options.plugins && options.plugins.tooltip) {
-            if (!options.plugins.tooltip.backgroundColor) {
-                options.plugins.tooltip.backgroundColor = colors.chartTooltipBg;
-            }
-
-            if (!options.plugins.tooltip.titleColor) {
-                options.plugins.tooltip.titleColor = colors.chartTooltipTitle;
-            }
-
-            if (!options.plugins.tooltip.bodyColor) {
-                options.plugins.tooltip.bodyColor = colors.chartTooltipBody;
-            }
+        // Apply plugin colors (title, legend, tooltip)
+        if (options.plugins) {
+            this._applyPluginColors(options.plugins, colors);
         }
 
         return options;
-    }
+    },
+
+    /**
+     * Apply colors to chart scales (axes)
+     * @private
+     * @param {Object} scales - Chart scales object
+     * @param {Object} colors - Theme colors
+     */
+    _applyScaleColors: function(scales, colors) {
+        // Handle common scale types
+        const axisTypes = ['x', 'y', 'r'];
+
+        axisTypes.forEach(axisType => {
+            if (scales[axisType]) {
+                let axis = scales[axisType];
+                // Apply tick colors
+                if (!axis.ticks) axis.ticks = {};
+                axis.ticks.color = colors.chartTicks;
+
+                // Apply grid colors
+                if (!axis.grid) axis.grid = {};
+                axis.grid.color = colors.chartGrid;
+
+                // Apply title colors if present
+                if (axis.title) {
+                    axis.title.color = colors.chartText;
+                }
+
+                // Special handling for radar charts
+                if (axisType === 'r' && axis.pointLabels) {
+                    axis.pointLabels.color = colors.chartText;
+                }
+            }
+        });
+    },
+
+    /**
+     * Apply colors to chart plugins (title, legend, tooltip)
+     * @private
+     * @param {Object} plugins - Chart plugins object
+     * @param {Object} colors - Theme colors
+     */
+    _applyPluginColors: function(plugins, colors) {
+        // Title plugin
+        if (plugins.title) {
+            plugins.title.color = colors.chartTitle;
+        }
+
+        // Legend plugin
+        if (plugins.legend) {
+            if (!plugins.legend.labels) plugins.legend.labels = {};
+            plugins.legend.labels.color = colors.chartText;
+        }
+
+        // Tooltip plugin
+        if (plugins.tooltip) {
+            if (!plugins.tooltip.backgroundColor) {
+                plugins.tooltip.backgroundColor = colors.chartTooltipBg;
+            }
+
+            if (!plugins.tooltip.titleColor) {
+                plugins.tooltip.titleColor = colors.chartTooltipTitle;
+            }
+
+            if (!plugins.tooltip.bodyColor) {
+                plugins.tooltip.bodyColor = colors.chartTooltipBody;
+            }
+        }
+    },
 };
 
 // Export the helper for use in other modules
