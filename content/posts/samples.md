@@ -121,7 +121,11 @@ if __name__ == "__main__":
 How does this in-line code look? `print("Hello from python-experiments!")`
 
 ## Table
+Text above the table.
+
 | Name | Age | M/F |
 |------|-----|-----|
 | Joe  | 25  | M   |
 | Lou  | 25  | F   |
+
+And text below the table.

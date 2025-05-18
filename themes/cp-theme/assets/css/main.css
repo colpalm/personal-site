@@ -402,6 +402,49 @@ header, footer, a, .header-icon {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Table styling */
+table {
+  width: 80%;
+  margin: 1.5rem auto;
+  border-collapse: collapse;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  overflow: hidden; /* Ensures the border-radius is applied to the table content */
+}
+
+thead {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+}
+
+td {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--color-border);
+}
+
+tr:nth-child(even) {
+  background-color: var(--color-section-background);
+}
+
+/* Dark theme table adjustments */
+.dark-theme table {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dark-theme thead {
+  background-color: var(--color-primary);
+}
+
+.dark-theme tr:nth-child(even) {
+  background-color: var(--color-section-background);
+}
+
 
 /* Media query for responsive design */
 @media (max-width: 768px) {
