@@ -10,28 +10,55 @@
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const ctx = document.getElementById('{{ $chartID }}').getContext('2d');
-        const chartData = {{ $data | safeJS }};
-
-        // Apply theme colors to datasets
-        if ("{{ $useDefaultColors }}" === "true" && chartData.data && chartData.data.datasets) {
-            window.ThemeHelper.applyChartDatasetColors(chartData.data.datasets, "{{ $chartType }}", true);
-        }
-
-        // Apply theme colors to chart options
-        if (chartData.options) {
-            window.ThemeHelper.applyChartOptionsColors(chartData.options);
-        }
-
-        // Create the chart with maintainAspectRatio: false to prevent extending beyond container
-        new Chart(ctx, {
-            type: '{{ $chartType }}',
-            data: chartData.data,
-            options: Object.assign({
-                maintainAspectRatio: false,
-                responsive: true
-            }, chartData.options || {})
-        });
+    // Register this chart to be initialized when ThemeHelper is ready
+    window.chartsToInitialize = window.chartsToInitialize || [];
+    window.chartsToInitialize.push({
+        id: '{{ $chartID }}',
+        type: '{{ $chartType }}',
+        data: {{ $data | safeJS }},
+    useDefaultColors: {{ $useDefaultColors }},
+    width: '{{ $width }}',
+        height: {{ $height }}
     });
+
+    // If ThemeHelper is already available, initialize all pending charts
+    if (window.ThemeHelper && window.chartsToInitialize.length > 0) {
+        window.initializePendingCharts();
+    }
+
+    // Define the initialization function if not already defined
+    if (!window.initializePendingCharts) {
+        window.initializePendingCharts = function() {
+            if (!window.ThemeHelper || !window.chartsToInitialize || !window.chartsToInitialize.length) return;
+
+            // Process all pending charts
+            window.chartsToInitialize.forEach(function(chartConfig) {
+                const ctx = document.getElementById(chartConfig.id).getContext('2d');
+                const chartData = chartConfig.data;
+
+                // Apply theme colors to datasets
+                if (chartConfig.useDefaultColors && chartData.data && chartData.data.datasets) {
+                    window.ThemeHelper.applyChartDatasetColors(chartData.data.datasets, chartConfig.type, true);
+                }
+
+                // Apply theme colors to chart options
+                if (chartData.options) {
+                    window.ThemeHelper.applyChartOptionsColors(chartData.options);
+                }
+
+                // Create the chart
+                new Chart(ctx, {
+                    type: chartConfig.type,
+                    data: chartData.data,
+                    options: Object.assign({
+                        maintainAspectRatio: false,
+                        responsive: true
+                    }, chartData.options || {})
+                });
+            });
+
+            // Clear the processed charts
+            window.chartsToInitialize = [];
+        };
+    }
 </script>

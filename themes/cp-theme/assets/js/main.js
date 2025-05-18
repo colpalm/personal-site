@@ -3,7 +3,6 @@ import ThemeHelper from './theme-helper.js';
 // Make ThemeHelper available globally for use in inline scripts (e.g. chart shortcode)
 window.ThemeHelper = ThemeHelper;
 
-// Theme toggle functionality
 document.addEventListener('DOMContentLoaded', function() {
     const themeToggle = document.querySelector('.theme-toggle');
 
@@ -50,4 +49,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // This is a placeholder - TODO: add search functionality
         alert('Search functionality coming soon.');
     });
+
+    // Initialize any pending charts
+    if (window.initializePendingCharts) {
+        window.initializePendingCharts();
+    }
 });
