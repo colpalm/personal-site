@@ -151,41 +151,83 @@ const ThemeHelper = {
             const paletteColor = palette[paletteIndex];
 
             // Handle different chart types
-            if (chartType === 'line') {
-                // Line charts typically use borderColor for the line
-                if (!dataset.borderColor) dataset.borderColor = paletteColor.borderColor;
-                if (!dataset.backgroundColor && !dataset.fill) dataset.backgroundColor = 'transparent';
-                // Set point colors if not already set
-                if (!dataset.pointBackgroundColor) dataset.pointBackgroundColor = paletteColor.borderColor;
-                if (!dataset.pointBorderColor) dataset.pointBorderColor = paletteColor.borderColor;
-            }
-            else if (chartType === 'pie' || chartType === 'doughnut') {
-                // Pie/doughnut charts use arrays of colors for segments
-                if (!dataset.backgroundColor) {
-                    dataset.backgroundColor = palette.map(color => color.backgroundColor);
-                }
-                if (!dataset.borderColor) {
-                    dataset.borderColor = palette.map(color => color.borderColor);
-                }
-            }
-            else {
-                // Bar charts and others
-                if (!dataset.backgroundColor) {
-                    // Check if we need an array of colors or a single color
-                    const isArrayOfData = Array.isArray(dataset.data);
-                    if (isArrayOfData && chartType === 'bar') {
-                        // If it's a bar chart with multiple data points, repeat the same color
-                        dataset.backgroundColor = Array(dataset.data.length).fill(paletteColor.backgroundColor);
-                        dataset.borderColor = Array(dataset.data.length).fill(paletteColor.borderColor);
-                    } else {
-                        dataset.backgroundColor = paletteColor.backgroundColor;
-                        dataset.borderColor = paletteColor.borderColor;
-                    }
-                }
+            switch (chartType) {
+                case 'line':
+                    this._applyLineChartColors(dataset, paletteColor);
+                    break;
+                case 'pie':
+                case 'doughnut':
+                    this._applyPieChartColors(dataset, paletteColor);
+                    break;
+                default:
+                    this._applyDefaultChartColors(dataset, paletteColor, chartType);
             }
         });
 
         return datasets;
+    },
+
+    /**
+     * Apply colors for line charts
+     * @private
+     * @param {Object} dataset - Chart dataset
+     * @param {Object} paletteColor - Color from palette
+     */
+    _applyLineChartColors: function(dataset, paletteColor) {
+        // Line charts typically use borderColor for the line
+        if (!dataset.borderColor) dataset.borderColor = paletteColor.borderColor;
+        if (!dataset.backgroundColor && !dataset.fill) dataset.backgroundColor = 'transparent';
+
+        // Set point colors if not already set
+        if (!dataset.pointBackgroundColor) dataset.pointBackgroundColor = paletteColor.borderColor;
+        if (!dataset.pointBorderColor) dataset.pointBorderColor = paletteColor.borderColor;
+    },
+
+    /**
+     * Apply colors for pie/doughnut charts
+     * @private
+     * @param {Object} dataset - Chart dataset
+     * @param {Array} palette - Full color palette
+     */
+    _applyPieChartColors: function(dataset, palette) {
+        // Pie/doughnut charts use arrays of colors for segments
+        if (!dataset.backgroundColor) {
+            dataset.backgroundColor = palette.map(color => color.backgroundColor);
+        }
+        if (!dataset.borderColor) {
+            dataset.borderColor = palette.map(color => color.borderColor);
+        }
+    },
+
+    /**
+     * Apply colors for bar and other chart types
+     * @private
+     * @param {Object} dataset - Chart dataset
+     * @param {string} chartType - Type of chart
+     * @param {Object} paletteColor - Color from palette
+     */
+    _applyDefaultChartColors: function(dataset, paletteColor, chartType) {
+        const isArrayOfData = Array.isArray(dataset.data);
+
+        // Handle background color
+        if (!dataset.backgroundColor) {
+            if (isArrayOfData && chartType === 'bar') {
+                // If it's a bar chart with multiple data points, repeat the same color
+                dataset.backgroundColor = Array(dataset.data.length).fill(paletteColor.backgroundColor);
+            } else {
+                // Single color for the whole dataset
+                dataset.backgroundColor = paletteColor.backgroundColor;
+            }
+        }
+
+        // Handle border color (applied even if backgroundColor was already set)
+        if (!dataset.borderColor) {
+            if (isArrayOfData && chartType === 'bar') {
+                dataset.borderColor = Array(dataset.data.length).fill(paletteColor.borderColor);
+            } else {
+                dataset.borderColor = paletteColor.borderColor;
+            }
+        }
     },
 
     /**
