@@ -23,3 +23,36 @@ When might it be different? (And why it's still okay for your current goal)
 If my specific interest/goal changed - "Given a pre-existing list, how fast can I add N more items using different techniques (like extend vs. a loop of append vs. += with a generator)?"
 
 Then, I would put the initial list creation in setup.
+
+{{< chart dataFile="min_chart_data" type="line" height="450" >}}
+{
+    "scales": {
+        "x": {
+            "type": "linear",
+            "title": {
+                "display": true,
+                "text": "List Size (n)"
+            },
+            "ticks": {
+                "callback": "function(value) { return value.toLocaleString(); }"
+            }
+        },
+        "y": {
+            "title": {
+                "display": true,
+                "text": "Time (seconds)"
+            },
+            "beginAtZero": true
+        }
+    },
+    "plugins": {
+        "title": {
+            "display": true,
+            "text": "Python List Creation Performance"
+        },
+        "legend": {
+            "position": "top"
+        }
+    }
+}
+{{< /chart >}}
