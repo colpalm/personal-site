@@ -34,82 +34,60 @@ if __name__ == "__main__":
 ## Chart
 ### Bar Chart
 
-{{< chart type="bar" height="350" >}}
+{{< chart 
+    type="bar" 
+    height="350" 
+    title="Monthly Sales Data" 
+    yTitle="Value"
+>}}
 {
-    "data": {
-        "labels": ["January", "February", "March", "April", "May"],
-        "datasets": [{
-            "label": "Monthly Sales",
-            "data": [65, 59, 80, 81, 56],
-            "borderWidth": 1
-        }]
-    },
-    "options": {
-        "plugins": {
-            "title": {
-                "display": true,
-                "text": "Monthly Sales Data"
-            }
-        },
-        "scales": {
-            "y": {
-                "beginAtZero": true
-            }
-        }
-    }
+    "labels": ["January", "February", "March", "April", "May"],
+    "datasets": [{
+        "label": "Monthly Sales",
+        "data": [65, 59, 80, 81, 56],
+        "borderWidth": 1
+    }]
 }
 {{< /chart >}}
 
-{{< chart type="bar" height="350" >}}
+{{< chart 
+    type="bar" 
+    height="350" 
+    title="Sales Comparison"
+>}}
 {
-    "data": {
-        "labels": ["January", "February", "March", "April", "May"],
-        "datasets": [
-            {
-                "label": "2023 Sales",
-                "data": [65, 59, 80, 81, 56]
-            },
-            {
-                "label": "2024 Sales",
-                "data": [45, 79, 50, 91, 66]
-            },
-            {
+    "labels": ["January", "February", "March", "April", "May"],
+    "datasets": [
+        {
+            "label": "2023 Sales",
+            "data": [65, 59, 80, 81, 56]
+        },
+        {
+            "label": "2024 Sales",
+            "data": [45, 79, 50, 91, 66]
+        },
+        {
             "label": "2025 Sales",
             "data": [20, 85, 45, 60, 100]
-            }
-        ]
-    },
-    "options": {
-        "plugins": {
-            "title": {
-                "display": true,
-                "text": "Sales Comparison"
-            }
         }
-    }
+    ]
 }
 {{< /chart >}}
 
 ### Line Chart
-{{< chart type="line" height="350" >}}
+{{< chart 
+    type="line" 
+    height="350" 
+    title="Monthly Website Traffic" 
+>}}
 {
-    "data": {
-        "labels": ["January", "February", "March", "April", "May", "June"],
-        "datasets": [{
-            "label": "Website Visitors",
-            "data": [4500, 5900, 7000, 8100, 9600, 11200],
-            "fill": false,
-            "tension": 0.1
-        }]
-    },
-    "options": {
-        "plugins": {
-            "title": {
-                "display": true,
-                "text": "Monthly Website Traffic"
-            }
-        }
-    }
+    "labels": ["January", "February", "March", "April", "May", "June"],
+    "datasets": [{
+        "label": "Website Visitors",
+        "data": [4500, 5900, 7000, 8100, 9600, 11200],
+        "fill": false,
+        "tension": 0.1
+    }]
 }
 {{< /chart >}}
 
