@@ -1,0 +1,19 @@
+{{ $algorithm := .Site.Params.fingerprintAlgorithm | default "sha256" }}
+
+{{/* Chart.js */}}
+{{ if .Page.HasShortcode "chart" }}
+{{ $chartLib := resources.Get "lib/chart.js/chart.umd.min.js" }}
+{{ $themeHelper := resources.Get "js/theme-helper.js" }}
+{{ $chartConfig := resources.Get "js/chart.js" }}
+
+{{ $themeHelper := $themeHelper | js.Build (dict "format" "esm") | resources.Minify }}
+{{ $chartConfig := $chartConfig | js.Build (dict "format" "esm" "imports" (dict "theme-helper" $themeHelper.RelPermalink)) | resources.Minify }}
+
+{{ $chartJS := slice $chartLib $chartConfig | resources.Concat "js/chart.bundle.js" | resources.Fingerprint $algorithm }}
+<script
+    defer
+    type="text/javascript"
+    src="{{ $chartJS.RelPermalink }}"
+    integrity="{{ $chartJS.Data.Integrity }}"
+></script>
+{{ end }}

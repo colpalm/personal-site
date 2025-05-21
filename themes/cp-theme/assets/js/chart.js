@@ -1,6 +1,25 @@
 import ThemeHelper from './theme-helper.js';
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Expose ThemeHelper globally for use by shortcodes
+    window.ThemeHelper = ThemeHelper;
+
+    // Set up a global helper function for chart shortcodes
+    window.applyChartColors = function(datasets, chartType) {
+        if (window.ThemeHelper && datasets && datasets.length > 0) {
+            return window.ThemeHelper.applyChartDatasetColors(datasets, chartType || 'line', true);
+        }
+        return datasets;
+    };
+
+    // Set up a global function to apply theme to chart options
+    window.applyChartOptions = function(options) {
+        if (window.ThemeHelper && options) {
+            return window.ThemeHelper.applyChartOptionsColors(options);
+        }
+        return options;
+    };
+
     // Initialize charts with the current theme
     updateChartsForTheme(ThemeHelper.isDarkTheme());
 
@@ -12,8 +31,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Function to update charts when the theme changes
     function updateChartsForTheme(isDark) {
-        // Get all chart canvases
-        const chartCanvases = document.querySelectorAll('canvas[id^="chart-"]');
+        // Get all chart canvases (don't limit by ID pattern)
+        const chartCanvases = document.querySelectorAll('canvas[id]');
         if (chartCanvases.length === 0) return; // No charts on the page
 
         // Update each chart with new theme colors

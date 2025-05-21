@@ -1,64 +1,88 @@
-{{ $chartID := default (printf "chart-%d" (now.UnixNano)) (.Get "id") }}
-{{ $chartType := default "bar" (.Get "type") }}
-{{ $height := default "400" (.Get "height") }}
-{{ $width := default "100%" (.Get "width") }}
-{{ $useDefaultColors := default "true" (.Get "useDefaultColors") | lower }}
-{{ $data := .Inner }}
+{{ $id := .Get "id" | default (printf "chart-%d" (now.UnixNano)) }}
+{{ $height := .Get "height" | default "400" }}
+{{ $width := .Get "width" | default "100%" }}
+{{ $type := .Get "type" | default "line" }}
+{{ $title := .Get "title" | default "" }}
+{{ $xTitle := .Get "xTitle" | default "" }}
+{{ $yTitle := .Get "yTitle" | default "" }}
+{{ $dataFile := .Get "dataFile" }}
+
+<!-- Get chart data -->
+{{ $chartData := dict }}
+{{ if $dataFile }}
+  <!-- From data file -->
+  {{ $chartData = index site.Data (replace $dataFile ".json" "") }}
+{{ else if .Inner }}
+  <!-- From inner content -->
+  {{ $chartData = .Inner | unmarshal }}
+{{ end }}
 
 <div class="chart-container" style="height: {{ $height }}px; width: {{ $width }};">
-    <canvas id="{{ $chartID }}"></canvas>
+  <canvas id="{{ $id }}"></canvas>
 </div>
 
 <script>
-    // Register this chart to be initialized when ThemeHelper is ready
-    window.chartsToInitialize = window.chartsToInitialize || [];
-    window.chartsToInitialize.push({
-        id: '{{ $chartID }}',
-        type: '{{ $chartType }}',
-        data: {{ $data | safeJS }},
-    useDefaultColors: {{ $useDefaultColors }},
-    width: '{{ $width }}',
-        height: {{ $height }}
-    });
+document.addEventListener('DOMContentLoaded', function() {
+  const ctx = document.getElementById('{{ $id }}').getContext('2d');
+  if (!ctx) return;
 
-    // If ThemeHelper is already available, initialize all pending charts
-    if (window.ThemeHelper && window.chartsToInitialize.length > 0) {
-        window.initializePendingCharts();
+  // Get chart data
+  const data = {{ $chartData | jsonify | safeJS }};
+
+  // Create options object
+  const options = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      title: {
+        display: {{ if $title }}true{{ else }}false{{ end }},
+        text: '{{ $title }}'
+      }
+    },
+    scales: {
+      {{ if $xTitle }}
+      x: {
+        title: {
+          display: true,
+          text: '{{ $xTitle }}'
+        },
+        ticks: {
+          callback: function(value, index, values) {
+            // Format large numbers with commas
+            if (typeof value === 'string' && !isNaN(parseInt(value))) {
+              return parseInt(value).toLocaleString();
+            }
+            return value;
+          }
+        }
+      },
+      {{ end }}
+      {{ if $yTitle }}
+      y: {
+        title: {
+          display: true,
+          text: '{{ $yTitle }}'
+        },
+        beginAtZero: true
+      }
+      {{ end }}
     }
+  };
 
-    // Define the initialization function if not already defined
-    if (!window.initializePendingCharts) {
-        window.initializePendingCharts = function() {
-            if (!window.ThemeHelper || !window.chartsToInitialize || !window.chartsToInitialize.length) return;
+  // Apply theme colors
+  if (window.applyChartColors && data.datasets) {
+    window.applyChartColors(data.datasets, '{{ $type }}');
+  }
 
-            // Process all pending charts
-            window.chartsToInitialize.forEach(function(chartConfig) {
-                const ctx = document.getElementById(chartConfig.id).getContext('2d');
-                const chartData = chartConfig.data;
+  if (window.applyChartOptions) {
+    window.applyChartOptions(options);
+  }
 
-                // Apply theme colors to datasets
-                if (chartConfig.useDefaultColors && chartData.data && chartData.data.datasets) {
-                    window.ThemeHelper.applyChartDatasetColors(chartData.data.datasets, chartConfig.type, true);
-                }
-
-                // Apply theme colors to chart options
-                if (chartData.options) {
-                    window.ThemeHelper.applyChartOptionsColors(chartData.options);
-                }
-
-                // Create the chart
-                new Chart(ctx, {
-                    type: chartConfig.type,
-                    data: chartData.data,
-                    options: Object.assign({
-                        maintainAspectRatio: false,
-                        responsive: true
-                    }, chartData.options || {})
-                });
-            });
-
-            // Clear the processed charts
-            window.chartsToInitialize = [];
-        };
-    }
+  // Create the chart
+  new Chart(ctx, {
+    type: '{{ $type }}',
+    data: data,
+    options: options
+  });
+});
 </script>
