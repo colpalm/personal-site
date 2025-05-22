@@ -403,13 +403,21 @@ header, footer, a, .header-icon {
 }
 
 /* Table styling */
-table {
-  width: 80%;
-  margin: 1.5rem auto;
-  border-collapse: collapse;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+/* Table wrapper for responsive tables */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  margin: 2rem 0;
   border-radius: 6px;
-  overflow: hidden; /* Ensures the border-radius is applied to the table content */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 0;
 }
 
 thead {
@@ -421,6 +429,7 @@ th {
   text-align: left;
   padding: 0.75rem 1rem;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 td {
@@ -513,5 +522,15 @@ tr:nth-child(even) {
   .about-featured-image img {
     height: auto;
     object-fit: contain; /* Show the full image */
+  }
+
+  /* Table styling */
+  .table-wrapper {
+    border-radius: 0;
+  }
+
+  th, td {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
   }
 }
