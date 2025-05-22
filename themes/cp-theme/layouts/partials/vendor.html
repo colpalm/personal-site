@@ -2,18 +2,19 @@
 
 {{/* Chart.js */}}
 {{ if .Page.HasShortcode "chart" }}
-{{ $chartLib := resources.Get "lib/chart.js/chart.umd.min.js" }}
-{{ $themeHelper := resources.Get "js/theme-helper.js" }}
-{{ $chartConfig := resources.Get "js/chart.js" }}
+  {{/*
+     Get Chart.js and add an empty sourceMappingURL to prevent 404 errors
+     This is the most reliable solution without external dependencies
+  */}}
+  {{ $chartLib := resources.Get "lib/chart/chart.umd.min.js" | resources.Minify }}
+  {{ $chartLibContent := $chartLib.Content }}
+  {{ $chartLibWithFixedSourceMap := print $chartLibContent "\n//# sourceMappingURL=" | resources.FromString "js/chart-fixed.js" | resources.Minify }}
 
-{{ $themeHelper := $themeHelper | js.Build (dict "format" "esm") | resources.Minify }}
-{{ $chartConfig := $chartConfig | js.Build (dict "format" "esm" "imports" (dict "theme-helper" $themeHelper.RelPermalink)) | resources.Minify }}
+  {{ $themeHelper := resources.Get "js/theme-helper.js" | js.Build (dict "format" "esm") | resources.Minify }}
+  {{ $chartConfig := resources.Get "js/chart.js" | js.Build (dict "format" "esm" "imports" (dict "theme-helper" $themeHelper.RelPermalink)) | resources.Minify }}
 
-{{ $chartJS := slice $chartLib $chartConfig | resources.Concat "js/chart.bundle.js" | resources.Fingerprint $algorithm }}
-<script
-    defer
-    type="text/javascript"
-    src="{{ $chartJS.RelPermalink }}"
-    integrity="{{ $chartJS.Data.Integrity }}"
-></script>
+  <!-- Load the core Chart.js library, theme helper and chart config modules -->
+  <script src="{{ $chartLibWithFixedSourceMap.RelPermalink }}"></script>
+  <script type="module" src="{{ $themeHelper.RelPermalink }}"></script>
+  <script type="module" src="{{ $chartConfig.RelPermalink }}"></script>
 {{ end }}

@@ -24,35 +24,18 @@ If my specific interest/goal changed - "Given a pre-existing list, how fast can 
 
 Then, I would put the initial list creation in setup.
 
-{{< chart dataFile="min_chart_data" type="line" height="450" >}}
-{
-    "scales": {
-        "x": {
-            "type": "linear",
-            "title": {
-                "display": true,
-                "text": "List Size (n)"
-            },
-            "ticks": {
-                "callback": "function(value) { return value.toLocaleString(); }"
-            }
-        },
-        "y": {
-            "title": {
-                "display": true,
-                "text": "Time (seconds)"
-            },
-            "beginAtZero": true
-        }
-    },
-    "plugins": {
-        "title": {
-            "display": true,
-            "text": "Python List Creation Performance"
-        },
-        "legend": {
-            "position": "top"
-        }
-    }
-}
-{{< /chart >}}
+| method |        N |   append | comprehension | generator | numpy_array | numpy_to_list |
+|--------|----------|----------|---------------|-----------|-------------|---------------|
+| 0      |   100000 | 0.001017 |      0.000676 |  0.001734 |    0.000009 |      0.000593 |
+| 1      |  1000000 | 0.011074 |      0.008455 |  0.017818 |    0.000305 |      0.007174 |
+| 2      | 10000000 | 0.113638 |      0.088883 |  0.193964 |    0.004165 |      0.084701 |
+
+{{< chart
+    id="list-performance-chart"
+    height="450"
+    type="line"
+    title="Python List Creation Performance"
+    xTitle="List Size (n)"
+    yTitle="Time (seconds)"
+    dataFile="min_chart_data"
+/>}}

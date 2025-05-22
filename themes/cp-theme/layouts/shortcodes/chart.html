@@ -10,79 +10,18 @@
 <!-- Get chart data -->
 {{ $chartData := dict }}
 {{ if $dataFile }}
-  <!-- From data file -->
   {{ $chartData = index site.Data (replace $dataFile ".json" "") }}
 {{ else if .Inner }}
-  <!-- From inner content -->
   {{ $chartData = .Inner | unmarshal }}
 {{ end }}
 
 <div class="chart-container" style="height: {{ $height }}px; width: {{ $width }};">
-  <canvas id="{{ $id }}"></canvas>
+  <canvas
+    id="{{ $id }}"
+    data-chart-type="{{ $type }}"
+    {{ if $title }}data-chart-title="{{ $title }}"{{ end }}
+    {{ if $xTitle }}data-chart-xtitle="{{ $xTitle }}"{{ end }}
+    {{ if $yTitle }}data-chart-ytitle="{{ $yTitle }}"{{ end }}
+    data-chart-rawdata="{{ $chartData | jsonify | safeJS }}"
+  ></canvas>
 </div>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const ctx = document.getElementById('{{ $id }}').getContext('2d');
-  if (!ctx) return;
-
-  // Get chart data
-  const data = {{ $chartData | jsonify | safeJS }};
-
-  // Create options object
-  const options = {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      title: {
-        display: {{ if $title }}true{{ else }}false{{ end }},
-        text: '{{ $title }}'
-      }
-    },
-    scales: {
-      {{ if $xTitle }}
-      x: {
-        title: {
-          display: true,
-          text: '{{ $xTitle }}'
-        },
-        ticks: {
-          callback: function(value, index, values) {
-            // Format large numbers with commas
-            if (typeof value === 'string' && !isNaN(parseInt(value))) {
-              return parseInt(value).toLocaleString();
-            }
-            return value;
-          }
-        }
-      },
-      {{ end }}
-      {{ if $yTitle }}
-      y: {
-        title: {
-          display: true,
-          text: '{{ $yTitle }}'
-        },
-        beginAtZero: true
-      }
-      {{ end }}
-    }
-  };
-
-  // Apply theme colors
-  if (window.applyChartColors && data.datasets) {
-    window.applyChartColors(data.datasets, '{{ $type }}');
-  }
-
-  if (window.applyChartOptions) {
-    window.applyChartOptions(options);
-  }
-
-  // Create the chart
-  new Chart(ctx, {
-    type: '{{ $type }}',
-    data: data,
-    options: options
-  });
-});
-</script>

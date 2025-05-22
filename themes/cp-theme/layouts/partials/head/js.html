@@ -39,20 +39,3 @@
     {{- end }}
   {{- end }}
 {{- end }}
-
-<!-- Chart.js from CDN -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-<!-- Chart Theme JS -->
-{{- with resources.Get "js/chart.js" }}
-  {{- if eq hugo.Environment "development" }}
-    {{- with . | js.Build (dict "format" "esm") }}
-      <script type="module" src="{{ .RelPermalink }}"></script>
-    {{- end }}
-  {{- else }}
-    {{- $opts := dict "minify" true "format" "esm" }}
-    {{- with . | js.Build $opts | fingerprint }}
-      <script type="module" src="{{ .RelPermalink }}" integrity="{{- .Data.Integrity }}" crossorigin="anonymous"></script>
-    {{- end }}
-  {{- end }}
-{{- end }}
