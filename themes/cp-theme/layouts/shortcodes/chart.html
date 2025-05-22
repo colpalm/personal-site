@@ -6,6 +6,8 @@
 {{ $xTitle := .Get "xTitle" | default "" }}
 {{ $yTitle := .Get "yTitle" | default "" }}
 {{ $dataFile := .Get "dataFile" }}
+{{ $xScale := .Get "xScale" | default "category" }}
+{{ $yScale := .Get "yScale" | default "linear" }}
 
 <!-- Get chart data -->
 {{ $chartData := dict }}
@@ -22,6 +24,8 @@
     {{ if $title }}data-chart-title="{{ $title }}"{{ end }}
     {{ if $xTitle }}data-chart-xtitle="{{ $xTitle }}"{{ end }}
     {{ if $yTitle }}data-chart-ytitle="{{ $yTitle }}"{{ end }}
+    {{ if ne $xScale "category" }}data-chart-xscale="{{ $xScale }}"{{ end }}
+    {{ if ne $yScale "linear" }}data-chart-yscale="{{ $yScale }}"{{ end }}
     data-chart-rawdata="{{ $chartData | jsonify | safeJS }}"
   ></canvas>
 </div>

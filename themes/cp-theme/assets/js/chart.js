@@ -1,4 +1,3 @@
-
 import ThemeHelper from './theme-helper.js';
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -109,6 +108,8 @@ function initializeDataAttributeCharts() {
         const chartTitle = canvas.dataset.chartTitle || '';
         const chartXTitle = canvas.dataset.chartXtitle || '';
         const chartYTitle = canvas.dataset.chartYtitle || '';
+        const xScale = canvas.dataset.chartXscale || 'category';
+        const yScale = canvas.dataset.chartYscale || 'linear';
         const rawDataString = canvas.dataset.chartRawdata;
 
         let chartData;
@@ -125,7 +126,7 @@ function initializeDataAttributeCharts() {
             maintainAspectRatio: false
         };
 
-        // Only add what's necessary
+        // Add title if specified
         if (chartTitle) {
             options.plugins = options.plugins || {};
             options.plugins.title = {
@@ -134,37 +135,91 @@ function initializeDataAttributeCharts() {
             };
         }
 
-        // Only configure axes if we have titles
-        if (chartXTitle || chartYTitle) {
-            options.scales = {};
+        // Add tooltip formatting for numeric x-axis labels
+        if (chartData.labels && chartData.labels.every(label => !isNaN(Number(label)))) {
+            options.plugins = options.plugins || {};
+            options.plugins.tooltip = options.plugins.tooltip || {};
 
-            if (chartXTitle) {
-                options.scales.x = {
-                    title: {
-                        display: true,
-                        text: chartXTitle
-                    },
-                    ticks: {
-                        callback: function(value) {
-                            if (typeof value === 'string' && !isNaN(parseInt(value))) {
-                                return parseInt(value).toLocaleString();
-                            }
-                            return value;
+            // Capture labels for tooltip callback
+            const labels = chartData.labels;
+
+            options.plugins.tooltip.callbacks = {
+                title: function(tooltipItems) {
+                    if (tooltipItems.length > 0) {
+                        const item = tooltipItems[0];
+                        if (xScale === 'category') {
+                            // For category scales, get the label from our data
+                            const label = labels[item.dataIndex];
+                            return label !== undefined ? Number(label).toLocaleString() : item.label;
+                        } else {
+                            // For linear/logarithmic scales, format the parsed value
+                            return Number(item.parsed.x).toLocaleString();
                         }
                     }
-                };
-            }
+                    return '';
+                }
+            };
+        }
 
-            if (chartYTitle) {
-                options.scales.y = {
-                    title: {
-                        display: true,
-                        text: chartYTitle
-                    },
-                    beginAtZero: true
-                };
+        // Configure scales
+        options.scales = {};
+
+        // X-axis configuration
+        options.scales.x = {
+            type: xScale,
+            title: {
+                display: !!chartXTitle,
+                text: chartXTitle
+            }
+        };
+
+        // Add number formatting for x-axis with numeric data (all scale types)
+        if (chartData.labels && chartData.labels.every(label => !isNaN(Number(label)))) {
+            // Capture labels in closure for category scale callback
+            const labels = chartData.labels;
+
+            options.scales.x.ticks = {
+                callback: function(value, index, ticks) {
+
+                    // For category scales, Chart.js passes the index, so we need to get the label
+                    if (xScale === 'category') {
+                        const label = labels[index];
+                        return label !== undefined ? Number(label).toLocaleString() : value;
+                    }
+                    // For linear/logarithmic scales, use the value directly
+                    return Number(value).toLocaleString();
+                }
+            };
+
+            // Additional settings for linear scales with large numbers
+            if (xScale === 'linear') {
+                const numericLabels = chartData.labels.map(Number);
+                const max = Math.max(...numericLabels);
+
+                if (max >= 1000000) {
+                    options.scales.x.ticks.maxTicksLimit = 5;
+                    options.scales.x.ticks.stepSize = Math.ceil(max / 4);
+                }
             }
         }
+        // Fallback for logarithmic scales without labels (edge case)
+        else if (xScale === 'logarithmic') {
+            options.scales.x.ticks = {
+                callback: function(value) {
+                    return Number(value).toLocaleString();
+                }
+            };
+        }
+
+        // Y-axis configuration
+        options.scales.y = {
+            type: yScale,
+            title: {
+                display: !!chartYTitle,
+                text: chartYTitle
+            },
+            beginAtZero: yScale === 'linear' // Only for linear scales
+        };
 
         // Apply theme colors to datasets
         if (chartData.datasets) {
