@@ -9,9 +9,9 @@
 
 <!-- Get chart data -->
 {{ $chartData := dict }}
-{{ if $dataFile }}
-  {{ $chartData = index site.Data (replace $dataFile ".json" "") }}
-{{ else if .Inner }}
+{{ with .Get "dataFile" }}
+  {{ $chartData = index site.Data (replace . ".json" "") }}
+{{ else }}
   {{ $chartData = .Inner | unmarshal }}
 {{ end }}
 
