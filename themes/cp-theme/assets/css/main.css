@@ -344,26 +344,7 @@ header, footer, a, .header-icon {
   margin: 0 auto;
   text-align: center;
   height: 50vh;
-  /*position: relative;*/ /* needed for the gradient below */
 }
-
-/*.about-featured-image:before {*/
-/*  content: "";*/
-/*  position: absolute;*/
-/*  top: 0;*/
-/*  left: 0;*/
-/*  right: 0;*/
-/*  bottom: 0;*/
-/*  background: linear-gradient(*/
-/*          to right,*/
-/*          var(--color-background) 0%,*/
-/*          transparent 10%,*/
-/*          transparent 90%,*/
-/*          var(--color-background) 100%*/
-/*  );*/
-/*  z-index: 1; !* Places the gradient above the image *!*/
-/*  pointer-events: none; !* Ensures clicks pass through to the image *!*/
-/*}*/
 
 .about-featured-image img {
   width: 100%;
@@ -376,14 +357,14 @@ header, footer, a, .header-icon {
 /* Post Content CSS */
 /* Post metadata container */
 .post-metadata-container {
-  width: 60%;
+  width: 55%;
   margin: 0 auto;
   max-width: 800px;
 }
 
 /* Width and Center */
 .post-content-container {
-  width: 60%;
+  width: 55%;
   margin: 0 auto;
   max-width: 800px; /* Could remove (remove .post-metadata-container max-width if you do */
   /* Set post font size here if desired (e.g. 0.9rem)*/
@@ -452,6 +433,29 @@ tr:nth-child(even) {
 
 .dark-theme tr:nth-child(even) {
   background-color: var(--color-section-background);
+}
+
+
+/* Blockquote styling */
+blockquote {
+  margin: 0.75rem 0;
+  padding: 0.5rem 1rem;
+  border-left: 3px solid var(--color-primary);
+  background-color: transparent;
+  font-style: italic;
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.4; /* Shrink vertical space slightly */
+}
+
+/* Remove default margins from paragraphs inside blockquotes */
+blockquote p {
+  margin: 0;
+}
+
+/* If you have multiple paragraphs in a blockquote, add small spacing between them */
+blockquote p + p {
+  margin-top: 0.5rem;
 }
 
 
