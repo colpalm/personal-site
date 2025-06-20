@@ -1,0 +1,33 @@
+<svg width="300" height="400" viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Trunk -->
+  <path d="M150 400 C140 300, 155 200, 145 120" stroke="#8B4513" stroke-width="20" fill="none" />
+  
+  <!-- Palm Fronds -->
+  <path d="M145 120 C100 70, 40 80, 10 100" stroke="#228B22" stroke-width="6" fill="none" />
+  <path d="M145 120 C100 40, 60 20, 30 30" stroke="#228B22" stroke-width="6" fill="none" />
+  <path d="M145 120 C130 40, 100 0, 70 -10" stroke="#228B22" stroke-width="6" fill="none" />
+  
+  <path d="M145 120 C190 70, 250 80, 280 100" stroke="#228B22" stroke-width="6" fill="none" />
+  <path d="M145 120 C190 40, 230 20, 260 30" stroke="#228B22" stroke-width="6" fill="none" />
+  <path d="M145 120 C160 40, 190 0, 220 -10" stroke="#228B22" stroke-width="6" fill="none" />
+  
+  <path d="M145 120 C115 70, 100 30, 110 0" stroke="#228B22" stroke-width="6" fill="none" />
+  <path d="M145 120 C175 70, 190 30, 180 0" stroke="#228B22" stroke-width="6" fill="none" />
+  
+  <!-- Leaf details -->
+  <path d="M145 120 C100 70, 40 80, 10 100" stroke="#006400" stroke-width="2" fill="none" />
+  <path d="M145 120 C100 40, 60 20, 30 30" stroke="#006400" stroke-width="2" fill="none" />
+  <path d="M145 120 C130 40, 100 0, 70 -10" stroke="#006400" stroke-width="2" fill="none" />
+  
+  <path d="M145 120 C190 70, 250 80, 280 100" stroke="#006400" stroke-width="2" fill="none" />
+  <path d="M145 120 C190 40, 230 20, 260 30" stroke="#006400" stroke-width="2" fill="none" />
+  <path d="M145 120 C160 40, 190 0, 220 -10" stroke="#006400" stroke-width="2" fill="none" />
+  
+  <path d="M145 120 C115 70, 100 30, 110 0" stroke="#006400" stroke-width="2" fill="none" />
+  <path d="M145 120 C175 70, 190 30, 180 0" stroke="#006400" stroke-width="2" fill="none" />
+  
+  <!-- Coconuts -->
+  <circle cx="138" cy="120" r="7" fill="#8B4513" />
+  <circle cx="152" cy="115" r="7" fill="#8B4513" />
+  <circle cx="145" cy="105" r="7" fill="#8B4513" />
+</svg>

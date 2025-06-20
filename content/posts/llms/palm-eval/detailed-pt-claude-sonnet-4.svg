@@ -1,0 +1,66 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Sky background -->
+  <rect width="400" height="400" fill="#4FC3F7"/>
+  
+  <!-- Ocean waves at base -->
+  <path d="M0 350 Q50 340 100 350 Q150 360 200 350 Q250 340 300 350 Q350 360 400 350 L400 400 L0 400 Z" 
+        fill="#29B6F6"/>
+  <path d="M0 370 Q40 360 80 370 Q120 380 160 370 Q200 360 240 370 Q280 380 320 370 Q360 360 400 370 L400 400 L0 400 Z" 
+        fill="#0288D1"/>
+  
+  <!-- Sandy island -->
+  <ellipse cx="200" cy="340" rx="120" ry="40" fill="#FFD54F"/>
+  
+  <!-- Palm tree trunk - tall and curved -->
+  <path d="M200 340 Q210 300 205 260 Q215 220 210 180 Q205 140 215 100 Q210 60 220 20" 
+        stroke="#8D6E63" stroke-width="16" fill="none" stroke-linecap="round"/>
+  
+  <!-- Coconuts cluster -->
+  <circle cx="215" cy="25" r="6" fill="#8D6E63"/>
+  <circle cx="225" cy="30" r="5" fill="#A1887F"/>
+  <circle cx="208" cy="35" r="5" fill="#8D6E63"/>
+  
+  <!-- Palm fronds - 7 large fronds -->
+  <!-- Frond 1 - top -->
+  <path d="M220 20 Q220 -10 220 -20 Q225 -25 225 -15 Q225 5 220 20" 
+        fill="#4CAF50" stroke="#388E3C" stroke-width="1"/>
+  
+  <!-- Frond 2 - top right -->
+  <path d="M220 20 Q260 0 320 -10 Q330 -15 325 -5 Q265 10 220 20" 
+        fill="#66BB6A" stroke="#388E3C" stroke-width="1"/>
+  
+  <!-- Frond 3 - right -->
+  <path d="M220 20 Q280 30 350 50 Q360 55 355 60 Q285 40 220 20" 
+        fill="#4CAF50" stroke="#388E3C" stroke-width="1"/>
+  
+  <!-- Frond 4 - bottom right -->
+  <path d="M220 20 Q260 50 310 80 Q320 85 315 90 Q265 60 220 20" 
+        fill="#66BB6A" stroke="#388E3C" stroke-width="1"/>
+  
+  <!-- Frond 5 - bottom left -->
+  <path d="M220 20 Q180 50 130 80 Q120 85 125 90 Q175 60 220 20" 
+        fill="#4CAF50" stroke="#388E3C" stroke-width="1"/>
+  
+  <!-- Frond 6 - left -->
+  <path d="M220 20 Q160 30 90 50 Q80 55 85 60 Q155 40 220 20" 
+        fill="#66BB6A" stroke="#388E3C" stroke-width="1"/>
+  
+  <!-- Frond 7 - top left -->
+  <path d="M220 20 Q180 0 120 -10 Q110 -15 115 -5 Q175 10 220 20" 
+        fill="#4CAF50" stroke="#388E3C" stroke-width="1"/>
+  
+  <!-- Sun in top right -->
+  <circle cx="350" cy="50" r="20" fill="#FFC107"/>
+  
+  <!-- Sun rays -->
+  <g stroke="#FFC107" stroke-width="2" stroke-linecap="round">
+    <line x1="350" y1="20" x2="350" y2="25"/>
+    <line x1="350" y1="75" x2="350" y2="80"/>
+    <line x1="380" y1="50" x2="375" y2="50"/>
+    <line x1="325" y1="50" x2="320" y2="50"/>
+    <line x1="371" y1="29" x2="367" y2="33"/>
+    <line x1="333" y1="67" x2="329" y2="71"/>
+    <line x1="371" y1="71" x2="367" y2="67"/>
+    <line x1="333" y1="33" x2="329" y2="29"/>
+  </g>
+</svg>

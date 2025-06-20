@@ -1,0 +1,11 @@
+<svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Trunk -->
+  <rect x="95" y="120" width="10" height="120" fill="#8B5A2B" />
+
+  <!-- Fronds -->
+  <path d="M100,120 C60,80 40,60 60,55 C80,50 90,70 100,90" fill="green" />
+  <path d="M100,120 C140,80 160,60 140,55 C120,50 110,70 100,90" fill="green" />
+  <path d="M100,120 C70,70 60,40 80,30 C100,20 100,50 100,90" fill="green" />
+  <path d="M100,120 C130,70 140,40 120,30 C100,20 100,50 100,90" fill="green" />
+  <path d="M100,120 C100,80 100,50 100,30 C100,10 100,30 100,90" fill="green" />
+</svg>

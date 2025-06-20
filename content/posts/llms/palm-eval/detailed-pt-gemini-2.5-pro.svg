@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="300" height="250" viewBox="0 0 300 250" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <title>Palm Tree on Island</title>
+  <desc>A stylized illustration of a tall palm tree on a sandy island with a sun and ocean waves.</desc>
+
+  <defs>
+    <!-- Define a single frond shape to be reused -->
+    <path id="frond-shape" d="M 0,0 C 40,-25 90,-20 120,-40 C 85, -10 45, -5 0,0 Z" />
+  </defs>
+
+  <g id="scene">
+
+    <!-- Background Sky -->
+    <rect x="0" y="0" width="100%" height="100%" fill="#87CEEB" />
+
+    <!-- Sun -->
+    <circle id="sun" cx="260" cy="40" r="25" fill="#FFD700" />
+
+    <!-- Ocean Waves -->
+    <g id="ocean" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round">
+      <path d="M 10,230 Q 40,220 70,230 T 130,230" />
+      <path d="M 170,235 Q 200,225 230,235 T 290,235" />
+    </g>
+
+    <!-- Island -->
+    <path id="island" d="M 20,200 Q 150,160 280,200 L 280,250 L 20,250 Z" fill="#FADDAA" />
+
+    <!-- Palm Tree -->
+    <g id="palm-tree" transform="translate(140, 195)">
+
+      <!-- Trunk -->
+      <path id="trunk" d="M 0,0 C -20,-50 -40,-100 -30,-145 L -15,-145 C -25,-100 -5,-50 15,0 Z" fill="#8B4513" />
+
+      <!-- Coconuts -->
+      <g id="coconuts" transform="translate(-22, -140)" fill="#654321">
+        <circle cx="0" cy="0" r="6" />
+        <circle cx="-10" cy="5" r="6" />
+        <circle cx="8" cy="6" r="6" />
+      </g>
+
+      <!-- Fronds (Leaves) -->
+      <!-- The fronds reuse the shape defined in <defs> and are rotated around the top of the trunk -->
+      <g id="fronds" transform="translate(-22, -145)" fill="#3CB371">
+        <use href="#frond-shape" transform="rotate(20)" />
+        <use href="#frond-shape" transform="rotate(65)" />
+        <use href="#frond-shape" transform="rotate(110)" />
+        <use href="#frond-shape" transform="rotate(155)" />
+        <use href="#frond-shape" transform="rotate(200)" />
+        <use href="#frond-shape" transform="rotate(245)" />
+        <use href="#frond-shape" transform="rotate(290)" />
+        <use href="#frond-shape" transform="rotate(335)" />
+      </g>
+    </g>
+
+  </g>
+</svg>

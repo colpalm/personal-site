@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="250" viewBox="0 0 200 250" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <title>Palm Tree</title>
+  <desc>A stylized SVG of a palm tree with a curved trunk, coconuts, and lush fronds.</desc>
+
+  <g id="palm-tree">
+
+    <!-- Trunk -->
+    <!-- Drawn as a single closed path with a slight curve -->
+    <path id="trunk" d="M 95,240 C 85,180 90,120 100,60 L 110,60 C 120,120 125,180 115,240 Z" fill="#A0522D" />
+
+    <!-- Coconuts -->
+    <!-- A group of three circles clustered at the top of the trunk -->
+    <g id="coconuts">
+      <circle cx="98" cy="68" r="7" fill="#654321"/>
+      <circle cx="112" cy="70" r="7" fill="#654321"/>
+      <circle cx="105" cy="78" r="7" fill="#654321"/>
+    </g>
+
+    <!-- Fronds (Leaves) -->
+    <!-- A group containing multiple paths for the leaves, rotated around a central point -->
+    <g id="fronds" fill="#2E8B57">
+      <!-- A single frond shape is defined and then reused with different rotations -->
+      <path d="M 105,65 C 130,45 160,40 190,20 C 165,48 140,55 105,65 Z" transform="rotate(-20, 105, 65)" />
+      <path d="M 105,65 C 130,45 160,40 190,20 C 165,48 140,55 105,65 Z" transform="rotate(15, 105, 65)" />
+      <path d="M 105,65 C 130,45 160,40 190,20 C 165,48 140,55 105,65 Z" transform="rotate(50, 105, 65)" />
+
+      <!-- Mirrored fronds for the left side -->
+      <path d="M 105,65 C 80,45 50,40 20,20 C 45,48 70,55 105,65 Z" transform="rotate(-15, 105, 65)" />
+      <path d="M 105,65 C 80,45 50,40 20,20 C 45,48 70,55 105,65 Z" transform="rotate(-50, 105, 65)" />
+      <path d="M 105,65 C 80,45 50,40 20,20 C 45,48 70,55 105,65 Z" transform="rotate(-85, 105, 65)" />
+    </g>
+
+  </g>
+</svg>

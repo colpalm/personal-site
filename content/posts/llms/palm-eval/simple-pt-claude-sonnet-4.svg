@@ -1,0 +1,64 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Sky background -->
+  <rect width="400" height="400" fill="#87CEEB"/>
+  
+  <!-- Ground -->
+  <rect x="0" y="320" width="400" height="80" fill="#F4A460"/>
+  
+  <!-- Palm tree trunk -->
+  <path d="M180 320 Q185 280 175 240 Q190 200 180 160 Q175 120 185 80" 
+        stroke="#8B4513" stroke-width="20" fill="none" stroke-linecap="round"/>
+  
+  <!-- Trunk texture lines -->
+  <path d="M170 300 Q180 295 190 300" stroke="#654321" stroke-width="2" fill="none"/>
+  <path d="M175 260 Q185 255 195 260" stroke="#654321" stroke-width="2" fill="none"/>
+  <path d="M170 220 Q180 215 190 220" stroke="#654321" stroke-width="2" fill="none"/>
+  <path d="M175 180 Q185 175 195 180" stroke="#654321" stroke-width="2" fill="none"/>
+  <path d="M170 140 Q180 135 190 140" stroke="#654321" stroke-width="2" fill="none"/>
+  <path d="M175 100 Q185 95 195 100" stroke="#654321" stroke-width="2" fill="none"/>
+  
+  <!-- Palm fronds -->
+  <!-- Frond 1 - top right -->
+  <path d="M185 80 Q220 60 280 40 Q290 35 285 45 Q230 65 185 80" 
+        fill="#228B22" stroke="#006400" stroke-width="1"/>
+  
+  <!-- Frond 2 - top left -->
+  <path d="M185 80 Q150 60 90 40 Q80 35 85 45 Q140 65 185 80" 
+        fill="#228B22" stroke="#006400" stroke-width="1"/>
+  
+  <!-- Frond 3 - right -->
+  <path d="M185 80 Q240 90 320 110 Q330 115 325 120 Q250 100 185 80" 
+        fill="#32CD32" stroke="#006400" stroke-width="1"/>
+  
+  <!-- Frond 4 - left -->
+  <path d="M185 80 Q130 90 50 110 Q40 115 45 120 Q120 100 185 80" 
+        fill="#32CD32" stroke="#006400" stroke-width="1"/>
+  
+  <!-- Frond 5 - top center -->
+  <path d="M185 80 Q185 40 185 10 Q190 5 190 15 Q190 50 185 80" 
+        fill="#228B22" stroke="#006400" stroke-width="1"/>
+  
+  <!-- Frond 6 - bottom right -->
+  <path d="M185 80 Q220 100 290 130 Q300 135 295 140 Q225 110 185 80" 
+        fill="#32CD32" stroke="#006400" stroke-width="1"/>
+  
+  <!-- Frond 7 - bottom left -->
+  <path d="M185 80 Q150 100 80 130 Q70 135 75 140 Q145 110 185 80" 
+        fill="#32CD32" stroke="#006400" stroke-width="1"/>
+  
+  <!-- Coconuts -->
+  <ellipse cx="195" cy="85" rx="8" ry="10" fill="#8B4513"/>
+  <ellipse cx="175" cy="90" rx="7" ry="9" fill="#A0522D"/>
+  <ellipse cx="185" cy="95" rx="6" ry="8" fill="#8B4513"/>
+  
+  <!-- Sun -->
+  <circle cx="350" cy="50" r="25" fill="#FFD700"/>
+  <path d="M350 15 L350 25 M350 75 L350 85 M385 50 L375 50 M325 50 L315 50 
+           M371 29 L364 36 M336 64 L329 71 M371 71 L364 64 M336 36 L329 29" 
+        stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- Small cloud -->
+  <ellipse cx="80" cy="80" rx="25" ry="15" fill="white" opacity="0.8"/>
+  <ellipse cx="95" cy="75" rx="20" ry="12" fill="white" opacity="0.8"/>
+  <ellipse cx="65" cy="75" rx="18" ry="10" fill="white" opacity="0.8"/>
+</svg>

@@ -1,0 +1,61 @@
+<svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Palm tree trunk -->
+  <path d="M 200 450 Q 195 400 190 350 Q 185 300 180 250 Q 175 200 170 150 Q 168 125 165 100" 
+        fill="none" stroke="#8B4513" stroke-width="20" stroke-linecap="round"/>
+  <path d="M 200 450 Q 205 400 210 350 Q 215 300 220 250 Q 225 200 230 150 Q 232 125 235 100" 
+        fill="none" stroke="#A0522D" stroke-width="18" stroke-linecap="round"/>
+  
+  <!-- Trunk texture lines -->
+  <path d="M 185 420 Q 190 415 195 420" fill="none" stroke="#654321" stroke-width="2"/>
+  <path d="M 185 380 Q 190 375 195 380" fill="none" stroke="#654321" stroke-width="2"/>
+  <path d="M 185 340 Q 190 335 195 340" fill="none" stroke="#654321" stroke-width="2"/>
+  <path d="M 185 300 Q 190 295 195 300" fill="none" stroke="#654321" stroke-width="2"/>
+  <path d="M 185 260 Q 190 255 195 260" fill="none" stroke="#654321" stroke-width="2"/>
+  <path d="M 185 220 Q 190 215 195 220" fill="none" stroke="#654321" stroke-width="2"/>
+  <path d="M 185 180 Q 190 175 195 180" fill="none" stroke="#654321" stroke-width="2"/>
+  <path d="M 185 140 Q 190 135 195 140" fill="none" stroke="#654321" stroke-width="2"/>
+  
+  <!-- Palm fronds -->
+  <!-- Center-right frond -->
+  <path d="M 200 100 Q 250 80 300 90 Q 280 85 260 82 Q 240 80 220 85 Q 210 88 200 100" 
+        fill="#228B22" stroke="#006400" stroke-width="1"/>
+  
+  <!-- Far-right frond -->
+  <path d="M 200 100 Q 240 70 290 60 Q 270 60 250 62 Q 230 65 210 75 Q 205 80 200 100" 
+        fill="#32CD32" stroke="#006400" stroke-width="1"/>
+  
+  <!-- Center-left frond -->
+  <path d="M 200 100 Q 150 80 100 90 Q 120 85 140 82 Q 160 80 180 85 Q 190 88 200 100" 
+        fill="#228B22" stroke="#006400" stroke-width="1"/>
+  
+  <!-- Far-left frond -->
+  <path d="M 200 100 Q 160 70 110 60 Q 130 60 150 62 Q 170 65 190 75 Q 195 80 200 100" 
+        fill="#32CD32" stroke="#006400" stroke-width="1"/>
+  
+  <!-- Top-center frond -->
+  <path d="M 200 100 Q 195 50 190 20 Q 192 40 194 60 Q 196 80 198 90 Q 199 95 200 100" 
+        fill="#2E8B57" stroke="#006400" stroke-width="1"/>
+  
+  <!-- Top-right frond -->
+  <path d="M 200 100 Q 220 60 250 30 Q 235 45 225 60 Q 215 75 205 90 Q 202 95 200 100" 
+        fill="#3CB371" stroke="#006400" stroke-width="1"/>
+  
+  <!-- Top-left frond -->
+  <path d="M 200 100 Q 180 60 150 30 Q 165 45 175 60 Q 185 75 195 90 Q 198 95 200 100" 
+        fill="#3CB371" stroke="#006400" stroke-width="1"/>
+  
+  <!-- Additional frond details for fullness -->
+  <path d="M 200 100 Q 230 90 270 100 Q 250 92 230 88 Q 215 87 200 100" 
+        fill="#20B2AA" stroke="#006400" stroke-width="1"/>
+  
+  <path d="M 200 100 Q 170 90 130 100 Q 150 92 170 88 Q 185 87 200 100" 
+        fill="#20B2AA" stroke="#006400" stroke-width="1"/>
+  
+  <!-- Coconuts -->
+  <circle cx="210" cy="110" r="8" fill="#8B4513"/>
+  <circle cx="190" cy="115" r="8" fill="#A0522D"/>
+  <circle cx="200" cy="120" r="7" fill="#D2691E"/>
+  
+  <!-- Ground/sand -->
+  <ellipse cx="200" cy="460" rx="80" ry="20" fill="#F4A460" opacity="0.7"/>
+</svg>
