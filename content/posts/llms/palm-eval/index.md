@@ -25,17 +25,8 @@ The Prompt:
 {{< image-pair "simple-pt-gpt-4o.svg" "GPT-4o" "simple-pt-gemini-2.5-pro.svg" "Gemini 2.5 Pro" >}}
 
 Interesting results. I think you can basically tell that each one is a palm tree, besides Opus 3. Style points for Opus 4
-for going for the [In-N-Out Crossed Palm look](https://www.google.com/imgres?q=in%20n%20out%20crossed%20palm%20trees&imgurl=https%3A%2F%2Flookaside.fbsbx.com%2Flookaside%2Fcrawler%2Finstagram%2FC-vXqAavicX%2F0%2Fimage.jpg&imgrefurl=https%3A%2F%2Fwww.instagram.com%2Fp%2FC-vXqAavicX%2F&docid=RLhSMIIdAFKVxM&tbnid=J0QbAglZ62zfcM&vet=12ahUKEwiPq8K-_f6NAxVJFFkFHf5QNPUQM3oECBYQAA..i&w=1080&h=1080&hcb=2&ved=2ahUKEwiPq8K-_f6NAxVJFFkFHf5QNPUQM3oECBYQAA){target="_blank"}
-
-
-Check out this [Google image search](https://images.google.com/search?q=palm+trees)
-{target="_blank"} for reference.
-
-
-[Google image search](https://images.google.com/search?q=palm+trees){target="_blank"}
-
-
-
+for going for the [In-N-Out Crossed Palm look](https://www.google.com/imgres?q=in%20n%20out%20crossed%20palm%20trees&imgurl=https%3A%2F%2Flookaside.fbsbx.com%2Flookaside%2Fcrawler%2Finstagram%2FC-vXqAavicX%2F0%2Fimage.jpg&imgrefurl=https%3A%2F%2Fwww.instagram.com%2Fp%2FC-vXqAavicX%2F&docid=RLhSMIIdAFKVxM&tbnid=J0QbAglZ62zfcM&vet=12ahUKEwiPq8K-_f6NAxVJFFkFHf5QNPUQM3oECBYQAA..i&w=1080&h=1080&hcb=2&ved=2ahUKEwiPq8K-_f6NAxVJFFkFHf5QNPUQM3oECBYQAA).
+But are any of these good enough for a logo?
 
 ---
 
