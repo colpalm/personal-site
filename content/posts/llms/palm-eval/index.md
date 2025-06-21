@@ -1,7 +1,7 @@
 +++
 title = 'Palm Eval'
 date = 2025-06-20
-tags = ['llm']
+tags = ['LLMs']
 +++
 
 Born and raised in LA and with the last name "Palmer," you can probably guess my favorite tree (do people have favorite 
