@@ -462,7 +462,7 @@ blockquote p + p {
 /* Image pair styling */
 .image-pair-container {
   display: flex;
-  gap: 1.5rem;
+  gap: 1.2rem;
   justify-content: center;
   margin: 2rem auto;
   width: 100%;

@@ -9,6 +9,8 @@ trees or just me?). Ever since creating this site, I've wanted some sort of palm
 the homepage or logo. Sounds like the perfect task for an LLM, right? But even as models have progressed, I still don't 
 have anything acceptable.
 
+<!--more-->
+
 Simon Willison has been tracking how well LLMs can draw [Pelicans on a bicycle](https://simonwillison.net/2024/Oct/25/pelicans-on-a-bicycle/).
 This is my version of that experiment. Forget the animation, let's see how well current models can draw a simple palm tree.
 
