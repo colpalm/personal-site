@@ -2,6 +2,7 @@
 title = 'Global s3 Buckets and LLMs'
 date = 2025-07-15
 tags = ['LLMs']
+draft = true
 +++
 
 I've been thinking more and more about Dwarkesh's [question](https://x.com/dwarkesh_sp/status/1888164523984470055)
@@ -33,13 +34,14 @@ didn't have the correct permissions to view it. So my perceived workflow was:
 So what to do? I combed through the roles and policies associated with my AWS account, but couldn't 
 find anything restricting my s3 access. So time to get some help from Claude (Sonnet 4).
 
-## Could Claude Spot the Error
+## Could Claude Spot the Error?
 Now Claude knows everything about AWS; surely it'll know what's going on. I brought Claude up to speed about the task,
 and that the new bucket creation was failing. From some of the outputs I gave it, Claude noticed that the bucket names 
 were the **same** between the new and old account and wanted to clarify that I was in the correct account. 
 
-Now if you're familiar with AWS and s3, this is the key point. Claude spotted it...but didn't know it, or couldn't 
-connect the dots. The problem is that s3 buckets are globally unique. Because they can be accessed via DNS or within 
+Now if you're familiar with AWS and s3, this is the key point. Claude spotted it...but couldn't 
+connect the dots in this situation. The problem is that s3 buckets are globally unique. Because they can be accessed 
+via DNS or within 
 URLs, you can't have any two buckets with the same name!
 
 Claude knows this. A quick Google Search shows multiple posts about this ([one example](https://www.reddit.com/r/aws/comments/8axd8e/how_come_s3_bucket_names_are_globally_unique/)). 
@@ -48,6 +50,14 @@ glanced over this fact while recognizing I was using the same bucket name.
     
 This felt like a very human error. An error 
 that you don't notice until you do, and is summed up with the facepalm emoji 🤦🏼‍♂️.
+
+### Context and Prompt are Key
+Given that this error should be caught by LLMs, reprompted GPT4.1 and Claude with just the basics:
+> I am migrating a project from one AWS account to a new one. I have to set up a s3 bucket in the new account. I'm 
+> trying to use the same bucket name in the original account, but I'm getting the error: "Bucket with the same name 
+> already exists."
+ 
+Both models see the issue right away and correctly identify that you cannot use the same bucket name.
 
 ## Conclusion
 I've noticed this happen multiple times with LLMs where I'm stuck, the LLM is stuck, and when I finally figure it out,
