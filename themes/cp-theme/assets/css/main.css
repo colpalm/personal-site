@@ -171,6 +171,21 @@ article, .post-summary {
   border-bottom: 1px solid var(--color-border);
 }
 
+/* Post list title styling */
+.post-list-title {
+  margin-bottom: 0.3rem;
+}
+
+.post-list-title + p {
+  margin-top: 0.2rem;
+}
+
+/* Center text styling */
+.center-text {
+  text-align: center;
+  font-style: italic;
+}
+
 /* Button styling */
 .button {
   display: inline-block;
