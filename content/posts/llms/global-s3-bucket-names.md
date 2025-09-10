@@ -26,7 +26,7 @@ original (no code or config changes). But I ran into an error:
 That's odd. I didn't see this bucket anywhere in my new account. Where is it?
 
 **Quick Note**: to add to the confusion, I didn't notice the error message at first. I thought I had created the bucket
-but didn't have the correct permissions to view it. So my (incorrect) workflow looked like:
+but didn't have the correct permissions to view/use it. So my (incorrect) workflow looked like:
 
 1. Successfully create an s3 bucket (e.g. `project-test`)
 2. Don't see the bucket...Did I actually create it or do I lack permissions to view/use it?
@@ -54,7 +54,7 @@ It felt like a very human error. One of those things you don't notice until sudd
 
 ### Context and Prompt are Key
 
-Since this error should have been caught by LLMs, I tried again with a simpler prompt (an no incorrect workflow) to
+Since this error should have been caught by LLMs, I tried again with a simpler prompt (and no incorrect workflow) to
 GPT-4.1 and Claude:
 > I am migrating a project from one AWS account to a new one. I have to set up an s3 bucket in the new account. I'm
 > trying to use the same bucket name from the original account, but I'm getting the error: "Bucket with the same name
@@ -78,6 +78,5 @@ assumptions were wrong. Thats what makes Dwarkesh's question so interesting. If 
 on well documented s3 bucket naming conventions, how far are we from LLMs generating genuine discoveries? Or maybe we're
 closer than I think and it's just a matter of providing the right context and prompt.
 
-I'll keep tracking and writing about these cases where LLMs stumble on something they should "one-shot". And remember, *
-*s3**
-**bucket names are global!** Don't reuse them.
+I'll keep tracking and writing about these cases where LLMs stumble on something they should "one-shot". And remember,
+**s3 bucket names are global!** Don't reuse them.
