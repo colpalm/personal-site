@@ -22,3 +22,9 @@ hugo.linux
 
 # OS Files/Directories
 **/.DS_Store
+
+# Node / Playwright (dev tooling only — not part of the Hugo build)
+/node_modules/
+/test-results/
+/playwright-report/
+/screenshots/
