@@ -283,6 +283,7 @@ header, footer, a, .header-icon {
 }
 
 .home-container {
+  position: relative; /* anchor for the social icons below the image */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -292,16 +293,29 @@ header, footer, a, .header-icon {
 }
 
 .home-image {
-  max-width: 80%;
+  max-width: 70%;
 }
 
+/* Cap by both width and viewport height so the composition always fits
+   (avoids a scrollbar when the bookmarks bar shortens the viewport). */
 .home-image img {
-  width: 100%;
+  width: auto;
   height: auto;
+  max-width: 100%;
+  /* Reserve fixed space for header/footer/icons rather than a vh fraction, so the
+     icons keep constant clearance above the footer even on very short viewports
+     (e.g. landscape phones). */
+  max-height: calc(100vh - 19rem);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Hang the icons just below the image without affecting its centering,
+   so the photo itself sits visually centered in the page. */
 .social-icons {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   gap: 1.5rem;
   margin-top: 1rem;
