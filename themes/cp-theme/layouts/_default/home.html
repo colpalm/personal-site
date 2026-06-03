@@ -2,7 +2,20 @@
 <div class="home-centered">
   <div class="home-container">
     <div class="home-image">
-      <img src="{{ .Site.BaseURL }}images/palm-home.jpg" alt="Home">
+      {{- $src := resources.Get "images/palm-home.jpg" -}}
+      {{- $srcset := slice -}}
+      {{- range slice 400 700 1000 1400 -}}
+        {{- $r := $src.Resize (printf "%dx webp q80" .) -}}
+        {{- $srcset = $srcset | append (printf "%s %dw" $r.RelPermalink $r.Width) -}}
+      {{- end -}}
+      {{- $fallback := $src.Resize "1000x webp q80" -}}
+      <img
+        src="{{ $fallback.RelPermalink }}"
+        srcset="{{ delimit $srcset ", " }}"
+        sizes="(max-width: 768px) 70vw, 47vw"
+        width="{{ $fallback.Width }}" height="{{ $fallback.Height }}"
+        alt="Palm trees overlooking the California coast"
+        loading="eager" decoding="async">
     </div>
     <div class="social-icons">
       <a href="https://github.com/colpalm" class="social-icon" target="_blank" rel="noopener noreferrer">

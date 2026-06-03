@@ -2,7 +2,13 @@
     <div class="logo-container">
         {{ if .Site.Params.logo }}
         <a href="{{ .Site.BaseURL }}">
-            <img src="{{ absURL .Site.Params.logo }}" alt="{{ .Site.Title }}" class="site-logo">
+            {{- $logo := resources.Get .Site.Params.logo -}}
+            {{- if $logo -}}
+              {{- $logo = $logo.Resize "180x webp q85" -}}
+              <img src="{{ $logo.RelPermalink }}" width="{{ $logo.Width }}" height="{{ $logo.Height }}" alt="{{ .Site.Title }}" class="site-logo">
+            {{- else -}}
+              <img src="{{ absURL .Site.Params.logo }}" alt="{{ .Site.Title }}" class="site-logo">
+            {{- end -}}
         </a>
         {{ else }}
         <a href="{{ .Site.BaseURL }}" class="site-title">{{ .Site.Title }}</a>
