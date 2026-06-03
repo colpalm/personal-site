@@ -28,6 +28,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  min-height: 100dvh; /* Track Safari's visible area so the toolbar doesn't cause overflow scroll */
   color: var(--color-text);
   font-family: 'Open Sans', sans-serif;
   line-height: 1.5;

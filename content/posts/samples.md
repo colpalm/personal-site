@@ -3,6 +3,7 @@ title = 'Samples'
 date = 2025-05-16
 draft = true
 tags = ['misc']
+summary = 'Testing visual layout samples'
 +++
 
 Test out partials/shortcodes. Testing out the width of the page as well to see if the charts go to the right. Does it go further?

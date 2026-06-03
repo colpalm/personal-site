@@ -3,6 +3,7 @@ title = 'List Growth'
 date = 2025-05-09
 draft = true
 tags = ['code']
+summary = 'List growth benchmarking'
 +++
 
 ## Notes
