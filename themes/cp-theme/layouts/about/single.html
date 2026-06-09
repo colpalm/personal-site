@@ -11,12 +11,6 @@
     {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
   </div>
 
-  {{ if .Params.featured_image }}
-  <div class="about-featured-image">
-    <img src="{{ .Params.featured_image }}" alt="{{ .Title }}">
-  </div>
-  {{ end }}
-
   <div class="post-content-container">
     {{ .Content }}
   </div>

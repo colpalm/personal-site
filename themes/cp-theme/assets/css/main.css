@@ -368,22 +368,6 @@ header, footer, a, .header-icon {
   margin-right: 0.5rem;
 }
 
-/*About Page*/
-.about-featured-image {
-  width:90%;
-  margin: 0 auto;
-  text-align: center;
-  height: 50vh;
-}
-
-.about-featured-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 40%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
 /* Post Content CSS */
 /* Post metadata container */
 .post-metadata-container {
@@ -583,16 +567,6 @@ blockquote p + p {
   .post-metadata-container,
   .post-content-container {
     width: 100%;
-  }
-
-  .about-featured-image {
-    width: 100%; /* Full width on mobile */
-    height: auto; /* Slightly reduced height on mobile */
-  }
-
-  .about-featured-image img {
-    height: auto;
-    object-fit: contain; /* Show the full image */
   }
 
   /* Table styling */

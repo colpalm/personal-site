@@ -2,40 +2,21 @@
 title: 'About'
 date: 2023-01-01T08:00:00-07:00
 draft: false
-featured_image: "LA.png"
 type: "about"
 ---
 
-My name is Colin Palmer, and I am a software engineer with roots in the biotech industry.
+My name is Colin Palmer. I'm a software engineer focused on Applied and Systems AI/ML. I currently work at [Booz Allen Hamilton](https://www.boozallen.com) as part of their internal technology team, developing AI solutions that can be used across the firm.
 
-Before becoming a software engineer, I worked as a development scientist at a biotech company, building clinical
-reagents critical for diagnosing sick patients. 
+Previously, I worked as a development scientist at a biotech/medical device company, building clinical reagents critical for diagnosing sick patients. 
 
-Since moving fully into tech, my focus has evolved from general web development to specialized roles in
-data analytics and machine learning. Notably, I've helped develop a data analytics platform for the IRS and lead 
-AI integration projects through Booz Allen Hamilton's AI Investments division, integrating [aiSSEMBLE](https://github.com/boozallen/aissemble)
-into various client initiatives.
+I recently listened to a [talk from Tyler Cowen](https://www.youtube.com/watch?v=aJlg6o0A_Js) where he described two potential job categories in the age of AI:
+1. Running experiments
+2. Gathering data
 
-This website is a collection of posts/essays on topics I find interesting, along with highlights from my personal projects.
+I hope Cowen is right, because I enjoy both. So this site is a public portfolio of whatever I think is worth sharing — experiments, data, projects, and the occasional post.
 
-Originally from Los Angeles, I spent the first three decades of my life in Southern California. After spending the last few
-years "surviving" the East Coast winters in the Washington D.C. area (D.C winters are not mild if your baseline is LA), 
-I am finally looking to return home.
-
-### Career Opportunities
-I'm actively seeking software engineering and machine learning roles in the Los Angeles and Orange County areas. While
-I'd love to return to the promised land, I'm also open to opportunities in other prominent tech hubs (Bay Area, San Diego,
-New York City, Austin, etc.) if the role aligns with my expertise and interests. Please feel free to reach out via the 
-contact information below if you know of an opportunity or would like to connect.
-
-Additionally, since I entered SWE from a non-traditional background, I'm always happy to connect with others
-navigating a similar path. Whether you're seeking advice or simply want to chat about career transitions, machine learning
-or anything else software engineering related, feel free to reach out.
-
-### Consulting and Freelance Work
-I'm available for consulting and freelance projects, specifically those focused on data science and machine learning. 
-If you have a project that requires guidance to move from concept to production, you can get in touch with the contact information
-below.
+### Open to Work
+After a few years on the East Coast in Washington, DC, I'm looking to return home. I'm actively seeking AI/ML roles in Southern California. LA and Orange County are my first choice, but I'm open to San Diego or the Bay Area if the fit is right. If you know of an opportunity or would just like to connect, feel free to reach out using the contact info below.
 
 ### Contact
 - **Email**: colinpalmer91 [at] gmail [dot] com
