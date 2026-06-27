@@ -13,10 +13,10 @@ I recently listened to a [talk from Tyler Cowen](https://www.youtube.com/watch?v
 1. Running experiments
 2. Gathering data
 
-I hope Cowen is right, because I enjoy both. So this site is a public portfolio of whatever I think is worth sharing — experiments, data, projects, and the occasional post.
+I hope Cowen is right, because I enjoy both. So this site is a public portfolio of whatever I think is worth sharing — experiments, data, projects, and random posts.
 
 ### Open to Work
-After a few years on the East Coast in Washington, DC, I'm looking to return home. I'm actively seeking AI/ML roles in Southern California. LA and Orange County are my first choice, but I'm open to San Diego or the Bay Area if the fit is right. If you know of an opportunity or would just like to connect, feel free to reach out using the contact info below.
+After a few years on the East Coast in Washington, DC, I'm looking to return home. I'm actively seeking AI/ML roles in California. LA and Orange County are my first choice, but I'm open to San Diego or the Bay Area if the fit is right. If you know of an opportunity or would just like to connect, feel free to reach out using the contact info below.
 
 ### Contact
 - **Email**: colinpalmer91 [at] gmail [dot] com
