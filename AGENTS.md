@@ -2,6 +2,7 @@
 
 ## Dev Tooling
 
-- Save verification/Playwright screenshots to the in-repo `./screenshots/` directory, **not** `/tmp`. It's gitignored (so screenshots can't be committed) and discoverable in the editor. Wipe with `rm -rf screenshots/*`.
-- Delete temporary Playwright driver scripts after use rather than leaving them in the repo root.
-- Playwright (`@playwright/test`, chromium) is a dev dependency only — not part of the Hugo build. Run `hugo server` first, then drive the browser against `http://localhost:1313`.
+- Browser verification uses the **Playwright MCP** (configured in `.mcp.json`). Drive it with the `browser_*` MCP tools — navigate, click, snapshot, screenshot — no throwaway driver scripts to write or delete.
+- Run `hugo server` first, then point the browser at `http://localhost:1313`.
+- Screenshots land in the in-repo `./screenshots/` directory (set via the MCP's `--output-dir`). It's gitignored (so screenshots can't be committed) and discoverable in the editor. Wipe with `rm -rf screenshots/*`.
+- When calling `browser_take_screenshot`, **omit `filename`** (auto-names into `screenshots/`) or prefix it explicitly, e.g. `screenshots/foo.png`. A bare `filename` resolves to the repo root — not the output dir — and won't be gitignored.
