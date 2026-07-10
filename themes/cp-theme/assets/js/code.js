@@ -11,11 +11,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to check if the site is in dark mode
     function isDarkMode() {
-        // Check if body has dark-theme class (from main.js)
-        return document.body.classList.contains('dark-theme');
+        // Check if <html> has dark-theme class (set by the head script / ThemeHelper)
+        return document.documentElement.classList.contains('dark-theme');
     }
 
-    // Set the initial theme based on body class
+    // Set the initial theme based on the root class
     setDark(isDarkMode());
 
     // Watch for theme changes
@@ -27,8 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Start observing the body for class changes
-    observer.observe(document.body, { attributes: true });
+    // Start observing <html> for class changes
+    observer.observe(document.documentElement, { attributes: true });
 });
 
 // Add copy buttons to code blocks

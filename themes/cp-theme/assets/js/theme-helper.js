@@ -11,12 +11,12 @@ const ThemeHelper = {
         const currentTheme = localStorage.getItem('theme') ||
             (prefersDarkScheme.matches ? 'dark' : 'light');
 
-        // Set the initial theme
+        // Set the initial theme (on <html> so the inline head script can apply it before first paint)
         const isDark = currentTheme === 'dark';
         if (isDark) {
-            document.body.classList.add('dark-theme');
+            document.documentElement.classList.add('dark-theme');
         } else {
-            document.body.classList.remove('dark-theme');
+            document.documentElement.classList.remove('dark-theme');
         }
 
         return isDark;
@@ -27,7 +27,7 @@ const ThemeHelper = {
      * @returns {boolean} Whether dark theme is now active
      */
     toggleTheme: function() {
-        const isDark = document.body.classList.toggle('dark-theme');
+        const isDark = document.documentElement.classList.toggle('dark-theme');
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
 
         // Dispatch a custom event that any component can listen for
@@ -43,7 +43,7 @@ const ThemeHelper = {
      * @returns {boolean} Whether dark theme is active
      */
     isDarkTheme: function() {
-        return document.body.classList.contains('dark-theme');
+        return document.documentElement.classList.contains('dark-theme');
     },
 
     /**

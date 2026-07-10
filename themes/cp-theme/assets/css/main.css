@@ -210,6 +210,9 @@ img {
 
 /* Dark Theme Styles */
 .dark-theme {
+  /* Paint the root dark immediately so there's no flash before <body> renders */
+  background-color: #222;
+
   /* Base theme colors for dark mode */
   --color-background: #222;
   --color-text: #F0F0F0;
