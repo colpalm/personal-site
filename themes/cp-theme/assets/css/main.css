@@ -559,7 +559,6 @@ blockquote p + p {
     grid-template-areas:
       "logo icons"
       "nav  nav";
-    row-gap: 0.5rem;
   }
 
   .logo-container {
