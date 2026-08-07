@@ -1,6 +1,9 @@
 {{ define "main" }}
   <h1 class="page-title">{{ .Title }}</h1>
 
+  {{/* Skip the wrapper entirely when there's no date or tags — an empty one still
+       contributes its margin and widens the gap under the title. */}}
+  {{ if or (eq .Type "posts") (.GetTerms "tags") }}
   <div class="post-metadata-container">
     {{ if eq .Type "posts" }}
       {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
@@ -10,6 +13,7 @@
 
     {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
   </div>
+  {{ end }}
 
   {{ if .Params.featured_image }}
   <div class="post-featured-image">
