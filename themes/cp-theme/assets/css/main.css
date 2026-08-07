@@ -539,45 +539,49 @@ blockquote p + p {
 /* Media query for responsive design */
 @media (max-width: 768px) {
   body {
-    width: 95%;
+    /* border-box so width + padding stay inside the viewport instead of
+       overflowing it by the padding amount */
+    box-sizing: border-box;
+    width: 100%;
     padding: 0 1rem;
   }
 
+  /* Stack the header: logo and icons share the top row, nav gets a full-width
+     row of its own so the links fit on one line instead of wrapping. */
   .header-container {
-    flex-direction: column;
-    align-items: flex-start;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "logo icons"
+      "nav  nav";
+    row-gap: 0.5rem;
   }
 
   .logo-container {
-    margin-bottom: 1rem;
-    margin-right: 0;
+    grid-area: logo;
+    margin-left: 0;
   }
 
   .site-logo {
     max-height: 40px;
   }
 
+  .header-icons {
+    grid-area: icons;
+    gap: 0.75rem; /* Smaller gap between icons */
+    margin-right: 0;
+  }
+
   .nav-container {
-    width: 100%;
+    grid-area: nav;
   }
 
   .nav-container nav ul {
-    flex-wrap: wrap;
-    column-gap: 0.75rem;
-    row-gap: 0;
+    gap: 1rem;
   }
 
   .nav-container nav a {
     font-size: 0.9rem;
     padding: 0.3rem 0;
-  }
-
-  .nav-container nav li {
-    margin: 0.5rem 1rem 0 0;
-  }
-
-  .header-icons {
-    gap: 0.75rem; /* Smaller gap between icons */
   }
 
   .home-container {
