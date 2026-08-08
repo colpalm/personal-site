@@ -3,7 +3,7 @@ title = 'Why This Site'
 date = 2026-08-07
 draft = false
 tags = ['misc']
-summary = 'Building and learning in public'
+summary = 'Building and learning in public.'
 +++
 
 Truth is, I'm not sure what this site will be yet. But the idea is to have a home on the internet for any projects I'm working on or new topics I'm learning about. 
