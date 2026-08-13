@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="ColPalm">
+  <!-- Renders the viewer's own emoji font rather than shipping glyph artwork,
+       so it looks native on every platform and scales without a raster. -->
+  <text x="32" y="47" font-size="58" text-anchor="middle">🌴</text>
+</svg>
