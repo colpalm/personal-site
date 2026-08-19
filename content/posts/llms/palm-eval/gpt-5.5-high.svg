@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800" role="img" aria-labelledby="title desc">
+  <title id="title">Palm Tree Surfing a Wave</title>
+  <desc id="desc">A playful cartoon palm tree wearing sunglasses and riding a surfboard on a curling blue ocean wave.</desc>
+
+  <defs>
+    <linearGradient id="wave" x1="140" y1="650" x2="690" y2="290" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#33BFE4"/>
+      <stop offset="0.45" stop-color="#0699D1"/>
+      <stop offset="1" stop-color="#0068A8"/>
+    </linearGradient>
+    <linearGradient id="waveDark" x1="510" y1="270" x2="650" y2="610" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#047FC2"/>
+      <stop offset="1" stop-color="#004C8D"/>
+    </linearGradient>
+    <linearGradient id="board" x1="190" y1="590" x2="580" y2="545" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FF9C1C"/>
+      <stop offset="0.45" stop-color="#FFD33E"/>
+      <stop offset="1" stop-color="#FFB82C"/>
+    </linearGradient>
+    <linearGradient id="trunk" x1="325" y1="280" x2="435" y2="670" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#B96518"/>
+      <stop offset="0.52" stop-color="#C77B22"/>
+      <stop offset="1" stop-color="#8F5119"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#003E66" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="800" fill="#FFFFFF"/>
+
+  <!-- Wave body -->
+  <g filter="url(#softShadow)">
+    <path d="M88 655 C166 722 338 734 505 670 C657 611 733 477 690 360 C662 284 588 250 522 273 C610 281 641 342 608 399 C584 441 535 458 486 438 C532 510 487 587 392 615 C288 647 173 626 88 655 Z" fill="url(#wave)"/>
+    <path d="M506 280 C600 274 672 348 657 449 C646 525 592 588 514 626 C572 549 594 480 576 419 C561 367 523 341 475 347 C480 322 490 300 506 280 Z" fill="url(#waveDark)" opacity="0.88"/>
+    <path d="M140 662 C240 694 366 673 468 612 C392 696 225 724 140 662 Z" fill="#6ED7EA" opacity="0.7"/>
+    <path d="M115 692 C210 724 348 715 506 667" fill="none" stroke="#8FE3F1" stroke-width="24" stroke-linecap="round" opacity="0.8"/>
+    <path d="M210 670 C278 681 363 664 441 624" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" opacity="0.95"/>
+    <path d="M448 635 C517 603 565 555 590 493" fill="none" stroke="#44BDE1" stroke-width="18" stroke-linecap="round" opacity="0.75"/>
+    <path d="M505 350 C574 371 608 431 590 500" fill="none" stroke="#1FA9DA" stroke-width="22" stroke-linecap="round" opacity="0.75"/>
+    <path d="M536 329 C607 354 646 417 637 486" fill="none" stroke="#0B79B8" stroke-width="20" stroke-linecap="round" opacity="0.55"/>
+
+    <!-- Foam crest -->
+    <path d="M463 333 C488 304 525 314 532 342 C558 314 598 319 602 352 C637 336 677 360 667 397 C701 393 719 424 699 452 C726 463 721 501 689 503 C682 535 641 535 630 505 C606 526 574 513 579 482 C541 486 520 455 539 428 C505 429 487 402 501 376 C471 378 447 357 463 333 Z" fill="#FFFFFF"/>
+    <path d="M490 353 C518 336 545 347 551 373 C574 353 604 361 607 390 C632 383 656 400 652 426" fill="none" stroke="#BDEBFA" stroke-width="18" stroke-linecap="round" opacity="0.95"/>
+
+    <!-- Lower foam around board -->
+    <path d="M377 616 C408 634 448 628 467 600 C473 632 514 641 533 611 C539 639 579 645 591 616 C604 631 635 622 636 596 C623 636 572 665 507 676 C446 686 400 667 377 616 Z" fill="#FFFFFF"/>
+    <circle cx="664" cy="475" r="9" fill="#FFFFFF"/>
+    <circle cx="637" cy="507" r="6" fill="#FFFFFF"/>
+    <circle cx="593" cy="544" r="5" fill="#FFFFFF"/>
+    <circle cx="328" cy="641" r="7" fill="#BDEBFA"/>
+    <circle cx="293" cy="676" r="10" fill="#BDEBFA"/>
+    <circle cx="252" cy="651" r="7" fill="#BDEBFA"/>
+  </g>
+
+  <!-- Surfboard -->
+  <g filter="url(#softShadow)">
+    <path d="M191 612 C268 566 420 529 563 535 C588 536 591 554 570 571 C463 656 276 672 197 638 C181 631 179 619 191 612 Z" fill="url(#board)"/>
+    <path d="M201 622 C294 590 421 559 571 546" fill="none" stroke="#EF5A26" stroke-width="17" stroke-linecap="round"/>
+    <path d="M215 641 C315 666 452 645 553 577" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" opacity="0.9"/>
+  </g>
+
+  <!-- Palm tree trunk -->
+  <g>
+    <path d="M401 248 C364 317 350 414 373 503 C389 564 398 605 376 643 C416 654 453 644 463 625 C443 558 426 494 423 430 C420 361 435 300 401 248 Z" fill="url(#trunk)"/>
+    <path d="M391 281 C411 291 422 296 437 298" fill="none" stroke="#8E5019" stroke-width="9" stroke-linecap="round" opacity="0.55"/>
+    <path d="M371 338 C392 354 414 361 436 359" fill="none" stroke="#8E5019" stroke-width="8" stroke-linecap="round" opacity="0.5"/>
+    <path d="M363 398 C388 414 415 419 439 413" fill="none" stroke="#8E5019" stroke-width="8" stroke-linecap="round" opacity="0.5"/>
+    <path d="M371 463 C395 477 423 480 449 473" fill="none" stroke="#8E5019" stroke-width="8" stroke-linecap="round" opacity="0.5"/>
+    <path d="M388 532 C409 543 432 545 456 539" fill="none" stroke="#8E5019" stroke-width="8" stroke-linecap="round" opacity="0.5"/>
+    <path d="M386 592 C409 602 436 603 459 597" fill="none" stroke="#8E5019" stroke-width="8" stroke-linecap="round" opacity="0.45"/>
+    <path d="M424 318 C438 382 435 476 456 575" fill="none" stroke="#D98A2E" stroke-width="11" stroke-linecap="round" opacity="0.22"/>
+  </g>
+
+  <!-- Arms -->
+  <g fill="none" stroke="#A95F1B" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M369 410 C323 449 282 438 269 395" stroke-width="17"/>
+    <path d="M269 395 L251 356" stroke-width="17"/>
+    <path d="M269 395 C261 372 282 365 288 387" stroke-width="14"/>
+    <path d="M269 395 C285 384 303 395 292 415" stroke-width="14"/>
+    <path d="M425 424 C457 438 487 457 504 489" stroke-width="17"/>
+    <path d="M504 489 C515 474 539 475 550 492" stroke-width="13"/>
+    <path d="M504 489 C521 496 536 506 541 521" stroke-width="13"/>
+    <path d="M504 489 C499 507 504 520 516 529" stroke-width="13"/>
+  </g>
+
+  <!-- Face and sunglasses -->
+  <g>
+    <path d="M363 300 C384 306 408 311 436 309 C432 334 416 349 390 345 C369 342 359 324 363 300 Z" fill="#0A0A0A"/>
+    <path d="M432 313 C452 316 475 320 493 326 C489 351 474 363 449 357 C431 353 425 334 432 313 Z" fill="#0A0A0A"/>
+    <path d="M425 318 C427 322 429 326 431 330" stroke="#0A0A0A" stroke-width="8" stroke-linecap="round"/>
+    <path d="M379 307 L360 335" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" opacity="0.9"/>
+    <path d="M396 311 L375 341" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" opacity="0.9"/>
+    <path d="M461 323 L443 352" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" opacity="0.9"/>
+    <path d="M476 328 L457 355" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" opacity="0.9"/>
+    <path d="M395 377 C413 398 445 395 461 372 C451 430 407 431 395 377 Z" fill="#111111"/>
+    <path d="M416 408 C426 397 445 397 455 409 C442 421 427 420 416 408 Z" fill="#FF5E65"/>
+    <path d="M398 375 C418 390 441 388 458 372" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round"/>
+    <path d="M417 360 C424 365 433 365 440 359" fill="none" stroke="#8D4F19" stroke-width="5" stroke-linecap="round" opacity="0.55"/>
+  </g>
+
+  <!-- Palm fronds -->
+  <g>
+    <path d="M397 246 C330 147 214 129 120 165 C200 169 283 205 351 277 Z" fill="#25853C"/>
+    <path d="M397 246 C315 196 198 207 96 287 C195 270 287 280 360 306 Z" fill="#2FA044"/>
+    <path d="M400 248 C344 222 253 254 179 362 C264 325 326 318 383 324 Z" fill="#3BAD42"/>
+    <path d="M405 246 C392 150 449 79 539 50 C499 114 481 178 447 268 Z" fill="#72A92A"/>
+    <path d="M407 246 C450 149 551 98 665 132 C574 165 510 217 448 304 Z" fill="#3C9C39"/>
+    <path d="M407 249 C499 201 618 205 714 284 C608 262 517 274 445 323 Z" fill="#2C883D"/>
+    <path d="M405 250 C472 235 554 275 612 373 C532 331 469 323 417 337 Z" fill="#68B333"/>
+    <path d="M404 251 C378 187 388 120 442 70 C430 139 432 203 421 265 Z" fill="#56A82F"/>
+
+    <!-- Frond highlights / midribs -->
+    <path d="M391 239 C320 174 240 150 151 163" fill="none" stroke="#6DAA2D" stroke-width="13" stroke-linecap="round" opacity="0.6"/>
+    <path d="M391 254 C304 219 208 229 113 282" fill="none" stroke="#76B82E" stroke-width="12" stroke-linecap="round" opacity="0.55"/>
+    <path d="M399 254 C350 242 261 275 194 348" fill="none" stroke="#7DC530" stroke-width="12" stroke-linecap="round" opacity="0.45"/>
+    <path d="M411 239 C418 163 460 94 525 59" fill="none" stroke="#9AC73C" stroke-width="13" stroke-linecap="round" opacity="0.55"/>
+    <path d="M414 246 C482 174 559 132 645 131" fill="none" stroke="#80B72E" stroke-width="13" stroke-linecap="round" opacity="0.52"/>
+    <path d="M417 259 C512 226 610 234 700 281" fill="none" stroke="#74AD31" stroke-width="13" stroke-linecap="round" opacity="0.45"/>
+
+    <!-- Stylized leaf cuts -->
+    <path d="M211 169 L235 183 L196 190 Z M259 183 L286 200 L242 202 Z M312 209 L335 227 L291 228 Z" fill="#FFFFFF"/>
+    <path d="M166 273 L187 265 L178 306 Z M219 258 L244 255 L226 303 Z M279 260 L306 262 L279 310 Z" fill="#FFFFFF"/>
+    <path d="M259 308 L286 299 L276 348 Z M321 300 L350 296 L330 346 Z" fill="#FFFFFF"/>
+    <path d="M474 86 L505 75 L485 113 Z M518 69 L551 60 L528 100 Z M556 130 L592 123 L565 160 Z" fill="#FFFFFF"/>
+    <path d="M565 167 L597 166 L571 199 Z M617 192 L650 199 L618 225 Z M661 233 L691 247 L653 260 Z" fill="#FFFFFF"/>
+    <path d="M498 300 L527 299 L505 334 Z M548 323 L575 334 L542 351 Z" fill="#FFFFFF"/>
+  </g>
+</svg>

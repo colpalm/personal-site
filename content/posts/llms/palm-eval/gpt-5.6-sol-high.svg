@@ -1,0 +1,424 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 800 800"
+  width="800"
+  height="800"
+  role="img"
+  aria-labelledby="title desc"
+>
+  <title id="title">Palm Tree Surfing a Wave</title>
+  <desc id="desc">
+    A playful palm tree riding a surfboard on a curling tropical wave.
+  </desc>
+
+  <defs>
+    <linearGradient id="waveGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#42C5D1"/>
+      <stop offset="55%" stop-color="#0497AA"/>
+      <stop offset="100%" stop-color="#006B85"/>
+    </linearGradient>
+
+    <linearGradient id="boardGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FFD84A"/>
+      <stop offset="100%" stop-color="#FF9D24"/>
+    </linearGradient>
+
+    <linearGradient id="trunkGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#9B551F"/>
+      <stop offset="50%" stop-color="#C9792B"/>
+      <stop offset="100%" stop-color="#8B481C"/>
+    </linearGradient>
+
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow
+        dx="0"
+        dy="8"
+        stdDeviation="8"
+        flood-color="#003B49"
+        flood-opacity=".18"
+      />
+    </filter>
+  </defs>
+
+  <!-- Wave -->
+  <g filter="url(#shadow)">
+    <path
+      d="
+        M110 610
+        C175 708 330 730 478 685
+        C645 635 724 492 683 354
+        C657 269 586 226 510 243
+        C594 258 625 311 607 360
+        C586 417 518 406 482 381
+        C522 446 489 507 438 540
+        C377 579 290 577 221 549
+        C170 528 133 550 110 610Z
+      "
+      fill="url(#waveGrad)"
+    />
+
+    <!-- Inner barrel -->
+    <path
+      d="
+        M486 271
+        C566 263 633 315 628 387
+        C625 431 593 464 550 479
+        C578 445 576 410 554 385
+        C528 356 487 351 450 370
+        C470 335 478 299 486 271Z
+      "
+      fill="#00788E"
+    />
+
+    <path
+      d="
+        M130 590
+        C211 638 316 646 414 611
+        C335 671 205 684 130 590Z
+      "
+      fill="#58D1D7"
+    />
+
+    <path
+      d="
+        M167 610
+        C252 638 357 620 431 570
+      "
+      fill="none"
+      stroke="#B9F5F4"
+      stroke-width="20"
+      stroke-linecap="round"
+    />
+
+    <!-- Foam -->
+    <path
+      d="
+        M481 249
+        C500 219 533 218 549 240
+        C566 211 605 220 610 250
+        C641 231 671 251 667 282
+        C700 280 711 315 693 339
+        C723 348 722 386 694 400
+        C704 432 672 451 649 432
+        C635 451 620 461 603 467
+        C628 424 629 390 610 357
+        C587 316 542 291 481 300Z
+      "
+      fill="#FFFFFF"
+    />
+
+    <path
+      d="
+        M473 272
+        C513 250 560 260 593 291
+      "
+      fill="none"
+      stroke="#BDEFF2"
+      stroke-width="16"
+      stroke-linecap="round"
+    />
+
+    <!-- Water droplets -->
+    <circle cx="673" cy="239" r="10" fill="#64CFD8"/>
+    <circle cx="710" cy="294" r="7" fill="#64CFD8"/>
+    <circle cx="650" cy="198" r="8" fill="#64CFD8"/>
+    <circle cx="162" cy="523" r="8" fill="#64CFD8"/>
+  </g>
+
+  <!-- Surfboard -->
+  <g transform="rotate(-13 360 560)" filter="url(#shadow)">
+    <path
+      d="
+        M170 562
+        C236 520 378 500 523 517
+        C552 521 566 531 552 542
+        C496 587 343 618 198 604
+        C163 600 146 580 170 562Z
+      "
+      fill="url(#boardGrad)"
+      stroke="#F47C20"
+      stroke-width="6"
+    />
+
+    <path
+      d="M186 581 C300 555 421 535 536 534"
+      fill="none"
+      stroke="#FFF1A8"
+      stroke-width="10"
+      stroke-linecap="round"
+      opacity=".8"
+    />
+
+    <circle cx="380" cy="558" r="19" fill="#F47C20" opacity=".9"/>
+    <path
+      d="
+        M380 526
+        C387 543 399 546 416 540
+        C406 552 408 564 422 576
+        C404 570 394 576 388 593
+        C383 575 370 569 354 574
+        C366 562 365 549 353 538
+        C370 544 380 540 380 526Z
+      "
+      fill="#FFF1A8"
+    />
+  </g>
+
+  <!-- Palm tree body -->
+  <g filter="url(#shadow)">
+    <!-- legs -->
+    <path
+      d="M368 498 C352 536 344 564 326 590"
+      fill="none"
+      stroke="#96501E"
+      stroke-width="23"
+      stroke-linecap="round"
+    />
+    <path
+      d="M421 497 C439 525 451 544 478 557"
+      fill="none"
+      stroke="#96501E"
+      stroke-width="23"
+      stroke-linecap="round"
+    />
+
+    <!-- feet -->
+    <path
+      d="M310 585 C326 578 346 583 354 596 C341 608 316 609 300 599Z"
+      fill="#824218"
+    />
+    <path
+      d="M466 551 C488 550 509 558 515 569 C499 579 472 575 458 565Z"
+      fill="#824218"
+    />
+
+    <!-- trunk -->
+    <path
+      d="
+        M357 232
+        C335 301 329 382 343 451
+        C350 486 369 510 402 510
+        C434 509 449 484 448 449
+        C446 374 416 291 397 230Z
+      "
+      fill="url(#trunkGrad)"
+      stroke="#834317"
+      stroke-width="5"
+    />
+
+    <!-- trunk bands -->
+    <g
+      fill="none"
+      stroke="#7F421A"
+      stroke-width="8"
+      stroke-linecap="round"
+      opacity=".7"
+    >
+      <path d="M348 286 C369 295 393 296 412 288"/>
+      <path d="M340 338 C370 349 410 348 427 337"/>
+      <path d="M339 391 C371 402 419 398 440 385"/>
+      <path d="M344 445 C374 454 419 449 445 434"/>
+    </g>
+
+    <!-- arms -->
+    <path
+      d="M349 357 C304 374 270 368 245 340"
+      fill="none"
+      stroke="#96501E"
+      stroke-width="18"
+      stroke-linecap="round"
+    />
+    <path
+      d="M432 356 C468 383 498 397 535 403"
+      fill="none"
+      stroke="#96501E"
+      stroke-width="18"
+      stroke-linecap="round"
+    />
+
+    <!-- left shaka hand -->
+    <path
+      d="
+        M247 340
+        C232 330 225 315 217 305
+        M242 337
+        C235 325 235 312 238 302
+        M247 340
+        C259 335 267 325 274 315
+      "
+      fill="none"
+      stroke="#96501E"
+      stroke-width="12"
+      stroke-linecap="round"
+    />
+
+    <!-- right fingers -->
+    <g
+      fill="none"
+      stroke="#96501E"
+      stroke-width="8"
+      stroke-linecap="round"
+    >
+      <path d="M532 402 L551 393"/>
+      <path d="M532 406 L554 404"/>
+      <path d="M531 410 L549 417"/>
+    </g>
+
+    <!-- coconuts -->
+    <circle cx="353" cy="229" r="20" fill="#9A501D"/>
+    <circle cx="382" cy="218" r="23" fill="#AD5D22"/>
+    <circle cx="407" cy="231" r="20" fill="#914918"/>
+  </g>
+
+  <!-- Palm fronds -->
+  <g stroke-linejoin="round">
+    <!-- upper left -->
+    <path
+      d="
+        M381 218
+        C322 148 249 115 168 130
+        C231 143 280 172 330 221
+        C275 180 220 170 161 183
+        C228 197 292 217 353 245Z
+      "
+      fill="#16864C"
+    />
+
+    <!-- far left -->
+    <path
+      d="
+        M367 225
+        C273 203 184 221 105 281
+        C175 251 245 245 318 252
+        C247 254 193 279 142 321
+        C213 291 285 274 362 271Z
+      "
+      fill="#63A92C"
+    />
+
+    <!-- lower left -->
+    <path
+      d="
+        M368 240
+        C287 256 225 308 181 385
+        C227 340 273 311 329 290
+        C276 326 246 370 225 419
+        C275 367 320 326 380 284Z
+      "
+      fill="#16864C"
+    />
+
+    <!-- straight up -->
+    <path
+      d="
+        M382 218
+        C372 141 397 80 447 43
+        C419 91 404 139 404 197
+        C421 131 455 84 500 61
+        C457 108 433 161 418 225Z
+      "
+      fill="#72AF2C"
+    />
+
+    <!-- upper right -->
+    <path
+      d="
+        M396 222
+        C451 155 526 126 613 146
+        C548 157 493 181 448 221
+        C510 188 573 187 633 209
+        C553 211 486 229 417 255Z
+      "
+      fill="#39953C"
+    />
+
+    <!-- right -->
+    <path
+      d="
+        M403 237
+        C495 222 580 244 642 300
+        C580 272 516 266 452 269
+        C522 278 575 308 613 348
+        C554 318 491 295 414 283Z
+      "
+      fill="#6AAA2D"
+    />
+  </g>
+
+  <!-- Face -->
+  <g>
+    <!-- sunglasses -->
+    <path
+      d="
+        M350 302
+        L370 299
+        C383 297 392 305 389 318
+        L385 334
+        C382 348 366 350 357 341
+        L345 329
+        C337 319 338 306 350 302Z
+      "
+      fill="#102936"
+    />
+    <path
+      d="
+        M400 299
+        L420 302
+        C433 305 439 317 433 328
+        L422 342
+        C414 351 398 347 395 334
+        L392 318
+        C390 306 389 300 400 299Z
+      "
+      fill="#102936"
+    />
+    <path
+      d="M386 312 C390 310 394 310 399 312"
+      fill="none"
+      stroke="#102936"
+      stroke-width="7"
+    />
+
+    <!-- lens shine -->
+    <path
+      d="M353 309 L372 306"
+      stroke="#37697C"
+      stroke-width="5"
+      stroke-linecap="round"
+      opacity=".8"
+    />
+    <path
+      d="M404 307 L421 312"
+      stroke="#37697C"
+      stroke-width="5"
+      stroke-linecap="round"
+      opacity=".8"
+    />
+
+    <!-- smile -->
+    <path
+      d="
+        M360 354
+        C377 374 405 376 421 353
+        C412 385 376 391 360 354Z
+      "
+      fill="#5B2218"
+    />
+    <path
+      d="
+        M364 355
+        C381 365 402 365 416 354
+        C403 372 379 371 364 355Z
+      "
+      fill="#FFFFFF"
+    />
+    <path
+      d="
+        M380 377
+        C391 374 402 374 411 378
+        C403 388 389 390 380 377Z
+      "
+      fill="#E94B3C"
+    />
+  </g>
+</svg>

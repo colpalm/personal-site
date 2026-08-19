@@ -1,18 +1,29 @@
 +++
-title = 'Palm Eval'
-date = 2025-06-20
+title = 'Surfing Palm Eval'
+date = 2026-08-18
+draft = true
 tags = ['LLMs']
 +++
 
-Born and raised in LA and with the last name "Palmer," you can probably guess my favorite tree (do people have favorite 
-trees or just me?). Ever since creating this site, I've wanted some sort of palm tree drawing or animation for 
-the homepage or logo. Sounds like the perfect task for an LLM, right? But even as models have progressed, I still don't 
-have anything acceptable.
+Simon Willison has been tracking how well LLMs can draw [Pelicans on a bicycle](https://simonwillison.net/2024/Oct/25/pelicans-on-a-bicycle/) since 2024. I figured I needed my own version of that experiment.
 
 <!--more-->
 
-Simon Willison has been tracking how well LLMs can draw [Pelicans on a bicycle](https://simonwillison.net/2024/Oct/25/pelicans-on-a-bicycle/).
-This is my version of that experiment. Forget the animation, let's see how well current models can draw a simple palm tree.
+Since creating this site, I wanted some sort of simple palm tree animation on the home page. Why a palm tree? Well I'm from LA, I love the beach and my last name is "Palmer", so it's always been an obvious pick for my favorite tree. Do other people have favorite trees?
+
+Even with how fast LLMs have improved, I haven't been able to get a result I'm happy with. Forget the animation for now, lets see how well current models can create palm tree SVGs. But in the spirit of the pelican on a bicycle benchmark, we can't just ask for a palm tree. So the prompt is:
+
+> Generate an SVG of a palm tree surfing a wave
+
+I tested the prompt on ChatGPT and Claude from the web chat and will continue to test on future model releases.
+
+{{< image-pair "gpt-5.5-high.svg" "GPT-5.5" "gpt-5.6-sol-high.svg" "GPT-5.6 Sol" >}}
+
+Notes
+- GPT 5.5 and 5.6 both created PNGs first. Had to ask again for an SVG and it was working from the PNG so maybe a bit of cheating?
+- 5.5 and 5.6 were both high effort. o3 was medium
+
+
 
 I tested two prompts across ChatGPT, Claude, and Gemini: one simple and one more detailed. Judge for yourself.
 
