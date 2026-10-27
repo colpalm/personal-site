@@ -93,7 +93,7 @@ time {
 /* Header styles */
 .header-container {
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr; /* Three column layout: logo, menu, icons */
+  grid-template-columns: 1fr auto 1fr; /* logo, menu, icons; equal sides keep the menu truly centered */
   align-items: center;
   width: 100%;
   height: 100%;
@@ -104,16 +104,53 @@ time {
   margin-left: 10px; /* Some padding from edge */
 }
 
-.site-logo {
-  max-height: 60px;
-  width: auto;
+.site-mark {
+  display: inline-flex;
+  border-radius: 4px;
 }
 
-.site-title {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: var(--color-text);
-  text-decoration: none;
+.site-mark:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+.palm-mark {
+  display: block;
+  height: 46px;
+  width: auto;
+  overflow: visible;
+}
+
+.palm-mark path {
+  fill: none;
+  stroke: var(--color-text); /* explicit, so it is ink rather than the sage link color */
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  transition: stroke 0.3s ease;
+}
+
+.palm-intro .palm-mark path {
+  animation: palm-draw 1.6s ease-in-out both;
+}
+
+/* Same hover as the nav links */
+.site-mark:hover .palm-mark path {
+  stroke: var(--color-accent);
+}
+
+/* Opacity hides the round cap that a zero-length dash still paints at the start */
+@keyframes palm-draw {
+  0% { stroke-dashoffset: 1; opacity: 0; }
+  2% { opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .palm-mark path {
+    animation: none !important;
+  }
 }
 
 .nav-container {
@@ -261,10 +298,6 @@ img {
 
 .dark-theme time {
   color: var(--color-text-secondary);
-}
-
-.dark-theme .site-title {
-  color: var(--color-text);
 }
 
 .dark-theme .header-icon {
@@ -552,32 +585,19 @@ blockquote p + p {
     padding: 0 1rem;
   }
 
-  /* Stack the header: logo and icons share the top row, nav gets a full-width
-     row of its own so the links fit on one line instead of wrapping. */
-  .header-container {
-    grid-template-columns: auto 1fr;
-    grid-template-areas:
-      "logo icons"
-      "nav  nav";
-  }
-
+  /* Compact header, still one row: landscape phones and small tablets have room
+     for logo, menu and icons side by side, and little height to spare. */
   .logo-container {
-    grid-area: logo;
     margin-left: 0;
   }
 
-  .site-logo {
-    max-height: 40px;
+  .palm-mark {
+    height: 36px;
   }
 
   .header-icons {
-    grid-area: icons;
     gap: 0.75rem; /* Smaller gap between icons */
     margin-right: 0;
-  }
-
-  .nav-container {
-    grid-area: nav;
   }
 
   .nav-container nav ul {
@@ -645,5 +665,28 @@ blockquote p + p {
 
   .image-pair-item img {
     height: 250px;
+  }
+}
+
+/* Portrait phones: the one-row header needs ~445px (menu ~258px plus room for the
+   icons on either side), so below that give the menu a full-width row of its own. */
+@media (max-width: 480px) {
+  .header-container {
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "logo icons"
+      "nav  nav";
+  }
+
+  .logo-container {
+    grid-area: logo;
+  }
+
+  .header-icons {
+    grid-area: icons;
+  }
+
+  .nav-container {
+    grid-area: nav;
   }
 }

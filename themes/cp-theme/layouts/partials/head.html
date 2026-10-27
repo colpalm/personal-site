@@ -7,6 +7,13 @@
       (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     if (theme === 'dark') document.documentElement.classList.add('dark-theme');
   })();
+  {{/* Draw the palm mark on the first page of a visit only. Set before paint so it never flashes in fully drawn. */}}
+  try {
+    if (!sessionStorage.getItem('palm-drawn')) {
+      document.documentElement.classList.add('palm-intro');
+      sessionStorage.setItem('palm-drawn', '1');
+    }
+  } catch (e) {}
 </script>
 <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
 {{/* Order is load-bearing: the .ico must come first *with* an explicit sizes attr,

@@ -4,10 +4,6 @@ title = 'ColPalm'
 theme = 'cp-theme'
 
 
-[params]
- # Site logo path (relative to the static folder)
- logo = "images/pineapple.png"
-
 [[menus.main]]
 name = 'ABOUT'
 pageRef = '/about'

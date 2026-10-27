@@ -1,18 +1,8 @@
 <div class="header-container">
     <div class="logo-container">
-        {{ if .Site.Params.logo }}
-        <a href="{{ .Site.BaseURL }}">
-            {{- $logo := resources.Get .Site.Params.logo -}}
-            {{- if $logo -}}
-              {{- $logo = $logo.Resize "180x webp q85" -}}
-              <img src="{{ $logo.RelPermalink }}" width="{{ $logo.Width }}" height="{{ $logo.Height }}" alt="{{ .Site.Title }}" class="site-logo">
-            {{- else -}}
-              <img src="{{ absURL .Site.Params.logo }}" alt="{{ .Site.Title }}" class="site-logo">
-            {{- end -}}
+        <a href="{{ site.Home.RelPermalink }}" class="site-mark" aria-label="{{ site.Title }} home">
+            {{- partial "palm-mark.html" . -}}
         </a>
-        {{ else }}
-        <a href="{{ .Site.BaseURL }}" class="site-title">{{ .Site.Title }}</a>
-        {{ end }}
     </div>
     <div class="nav-container">
         {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
