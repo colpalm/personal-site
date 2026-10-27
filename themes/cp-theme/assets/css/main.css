@@ -25,6 +25,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  /* biome-ignore lint/suspicious/noDuplicateProperties: 100vh is the fallback for browsers without dvh */
   min-height: 100dvh; /* Track Safari's visible area so the toolbar doesn't cause overflow scroll */
   color: var(--color-text);
   font-family: 'Open Sans', sans-serif;
@@ -148,8 +149,8 @@ time {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .palm-mark path {
-    animation: none !important;
+  .palm-intro .palm-mark path {
+    animation: none;
   }
 }
 

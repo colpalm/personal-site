@@ -141,7 +141,7 @@ const ThemeHelper = {
      * @param {boolean} useDefaultColors - Whether to apply default theme colors
      */
     applyChartDatasetColors: function(datasets, chartType, useDefaultColors = true) {
-        if (!useDefaultColors || !datasets || !datasets.length) return;
+        if (!useDefaultColors || !datasets?.length) return;
 
         // Get chart color palette
         const palette = this.getChartColorPalette();
@@ -264,7 +264,7 @@ const ThemeHelper = {
 
         axisTypes.forEach(axisType => {
             if (scales[axisType]) {
-                let axis = scales[axisType];
+                const axis = scales[axisType];
                 // Apply tick colors
                 if (!axis.ticks) axis.ticks = {};
                 axis.ticks.color = colors.chartTicks;

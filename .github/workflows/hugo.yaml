@@ -45,6 +45,13 @@ jobs:
         with:
           submodules: recursive
           fetch-depth: 0
+      # Lint errors stop the deploy; formatting is left to the local pre-commit hook
+      - name: Setup Biome
+        uses: biomejs/setup-biome@v2
+        with:
+          version: 2.6.3
+      - name: Lint JS and CSS
+        run: biome lint
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v6
@@ -64,6 +71,7 @@ jobs:
           hugo \
             --gc \
             --minify \
+            --panicOnWarning \
             --baseURL "${{ steps.pages.outputs.base_url }}/" \
             --cacheDir "${{ runner.temp }}/hugo_cache"
       - name: Cache Save

@@ -1,0 +1,10 @@
+# Setup: brew install biome && uv tool install pre-commit && pre-commit install
+# Uses the locally installed Biome binary, so the repo needs no Node or package.json.
+repos:
+  - repo: local
+    hooks:
+      - id: biome
+        name: biome check (format + safe fixes)
+        entry: biome check --write --files-ignore-unknown=true --no-errors-on-unmatched
+        language: system
+        types_or: [javascript, css, json]

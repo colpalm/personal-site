@@ -26,14 +26,12 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeDataAttributeCharts();
 
     // Listen for theme changes
-    document.addEventListener('themeChanged', function(event) {
-        const isDark = event.detail.isDark;
-
+    document.addEventListener('themeChanged', function() {
         // Update global defaults when the theme changes
         configureChartDefaults();
 
         // Update existing charts
-        updateChartsForTheme(isDark);
+        updateChartsForTheme();
     });
 });
 
@@ -136,7 +134,7 @@ function initializeDataAttributeCharts() {
         }
 
         // Add tooltip formatting for numeric x-axis labels
-        if (chartData.labels && chartData.labels.every(label => !isNaN(Number(label)))) {
+        if (chartData.labels?.every(label => !Number.isNaN(Number(label)))) {
             options.plugins = options.plugins || {};
             options.plugins.tooltip = options.plugins.tooltip || {};
 
@@ -174,12 +172,12 @@ function initializeDataAttributeCharts() {
         };
 
         // Add number formatting for x-axis with numeric data (all scale types)
-        if (chartData.labels && chartData.labels.every(label => !isNaN(Number(label)))) {
+        if (chartData.labels?.every(label => !Number.isNaN(Number(label)))) {
             // Capture labels in closure for category scale callback
             const labels = chartData.labels;
 
             options.scales.x.ticks = {
-                callback: function(value, index, ticks) {
+                callback: function(value, index) {
 
                     // For category scales, Chart.js passes the index, so we need to get the label
                     if (xScale === 'category') {
@@ -238,7 +236,7 @@ function initializeDataAttributeCharts() {
 /**
  * Update existing charts for theme changes
  */
-function updateChartsForTheme(isDark) {
+function updateChartsForTheme() {
     const chartCanvases = document.querySelectorAll('canvas[id]');
     if (chartCanvases.length === 0) return;
 
@@ -246,7 +244,7 @@ function updateChartsForTheme(isDark) {
         const chartInstance = Chart.getChart(canvas.id);
         if (!chartInstance) return;
 
-        if (chartInstance.data && chartInstance.data.datasets) {
+        if (chartInstance.data?.datasets) {
             ThemeHelper.applyChartDatasetColors(
                 chartInstance.data.datasets,
                 chartInstance.config.type,
