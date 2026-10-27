@@ -6,7 +6,7 @@ const ThemeHelper = {
      * Initialize theme system
      * @returns {boolean} Whether dark theme is active
      */
-    initialize: function () {
+    initialize() {
         const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
         const currentTheme = localStorage.getItem('theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
 
@@ -25,7 +25,7 @@ const ThemeHelper = {
      * Toggle theme between light and dark
      * @returns {boolean} Whether dark theme is now active
      */
-    toggleTheme: function () {
+    toggleTheme() {
         const isDark = document.documentElement.classList.toggle('dark-theme');
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
 
@@ -43,7 +43,7 @@ const ThemeHelper = {
      * Check if dark theme is active
      * @returns {boolean} Whether dark theme is active
      */
-    isDarkTheme: function () {
+    isDarkTheme() {
         return document.documentElement.classList.contains('dark-theme');
     },
 
@@ -51,7 +51,7 @@ const ThemeHelper = {
      * Get theme colors based on current theme
      * @returns {Object} Theme colors object
      */
-    getThemeColors: function () {
+    getThemeColors() {
         // Get colors directly from CSS variables for consistency
         const style = getComputedStyle(document.body);
 
@@ -85,7 +85,7 @@ const ThemeHelper = {
      * @param {number} alpha - Alpha transparency value
      * @returns {string} RGBA color string
      */
-    hexToRgba: function (hex, alpha = 1) {
+    hexToRgba(hex, alpha = 1) {
         hex = hex.replace('#', '');
 
         // Handle shorthand hex format (e.g., #FFF)
@@ -106,7 +106,7 @@ const ThemeHelper = {
      * Generate chart color palette based on current theme
      * @returns {Array} Array of color objects for chart datasets
      */
-    getChartColorPalette: function () {
+    getChartColorPalette() {
         const colors = this.getThemeColors();
         const bgOpacity = colors.chartBgOpacity || 0.7; // Fallback if CSS variable not available
 
@@ -141,7 +141,7 @@ const ThemeHelper = {
      * @param {string} chartType - Type of chart (bar, line, pie, etc.)
      * @param {boolean} useDefaultColors - Whether to apply default theme colors
      */
-    applyChartDatasetColors: function (datasets, chartType, useDefaultColors = true) {
+    applyChartDatasetColors(datasets, chartType, useDefaultColors = true) {
         if (!useDefaultColors || !datasets?.length) return;
 
         // Get chart color palette
@@ -174,7 +174,7 @@ const ThemeHelper = {
      * @param {Object} dataset - Chart dataset
      * @param {Object} paletteColor - Color from palette
      */
-    _applyLineChartColors: function (dataset, paletteColor) {
+    _applyLineChartColors(dataset, paletteColor) {
         // Line charts typically use borderColor for the line
         if (!dataset.borderColor) dataset.borderColor = paletteColor.borderColor;
         if (!dataset.backgroundColor && !dataset.fill) dataset.backgroundColor = 'transparent';
@@ -190,7 +190,7 @@ const ThemeHelper = {
      * @param {Object} dataset - Chart dataset
      * @param {Array} palette - Full color palette
      */
-    _applyPieChartColors: function (dataset, palette) {
+    _applyPieChartColors(dataset, palette) {
         // Pie/doughnut charts use arrays of colors for segments
         if (!dataset.backgroundColor) {
             dataset.backgroundColor = palette.map(color => color.backgroundColor);
@@ -207,7 +207,7 @@ const ThemeHelper = {
      * @param {string} chartType - Type of chart
      * @param {Object} paletteColor - Color from palette
      */
-    _applyDefaultChartColors: function (dataset, paletteColor, chartType) {
+    _applyDefaultChartColors(dataset, paletteColor, chartType) {
         const isArrayOfData = Array.isArray(dataset.data);
 
         // Handle background color
@@ -235,7 +235,7 @@ const ThemeHelper = {
      * Apply theme colors to chart axis and other options
      * @param {Object} options - Chart options object
      */
-    applyChartOptionsColors: function (options) {
+    applyChartOptionsColors(options) {
         if (!options) return options;
 
         const colors = this.getThemeColors();
@@ -259,7 +259,7 @@ const ThemeHelper = {
      * @param {Object} scales - Chart scales object
      * @param {Object} colors - Theme colors
      */
-    _applyScaleColors: function (scales, colors) {
+    _applyScaleColors(scales, colors) {
         // Handle common scale types
         const axisTypes = ['x', 'y', 'r'];
 
@@ -293,7 +293,7 @@ const ThemeHelper = {
      * @param {Object} plugins - Chart plugins object
      * @param {Object} colors - Theme colors
      */
-    _applyPluginColors: function (plugins, colors) {
+    _applyPluginColors(plugins, colors) {
         // Title plugin
         if (plugins.title) {
             plugins.title.color = colors.chartTitle;

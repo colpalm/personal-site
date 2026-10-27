@@ -1,6 +1,6 @@
 import ThemeHelper from './theme-helper.js';
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
     // Expose ThemeHelper globally for use by shortcodes
     window.ThemeHelper = ThemeHelper;
 
@@ -8,14 +8,14 @@ document.addEventListener('DOMContentLoaded', function () {
     configureChartDefaults();
 
     // Helper functions that may be needed by inline scripts
-    window.applyChartColors = function (datasets, chartType) {
+    window.applyChartColors = (datasets, chartType) => {
         if (window.ThemeHelper && datasets && datasets.length > 0) {
             return window.ThemeHelper.applyChartDatasetColors(datasets, chartType || 'line', true);
         }
         return datasets;
     };
 
-    window.applyChartOptions = function (options) {
+    window.applyChartOptions = options => {
         if (window.ThemeHelper && options) {
             return window.ThemeHelper.applyChartOptionsColors(options);
         }
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initializeDataAttributeCharts();
 
     // Listen for theme changes
-    document.addEventListener('themeChanged', function () {
+    document.addEventListener('themeChanged', () => {
         // Update global defaults when the theme changes
         configureChartDefaults();
 
@@ -142,7 +142,7 @@ function initializeDataAttributeCharts() {
             const labels = chartData.labels;
 
             options.plugins.tooltip.callbacks = {
-                title: function (tooltipItems) {
+                title: tooltipItems => {
                     if (tooltipItems.length > 0) {
                         const item = tooltipItems[0];
                         if (xScale === 'category') {
@@ -177,7 +177,7 @@ function initializeDataAttributeCharts() {
             const labels = chartData.labels;
 
             options.scales.x.ticks = {
-                callback: function (value, index) {
+                callback: (value, index) => {
                     // For category scales, Chart.js passes the index, so we need to get the label
                     if (xScale === 'category') {
                         const label = labels[index];
@@ -202,9 +202,7 @@ function initializeDataAttributeCharts() {
         // Fallback for logarithmic scales without labels (edge case)
         else if (xScale === 'logarithmic') {
             options.scales.x.ticks = {
-                callback: function (value) {
-                    return Number(value).toLocaleString();
-                },
+                callback: value => Number(value).toLocaleString(),
             };
         }
 

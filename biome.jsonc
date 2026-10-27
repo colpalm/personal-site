@@ -22,10 +22,6 @@
     "enabled": true,
     "rules": {
       "preset": "recommended",
-      // The theme consistently uses function expressions; converting them is churn, not a fix
-      "complexity": {
-        "useArrowFunction": "off"
-      },
       // The stylesheet orders dark-theme overrides after base rules on purpose
       "style": {
         "noDescendingSpecificity": "off"
