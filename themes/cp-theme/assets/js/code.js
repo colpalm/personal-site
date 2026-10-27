@@ -1,12 +1,12 @@
 // Function to switch code syntax between solarized light and dark based on theme
 document.addEventListener('DOMContentLoaded', () => {
     const lightLink = document.getElementById('syntax-light-css');
-    const darkLink  = document.getElementById('syntax-dark-css');
+    const darkLink = document.getElementById('syntax-dark-css');
 
     // Flip on/off
     function setDark(on) {
         lightLink.disabled = on;
-        darkLink.disabled  = !on;
+        darkLink.disabled = !on;
     }
 
     // Function to check if the site is in dark mode
@@ -19,8 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
     setDark(isDarkMode());
 
     // Watch for theme changes
-    const observer = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
+    const observer = new MutationObserver(mutations => {
+        mutations.forEach(mutation => {
             if (mutation.attributeName === 'class') {
                 setDark(isDarkMode());
             }

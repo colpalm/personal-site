@@ -1,14 +1,14 @@
 /* Color Variables */
 :root {
   /* Base theme colors */
-  --color-background: #FAF8F3; /* Warm paper — softer than white under long-form text */
-  --color-text: #2A2A2A; /* Softer than pure black */
+  --color-background: #faf8f3; /* Warm paper — softer than white under long-form text */
+  --color-text: #2a2a2a; /* Softer than pure black */
   --color-text-secondary: #666; /* Medium gray for secondary text */
-  --color-primary: #86A397; /* Muted sage/teal */
-  --color-secondary: #D9C8B4; /* Sandy beige */
-  --color-accent: #E4B363; /* Warm gold accent */
-  --color-section-background: #F5F1E9; /* Light sand for sections */
-  --color-border: #E2DDD5; /* Subtle border color */
+  --color-primary: #86a397; /* Muted sage/teal */
+  --color-secondary: #d9c8b4; /* Sandy beige */
+  --color-accent: #e4b363; /* Warm gold accent */
+  --color-section-background: #f5f1e9; /* Light sand for sections */
+  --color-border: #e2ddd5; /* Subtle border color */
 
   /* Chart Specific Colors */
   --chart-grid: rgba(0, 0, 0, 0.1); /* Light mode grid lines */
@@ -28,13 +28,15 @@ body {
   /* biome-ignore lint/suspicious/noDuplicateProperties: 100vh is the fallback for browsers without dvh */
   min-height: 100dvh; /* Track Safari's visible area so the toolbar doesn't cause overflow scroll */
   color: var(--color-text);
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   line-height: 1.6;
   margin: 0 auto;
   padding: 0 2rem;
   width: 90%;
   background-color: var(--color-background);
-  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition between themes */
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease; /* Smooth transition between themes */
 }
 
 /* In-content headings — browser defaults render these at bold 1.5em/1.17em,
@@ -64,7 +66,6 @@ main {
   display: flex;
   flex-direction: column;
 }
-
 
 footer {
   border-top: 1px solid var(--color-border);
@@ -143,9 +144,17 @@ time {
 
 /* Opacity hides the round cap that a zero-length dash still paints at the start */
 @keyframes palm-draw {
-  0% { stroke-dashoffset: 1; opacity: 0; }
-  2% { opacity: 1; }
-  100% { stroke-dashoffset: 0; opacity: 1; }
+  0% {
+    stroke-dashoffset: 1;
+    opacity: 0;
+  }
+  2% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -169,7 +178,7 @@ time {
 }
 
 .nav-container nav a {
-  font-size: 1.0rem;
+  font-size: 1rem;
   font-weight: 500;
   letter-spacing: 0.05em; /* Slight letter spacing for menu items */
   padding: 0.5rem 0;
@@ -181,12 +190,12 @@ time {
 .header-icons {
   justify-self: end;
   display: flex;
-  gap: 1.0rem;
+  gap: 1rem;
   margin-right: 10px; /* Add some padding from edge */
 }
 
 .header-icon {
-  font-size: 1.0rem;
+  font-size: 1rem;
   color: var(--color-text);
   cursor: pointer;
   transition: color 0.2s ease;
@@ -197,7 +206,8 @@ time {
 }
 
 /* Style for icons */
-.search-icon, .theme-toggle {
+.search-icon,
+.theme-toggle {
   width: 20px;
   height: 20px;
   display: inline-flex;
@@ -207,7 +217,7 @@ time {
 
 /* Active link indicator */
 .nav-container nav a.active::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -217,7 +227,8 @@ time {
 }
 
 /* Article/post card styling */
-article, .post-summary {
+article,
+.post-summary {
   margin-bottom: 2.5rem;
   padding-bottom: 2rem;
   border-bottom: 1px solid var(--color-border);
@@ -260,22 +271,22 @@ img {
 
   /* Base theme colors for dark mode */
   --color-background: #222;
-  --color-text: #F0F0F0;
-  --color-text-secondary: #AAA;
-  --color-primary: #9DB8AA; /* Lighter version of primary color */
-  --color-secondary: #E8D7C3; /* Lighter version of secondary color */
-  --color-accent: #F1C470; /* Brighter accent for dark mode */
+  --color-text: #f0f0f0;
+  --color-text-secondary: #aaa;
+  --color-primary: #9db8aa; /* Lighter version of primary color */
+  --color-secondary: #e8d7c3; /* Lighter version of secondary color */
+  --color-accent: #f1c470; /* Brighter accent for dark mode */
   --color-section-background: #333; /* Darker background for sections */
   --color-border: #444; /* Darker border color */
 
   /* Chart-specific colors for dark mode */
   --chart-grid: rgba(255, 255, 255, 0.1); /* Dark mode grid lines */
-  --chart-text: #E0E0E0; /* Dark mode chart text */
-  --chart-title: #F0F0F0; /* Dark mode chart title */
-  --chart-ticks: #BBBBBB; /* Dark mode axis ticks */
+  --chart-text: #e0e0e0; /* Dark mode chart text */
+  --chart-title: #f0f0f0; /* Dark mode chart title */
+  --chart-ticks: #bbbbbb; /* Dark mode axis ticks */
   --chart-tooltip-bg: rgba(0, 0, 0, 0.8); /* Dark mode tooltip background */
-  --chart-tooltip-title: #FFFFFF; /* Dark mode tooltip title */
-  --chart-tooltip-body: #EEEEEE; /* Dark mode tooltip body */
+  --chart-tooltip-title: #ffffff; /* Dark mode tooltip title */
+  --chart-tooltip-body: #eeeeee; /* Dark mode tooltip body */
   --chart-bg-opacity: 0.8; /* Increased opacity for better visibility in dark mode */
 }
 
@@ -314,8 +325,13 @@ img {
   border-color: var(--color-border);
 }
 
-header, footer, a, .header-icon {
-  transition: color 0.3s ease, border-color 0.3s ease;
+header,
+footer,
+a,
+.header-icon {
+  transition:
+    color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 /* Home Page */
@@ -515,7 +531,6 @@ tr:nth-child(even) {
   background-color: var(--color-section-background);
 }
 
-
 /* Blockquote styling */
 blockquote {
   margin: 0.75rem 0;
@@ -537,7 +552,6 @@ blockquote p {
 blockquote p + p {
   margin-top: 0.5rem;
 }
-
 
 /* Image pair styling */
 .image-pair-container {
@@ -574,7 +588,6 @@ blockquote p + p {
   border-color: var(--color-border);
   background-color: var(--color-section-background);
 }
-
 
 /* Media query for responsive design */
 @media (max-width: 768px) {
@@ -649,7 +662,8 @@ blockquote p + p {
     border-radius: 0;
   }
 
-  th, td {
+  th,
+  td {
     padding: 0.5rem 0.75rem;
     font-size: 0.9rem;
   }

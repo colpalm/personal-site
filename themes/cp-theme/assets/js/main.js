@@ -3,7 +3,7 @@ import ThemeHelper from './theme-helper.js';
 // Make ThemeHelper available globally for use in inline scripts (e.g. chart shortcode)
 window.ThemeHelper = ThemeHelper;
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const themeToggle = document.querySelector('.theme-toggle');
 
     // Initialize theme from ThemeHelper
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     updateThemeIcon(isDark);
 
     // Toggle theme when clicked
-    themeToggle.addEventListener('click', function() {
+    themeToggle.addEventListener('click', function () {
         const isDark = ThemeHelper.toggleTheme();
         updateThemeIcon(isDark);
     });
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Simple search icon click handler (placeholder for actual search functionality)
     const searchIcon = document.querySelector('.search-icon');
-    searchIcon.addEventListener('click', function() {
+    searchIcon.addEventListener('click', function () {
         // This is a placeholder - TODO: add search functionality
         alert('Search functionality coming soon.');
     });

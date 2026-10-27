@@ -6,10 +6,9 @@ const ThemeHelper = {
      * Initialize theme system
      * @returns {boolean} Whether dark theme is active
      */
-    initialize: function() {
+    initialize: function () {
         const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-        const currentTheme = localStorage.getItem('theme') ||
-            (prefersDarkScheme.matches ? 'dark' : 'light');
+        const currentTheme = localStorage.getItem('theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
 
         // Set the initial theme (on <html> so the inline head script can apply it before first paint)
         const isDark = currentTheme === 'dark';
@@ -26,14 +25,16 @@ const ThemeHelper = {
      * Toggle theme between light and dark
      * @returns {boolean} Whether dark theme is now active
      */
-    toggleTheme: function() {
+    toggleTheme: function () {
         const isDark = document.documentElement.classList.toggle('dark-theme');
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
 
         // Dispatch a custom event that any component can listen for
-        document.dispatchEvent(new CustomEvent('themeChanged', {
-            detail: { isDark }
-        }));
+        document.dispatchEvent(
+            new CustomEvent('themeChanged', {
+                detail: { isDark },
+            }),
+        );
 
         return isDark;
     },
@@ -42,7 +43,7 @@ const ThemeHelper = {
      * Check if dark theme is active
      * @returns {boolean} Whether dark theme is active
      */
-    isDarkTheme: function() {
+    isDarkTheme: function () {
         return document.documentElement.classList.contains('dark-theme');
     },
 
@@ -50,7 +51,7 @@ const ThemeHelper = {
      * Get theme colors based on current theme
      * @returns {Object} Theme colors object
      */
-    getThemeColors: function() {
+    getThemeColors: function () {
         // Get colors directly from CSS variables for consistency
         const style = getComputedStyle(document.body);
 
@@ -74,7 +75,7 @@ const ThemeHelper = {
             chartTooltipBg: style.getPropertyValue('--chart-tooltip-bg').trim(),
             chartTooltipTitle: style.getPropertyValue('--chart-tooltip-title').trim(),
             chartTooltipBody: style.getPropertyValue('--chart-tooltip-body').trim(),
-            chartBgOpacity: parseFloat(style.getPropertyValue('--chart-bg-opacity').trim())
+            chartBgOpacity: parseFloat(style.getPropertyValue('--chart-bg-opacity').trim()),
         };
     },
 
@@ -84,7 +85,7 @@ const ThemeHelper = {
      * @param {number} alpha - Alpha transparency value
      * @returns {string} RGBA color string
      */
-    hexToRgba: function(hex, alpha = 1) {
+    hexToRgba: function (hex, alpha = 1) {
         hex = hex.replace('#', '');
 
         // Handle shorthand hex format (e.g., #FFF)
@@ -105,32 +106,32 @@ const ThemeHelper = {
      * Generate chart color palette based on current theme
      * @returns {Array} Array of color objects for chart datasets
      */
-    getChartColorPalette: function() {
+    getChartColorPalette: function () {
         const colors = this.getThemeColors();
         const bgOpacity = colors.chartBgOpacity || 0.7; // Fallback if CSS variable not available
 
         return [
             {
                 backgroundColor: this.hexToRgba(colors.primary, bgOpacity),
-                borderColor: this.hexToRgba(colors.primary, 1)
+                borderColor: this.hexToRgba(colors.primary, 1),
             },
             {
                 backgroundColor: this.hexToRgba(colors.accent, bgOpacity),
-                borderColor: this.hexToRgba(colors.accent, 1)
+                borderColor: this.hexToRgba(colors.accent, 1),
             },
             {
                 backgroundColor: this.hexToRgba(colors.secondary, bgOpacity),
-                borderColor: this.hexToRgba(colors.secondary, 1)
+                borderColor: this.hexToRgba(colors.secondary, 1),
             },
             {
                 backgroundColor: this.hexToRgba(colors.textSecondary, bgOpacity),
-                borderColor: this.hexToRgba(colors.textSecondary, 1)
+                borderColor: this.hexToRgba(colors.textSecondary, 1),
             },
             // Create a fifth color by mixing primary and accent
             {
                 backgroundColor: this.hexToRgba(colors.primary, bgOpacity - 0.1),
-                borderColor: this.hexToRgba(colors.accent, 0.9)
-            }
+                borderColor: this.hexToRgba(colors.accent, 0.9),
+            },
         ];
     },
 
@@ -140,7 +141,7 @@ const ThemeHelper = {
      * @param {string} chartType - Type of chart (bar, line, pie, etc.)
      * @param {boolean} useDefaultColors - Whether to apply default theme colors
      */
-    applyChartDatasetColors: function(datasets, chartType, useDefaultColors = true) {
+    applyChartDatasetColors: function (datasets, chartType, useDefaultColors = true) {
         if (!useDefaultColors || !datasets?.length) return;
 
         // Get chart color palette
@@ -173,7 +174,7 @@ const ThemeHelper = {
      * @param {Object} dataset - Chart dataset
      * @param {Object} paletteColor - Color from palette
      */
-    _applyLineChartColors: function(dataset, paletteColor) {
+    _applyLineChartColors: function (dataset, paletteColor) {
         // Line charts typically use borderColor for the line
         if (!dataset.borderColor) dataset.borderColor = paletteColor.borderColor;
         if (!dataset.backgroundColor && !dataset.fill) dataset.backgroundColor = 'transparent';
@@ -189,7 +190,7 @@ const ThemeHelper = {
      * @param {Object} dataset - Chart dataset
      * @param {Array} palette - Full color palette
      */
-    _applyPieChartColors: function(dataset, palette) {
+    _applyPieChartColors: function (dataset, palette) {
         // Pie/doughnut charts use arrays of colors for segments
         if (!dataset.backgroundColor) {
             dataset.backgroundColor = palette.map(color => color.backgroundColor);
@@ -206,7 +207,7 @@ const ThemeHelper = {
      * @param {string} chartType - Type of chart
      * @param {Object} paletteColor - Color from palette
      */
-    _applyDefaultChartColors: function(dataset, paletteColor, chartType) {
+    _applyDefaultChartColors: function (dataset, paletteColor, chartType) {
         const isArrayOfData = Array.isArray(dataset.data);
 
         // Handle background color
@@ -234,7 +235,7 @@ const ThemeHelper = {
      * Apply theme colors to chart axis and other options
      * @param {Object} options - Chart options object
      */
-    applyChartOptionsColors: function(options) {
+    applyChartOptionsColors: function (options) {
         if (!options) return options;
 
         const colors = this.getThemeColors();
@@ -258,7 +259,7 @@ const ThemeHelper = {
      * @param {Object} scales - Chart scales object
      * @param {Object} colors - Theme colors
      */
-    _applyScaleColors: function(scales, colors) {
+    _applyScaleColors: function (scales, colors) {
         // Handle common scale types
         const axisTypes = ['x', 'y', 'r'];
 
@@ -292,7 +293,7 @@ const ThemeHelper = {
      * @param {Object} plugins - Chart plugins object
      * @param {Object} colors - Theme colors
      */
-    _applyPluginColors: function(plugins, colors) {
+    _applyPluginColors: function (plugins, colors) {
         // Title plugin
         if (plugins.title) {
             plugins.title.color = colors.chartTitle;

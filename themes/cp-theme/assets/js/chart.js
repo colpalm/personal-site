@@ -1,6 +1,6 @@
 import ThemeHelper from './theme-helper.js';
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Expose ThemeHelper globally for use by shortcodes
     window.ThemeHelper = ThemeHelper;
 
@@ -8,14 +8,14 @@ document.addEventListener('DOMContentLoaded', function() {
     configureChartDefaults();
 
     // Helper functions that may be needed by inline scripts
-    window.applyChartColors = function(datasets, chartType) {
+    window.applyChartColors = function (datasets, chartType) {
         if (window.ThemeHelper && datasets && datasets.length > 0) {
             return window.ThemeHelper.applyChartDatasetColors(datasets, chartType || 'line', true);
         }
         return datasets;
     };
 
-    window.applyChartOptions = function(options) {
+    window.applyChartOptions = function (options) {
         if (window.ThemeHelper && options) {
             return window.ThemeHelper.applyChartOptionsColors(options);
         }
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeDataAttributeCharts();
 
     // Listen for theme changes
-    document.addEventListener('themeChanged', function() {
+    document.addEventListener('themeChanged', function () {
         // Update global defaults when the theme changes
         configureChartDefaults();
 
@@ -62,19 +62,19 @@ function configureChartDefaults() {
     Chart.defaults.scales.x = Chart.defaults.scales.x || {};
     Chart.defaults.scales.x.grid = {
         color: chartGrid,
-        borderColor: chartGrid
+        borderColor: chartGrid,
     };
     Chart.defaults.scales.x.ticks = {
-        color: chartTicks
+        color: chartTicks,
     };
 
     Chart.defaults.scales.y = Chart.defaults.scales.y || {};
     Chart.defaults.scales.y.grid = {
         color: chartGrid,
-        borderColor: chartGrid
+        borderColor: chartGrid,
     };
     Chart.defaults.scales.y.ticks = {
-        color: chartTicks
+        color: chartTicks,
     };
 
     // Plugin defaults
@@ -121,7 +121,7 @@ function initializeDataAttributeCharts() {
         // Only specify what we need, let defaults handle the rest
         const options = {
             responsive: true,
-            maintainAspectRatio: false
+            maintainAspectRatio: false,
         };
 
         // Add title if specified
@@ -129,7 +129,7 @@ function initializeDataAttributeCharts() {
             options.plugins = options.plugins || {};
             options.plugins.title = {
                 display: true,
-                text: chartTitle
+                text: chartTitle,
             };
         }
 
@@ -142,7 +142,7 @@ function initializeDataAttributeCharts() {
             const labels = chartData.labels;
 
             options.plugins.tooltip.callbacks = {
-                title: function(tooltipItems) {
+                title: function (tooltipItems) {
                     if (tooltipItems.length > 0) {
                         const item = tooltipItems[0];
                         if (xScale === 'category') {
@@ -155,7 +155,7 @@ function initializeDataAttributeCharts() {
                         }
                     }
                     return '';
-                }
+                },
             };
         }
 
@@ -167,8 +167,8 @@ function initializeDataAttributeCharts() {
             type: xScale,
             title: {
                 display: !!chartXTitle,
-                text: chartXTitle
-            }
+                text: chartXTitle,
+            },
         };
 
         // Add number formatting for x-axis with numeric data (all scale types)
@@ -177,8 +177,7 @@ function initializeDataAttributeCharts() {
             const labels = chartData.labels;
 
             options.scales.x.ticks = {
-                callback: function(value, index) {
-
+                callback: function (value, index) {
                     // For category scales, Chart.js passes the index, so we need to get the label
                     if (xScale === 'category') {
                         const label = labels[index];
@@ -186,7 +185,7 @@ function initializeDataAttributeCharts() {
                     }
                     // For linear/logarithmic scales, use the value directly
                     return Number(value).toLocaleString();
-                }
+                },
             };
 
             // Additional settings for linear scales with large numbers
@@ -203,9 +202,9 @@ function initializeDataAttributeCharts() {
         // Fallback for logarithmic scales without labels (edge case)
         else if (xScale === 'logarithmic') {
             options.scales.x.ticks = {
-                callback: function(value) {
+                callback: function (value) {
                     return Number(value).toLocaleString();
-                }
+                },
             };
         }
 
@@ -214,9 +213,9 @@ function initializeDataAttributeCharts() {
             type: yScale,
             title: {
                 display: !!chartYTitle,
-                text: chartYTitle
+                text: chartYTitle,
             },
-            beginAtZero: yScale === 'linear' // Only for linear scales
+            beginAtZero: yScale === 'linear', // Only for linear scales
         };
 
         // Apply theme colors to datasets
@@ -228,7 +227,7 @@ function initializeDataAttributeCharts() {
         new Chart(ctx, {
             type: chartType,
             data: chartData,
-            options: options
+            options: options,
         });
     });
 }
@@ -245,11 +244,7 @@ function updateChartsForTheme() {
         if (!chartInstance) return;
 
         if (chartInstance.data?.datasets) {
-            ThemeHelper.applyChartDatasetColors(
-                chartInstance.data.datasets,
-                chartInstance.config.type,
-                true
-            );
+            ThemeHelper.applyChartDatasetColors(chartInstance.data.datasets, chartInstance.config.type, true);
         }
 
         chartInstance.update();
