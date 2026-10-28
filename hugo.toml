@@ -34,3 +34,9 @@ weight = 40
   codeFences = true
   guessSyntax = false
   lineNos = false
+
+[params]
+ author = 'Colin Palmer'
+ tagline = 'AI/ML Engineer'
+ description = 'Colin Palmer is an AI/ML engineer. Projects, experiments and notes on building with AI and machine learning.'
+ socialImage = 'images/social-card.png' # under assets/; the default link-preview image
