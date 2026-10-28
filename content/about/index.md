@@ -5,7 +5,7 @@ draft: false
 type: "about"
 ---
 
-Hi, I'm Colin. I'm a software engineer focused on Applied and Systems AI/ML. I currently work at [Booz Allen Hamilton](https://www.boozallen.com) as part of their internal technology team, developing AI solutions that can be used across the firm.
+Hi, I'm Colin. I'm a software engineer focused on applied and systems AI/ML. I currently work at [Booz Allen Hamilton](https://www.boozallen.com) as part of their internal technology team, developing AI solutions that can be used across the firm. Recently I've also worked on several defense tech projects, building agentic workflows and serving open-weight models at the edge.
 
 In another life before software, I worked as a development scientist at a biotech/medical device company, building clinical reagents critical for diagnosing sick patients.
 
