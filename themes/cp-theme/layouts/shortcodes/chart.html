@@ -12,7 +12,7 @@
 <!-- Get chart data -->
 {{ $chartData := dict }}
 {{ with .Get "dataFile" }}
-  {{ $chartData = index site.Data (replace . ".json" "") }}
+  {{ $chartData = index hugo.Data (replace . ".json" "") }}
 {{ else }}
   {{ $chartData = .Inner | unmarshal }}
 {{ end }}
