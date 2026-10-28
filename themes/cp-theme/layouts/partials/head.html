@@ -7,12 +7,16 @@
       (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     if (theme === 'dark') document.documentElement.classList.add('dark-theme');
   })();
-  {{/* Draw the palm mark on the first page of a visit only. Set before paint so it never flashes in fully drawn. */}}
+  {{/* One intro animation per screen, each on its first view of a visit: the home page draws the wave
+       (and counts as the palm's turn, so the palm stays still there and after), other pages draw the palm.
+       Set before paint so neither flashes in fully drawn. */}}
   try {
-    if (!sessionStorage.getItem('palm-drawn')) {
-      document.documentElement.classList.add('palm-intro');
-      sessionStorage.setItem('palm-drawn', '1');
+    var intro = '{{ if .IsHome }}wave{{ else }}palm{{ end }}';
+    if (!sessionStorage.getItem(intro + '-drawn')) {
+      document.documentElement.classList.add(intro + '-intro');
     }
+    sessionStorage.setItem(intro + '-drawn', '1');
+    sessionStorage.setItem('palm-drawn', '1');
   } catch (e) {}
 </script>
 <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>

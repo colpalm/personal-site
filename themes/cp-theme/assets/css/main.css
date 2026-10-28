@@ -4,7 +4,7 @@
   --color-background: #faf8f3; /* Warm paper — softer than white under long-form text */
   --color-text: #2a2a2a; /* Softer than pure black */
   --color-text-secondary: #666; /* Medium gray for secondary text */
-  --color-primary: #86a397; /* Muted sage/teal */
+  --color-primary: #5b786c; /* Muted sage; the original hue at the lightest shade that passes 4.5:1 for link text on paper */
   --color-secondary: #d9c8b4; /* Sandy beige */
   --color-accent: #e4b363; /* Warm gold accent */
   --color-section-background: #f5f1e9; /* Light sand for sections */
@@ -112,7 +112,7 @@ time {
 }
 
 .site-mark:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-primary); /* gold is too faint on paper for a focus ring */
   outline-offset: 4px;
 }
 
@@ -134,7 +134,7 @@ time {
 }
 
 .palm-intro .palm-mark path {
-  animation: palm-draw 1.6s ease-in-out both;
+  animation: draw-on 1.6s ease-in-out both;
 }
 
 /* Same hover as the nav links */
@@ -143,7 +143,7 @@ time {
 }
 
 /* Opacity hides the round cap that a zero-length dash still paints at the start */
-@keyframes palm-draw {
+@keyframes draw-on {
   0% {
     stroke-dashoffset: 1;
     opacity: 0;
@@ -247,7 +247,7 @@ article,
 .button {
   display: inline-block;
   background-color: var(--color-primary);
-  color: white;
+  color: var(--color-background);
   padding: 0.5rem 1rem;
   border-radius: 4px;
   transition: background-color 0.2s ease;
@@ -344,46 +344,98 @@ a,
 }
 
 .home-container {
-  position: relative; /* anchor for the social icons below the image */
-  /* The icons are absolutely positioned, so centering would otherwise ignore
-     them and let them collide with the footer on short viewports. Reserve
-     their height here so the centered box accounts for them. */
-  padding-bottom: 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  gap: 1.25rem;
   width: 75%;
   margin: 0 auto;
 }
 
-.home-image {
-  max-width: 70%;
-}
-
-/* Cap by both width and viewport height so the composition always fits
-   (avoids a scrollbar when the bookmarks bar shortens the viewport). */
-.home-image img {
-  width: auto;
+.home-wave {
+  display: block;
+  width: 100%;
+  max-width: 860px;
   height: auto;
-  max-width: 100%;
-  /* Reserve fixed space for header/footer/icons rather than a vh fraction, so the
-     icons keep constant clearance above the footer even on very short viewports
-     (e.g. landscape phones). */
-  /* Floor the reservation at half the viewport: the fixed 19rem is most of a
-     short screen (landscape phones), which crushed the photo to a thumbnail.
-     Above ~608px tall the calc still wins, so tall viewports are unchanged. */
-  max-height: max(calc(100vh - 19rem), 38vh);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: visible; /* the lip's round caps sit right at the viewBox edge */
 }
 
-/* Hang the icons just below the image without affecting its centering,
-   so the photo itself sits visually centered in the page. */
+/* Stroke widths are in viewBox units, so they shrink with the drawing; narrow screens bump them below. */
+.wave-line {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  transition: stroke 0.3s ease;
+}
+
+.wave-main {
+  stroke: var(--color-text);
+  stroke-width: 2.5;
+}
+
+.wave-echo {
+  stroke: var(--color-primary);
+  stroke-width: 1.75;
+}
+
+.wave-spray {
+  fill: var(--color-text);
+  opacity: 0.85;
+  transition: fill 0.3s ease;
+}
+
+/* Timings live inline on each path in partials/wave.html */
+.wave-intro .wave-line {
+  animation: draw-on 1s ease-in-out both;
+}
+
+.wave-intro .wave-spray {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: spray-pop 0.9s ease-out both;
+}
+
+@keyframes spray-pop {
+  0% {
+    opacity: 0;
+    transform: translate(-6px, 8px) scale(0.4);
+  }
+  35% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.85;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wave-intro .wave-line,
+  .wave-intro .wave-spray {
+    animation: none;
+  }
+}
+
+.home-intro {
+  text-align: center;
+}
+
+.home-name {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.home-tagline {
+  margin: 0.25rem 0 0;
+  font-size: 1.125rem;
+  color: var(--color-text-secondary);
+}
+
 .social-icons {
-  position: absolute;
-  bottom: 0; /* sit inside the space .home-container reserves below the image */
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
   gap: 1.5rem;
 }
@@ -499,7 +551,7 @@ table {
 
 thead {
   background-color: var(--color-primary);
-  color: white;
+  color: var(--color-background); /* reads on sage in both themes; white was 2.1:1 on dark mode's sage */
 }
 
 th {
@@ -521,10 +573,6 @@ tr:nth-child(even) {
 /* Dark theme table adjustments */
 .dark-theme table {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-
-.dark-theme thead {
-  background-color: var(--color-primary);
 }
 
 .dark-theme tr:nth-child(even) {
@@ -634,19 +682,13 @@ blockquote p + p {
     width: 100%;
   }
 
-  /* Desktop insets the photo to 70% for composition; on a narrow screen that
-     strands it in whitespace - use the full column. */
-  .home-image {
-    max-width: 100%;
+  /* At phone width the drawing renders at ~40% scale; keep the lines near their desktop weight */
+  .wave-main {
+    stroke-width: 4.5;
   }
 
-  .home-image img {
-    /* Pin to the column rather than the intrinsic size, so the rendered width
-       can't be pulled back by srcset density correction. Keep in sync with the
-       `sizes` attribute in layouts/_default/home.html. */
-    width: 100%;
-    /* Mobile header/footer are shorter than desktop's — reserve less for them. */
-    max-height: calc(100dvh - 14rem);
+  .wave-echo {
+    stroke-width: 3.25;
   }
 
   .page-title,
