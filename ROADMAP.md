@@ -20,7 +20,9 @@
 - **Markdown linting:** try `rumdl` on `content/`, checking it handles shortcodes first. Keep structural rules only (heading levels, one H1, code fence languages) and turn off line length
 - **External link check:** add a weekly `lychee` workflow against the built site that reports but never blocks a deploy. Some sites return false 403s (marginalrevolution.com does)
 - **Dependabot:** add `.github/dependabot.yml` for the `github-actions` ecosystem only
+- Add links to headers
 
 ## Next
+- Search functionality
 
 ## Later
