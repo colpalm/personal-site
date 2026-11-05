@@ -28,6 +28,9 @@ weight = 40
  [caches.images]
   dir = ':cacheDir/images'
 
+[taxonomies]
+ tag = 'tags'
+
 [markup]
  [markup.highlight]
   noClasses = false
