@@ -19,6 +19,12 @@ Find your Mac's IP with `ipconfig getifaddr en0`, then browse to
 `http://<your-mac-lan-ip>:1313` on the device. The IP is DHCP-assigned and can
 change after a reboot/reconnect.
 
+## New Post
+Create posts with `hugo new`, not your editor. It starts them from `archetypes/default.md`, which has the front matter and the reminder about `summary` and `description`.
+
+- Single file: `hugo new content posts/my-post.md`
+- Post with its own images: `hugo new content posts/my-post/index.md`
+
 ## Dev Tooling (Playwright MCP)
 Browser tooling for visual/UI work is provided to AI agents via the [Playwright MCP](https://github.com/microsoft/playwright-mcp), configured in `.mcp.json` — not part of the Hugo build.
 

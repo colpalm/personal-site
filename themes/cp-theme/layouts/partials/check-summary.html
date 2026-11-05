@@ -1,0 +1,10 @@
+{{- /* Fails the CI build, which runs with --panicOnWarning. Every published post needs a one-liner for link previews.
+       Hugo ignores `summary` when the body has a <!--more--> divider, so those posts use `description` instead. */ -}}
+{{- if and (eq .Type "posts") (not .Draft) -}}
+  {{- $hasDivider := strings.Contains .RawContent "<!--more-->" -}}
+  {{- if and .Params.summary $hasDivider -}}
+    {{- warnf "%s: Hugo ignores `summary` on a post with <!--more-->, use `description` instead" .File.Path -}}
+  {{- else if not (or .Params.summary .Description) -}}
+    {{- warnf "%s: needs a `summary`, or a `description` if it uses <!--more-->" .File.Path -}}
+  {{- end -}}
+{{- end -}}

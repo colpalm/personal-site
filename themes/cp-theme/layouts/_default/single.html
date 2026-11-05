@@ -1,4 +1,5 @@
 {{ define "main" }}
+  {{ partial "check-summary.html" . }}
   <h1 class="page-title">{{ .Title }}</h1>
 
   {{/* Skip the wrapper entirely when there's no date or tags — an empty one still
