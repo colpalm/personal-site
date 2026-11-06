@@ -21,5 +21,6 @@
 
 ## Next
 - Search functionality
+- Analytics - simple
 
 ## Later
