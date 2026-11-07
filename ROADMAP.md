@@ -5,7 +5,6 @@
 - **Quick fixes**
   - Add an RSS `<link rel="alternate">` to `partials/head.html` and a `<link rel="canonical">` to `partials/head/meta.html`
   - Add a themed `404.html` (GitHub Pages' default page shows today)
-  - Set `enableRobotsTXT = true` and add a `robots.txt` template with a `Sitemap:` line
   - Replace the Font Awesome CDN stylesheet with inline SVGs for its four icons: GitHub, LinkedIn, copy, check (`assets/js/code.js` sets the last two)
   - Fix the `pageREf` typo in `hugo.toml` and remove the unused npm step from the workflow
 - **Hugo content checks:** use `warnf` so CI's `--panicOnWarning` fails the deploy, skipping drafts (`partials/check-summary.html` is the first one)

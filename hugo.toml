@@ -2,6 +2,7 @@ baseURL = 'https://colpalm.xyz'
 locale = 'en-us'
 title = 'ColPalm'
 theme = 'cp-theme'
+enableRobotsTXT = true
 
 
 [[menus.main]]
