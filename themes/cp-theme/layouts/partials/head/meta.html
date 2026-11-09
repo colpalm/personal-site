@@ -16,6 +16,7 @@
   {{- with $.Resources.Get . }}{{ if and (eq .ResourceType "image") (ne .MediaType.SubType "svg") }}{{ $image = . }}{{ end }}{{ end -}}
 {{- end -}}
 
+<link rel="canonical" href="{{ .Permalink }}">
 <meta name="description" content="{{ $description }}">
 <meta property="og:site_name" content="{{ site.Title }}">
 <meta property="og:title" content="{{ $title }}">
