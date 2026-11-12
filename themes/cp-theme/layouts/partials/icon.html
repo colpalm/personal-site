@@ -1,0 +1,8 @@
+{{- /* Inlines assets/icons/<name>.svg, sized and colored like the text around it (.icon in main.css).
+       Usage: {{ partial "icon.html" "github" }}. Icons are from Font Awesome Free 6.4.0, CC BY 4.0;
+       the license comment inside each file covers attribution. */ -}}
+{{- with resources.Get (printf "icons/%s.svg" .) -}}
+  {{- replace .Content "<svg " `<svg class="icon" aria-hidden="true" focusable="false" ` 1 | safeHTML -}}
+{{- else -}}
+  {{- errorf "icon.html: no icon named %q in assets/icons" . -}}
+{{- end -}}

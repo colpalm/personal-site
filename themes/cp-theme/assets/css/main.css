@@ -444,6 +444,15 @@ a,
   font-size: 1.8rem;
 }
 
+/* Inline SVG icons (partials/icon.html and code.js): 1em tall, width from the viewBox, in the text color */
+.icon {
+  display: inline-block;
+  height: 1em;
+  vertical-align: -0.125em;
+  overflow: visible;
+  fill: currentColor;
+}
+
 /* Shares the content column's width so the left edge lines up with the body copy */
 .page-title {
   width: 55%;

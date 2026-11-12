@@ -4,7 +4,6 @@
 
 - **Quick fixes**
   - Add a themed `404.html` (GitHub Pages' default page shows today)
-  - Replace the Font Awesome CDN stylesheet with inline SVGs for its four icons: GitHub, LinkedIn, copy, check (`assets/js/code.js` sets the last two)
 - **Hugo content checks:** use `warnf` so CI's `--panicOnWarning` fails the deploy, skipping drafts (`partials/check-summary.html` is the first one)
   - Make `render-link.html` warn when an internal link doesn't resolve to a page
   - Add a `render-image.html` hook that warns on missing alt text
