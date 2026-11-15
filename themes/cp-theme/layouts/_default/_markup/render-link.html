@@ -1,1 +1,9 @@
+{{- /* Fails the CI build (--panicOnWarning) when a link starting with / (/posts/..., /projects/..., any section) doesn't resolve to a page, e.g. after renaming a post.
+       Relative links, anchors and paths with a file extension (feeds, static files) aren't checked. */ -}}
+{{- $u := urls.Parse .Destination -}}
+{{- if and (not .Page.Draft) (not $u.IsAbs) (strings.HasPrefix $u.Path "/") (not (path.Ext $u.Path)) -}}
+  {{- if not (site.GetPage (strings.TrimSuffix "/" $u.Path | default "/")) -}}
+    {{- warnf "%s: link to %q doesn't resolve to a page" .Page.File.Path .Destination -}}
+  {{- end -}}
+{{- end -}}
 <a href="{{ .Destination | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if strings.HasPrefix .Destination "http" }} target="_blank" rel="noopener"{{ end }}>{{ .Text | safeHTML }}</a>
