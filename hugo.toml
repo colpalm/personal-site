@@ -29,6 +29,10 @@ weight = 40
  [caches.images]
   dir = ':cacheDir/images'
 
+# Only publish bundle files a template actually uses (partials/image.html), not the full-size originals with their EXIF/GPS data
+[cascade.build]
+ publishResources = false
+
 [taxonomies]
  tag = 'tags'
 

@@ -1,6 +1,7 @@
 {{- /* Search snippet and link-preview tags (Open Graph, read by LinkedIn, Slack, iMessage; Twitter card for X).
        Description: front matter `description`, else a post's summary, else the site default.
-       Image: a post's featured_image from its bundle, else the site card. Preview images must be absolute URLs. */ -}}
+       Image: a post's featured_image from its bundle as a 1200px JPG (some preview tools mishandle WebP), else the site card.
+       Preview images must be absolute URLs. */ -}}
 {{- $description := site.Params.description -}}
 {{- if .Description -}}
   {{- $description = .Description -}}
@@ -13,7 +14,7 @@
 
 {{- $image := (resources.Get site.Params.socialImage) -}}
 {{- with .Params.featured_image -}}
-  {{- with $.Resources.Get . }}{{ if and (eq .ResourceType "image") (ne .MediaType.SubType "svg") }}{{ $image = . }}{{ end }}{{ end -}}
+  {{- with $.Resources.Get . }}{{ if and (eq .ResourceType "image") (ne .MediaType.SubType "svg") }}{{ with .Filter images.AutoOrient }}{{ if gt .Width 1200 }}{{ $image = .Resize "1200x jpg" }}{{ else }}{{ $image = .Process "jpg" }}{{ end }}{{ end }}{{ end }}{{ end -}}
 {{- end -}}
 
 <link rel="canonical" href="{{ .Permalink }}">

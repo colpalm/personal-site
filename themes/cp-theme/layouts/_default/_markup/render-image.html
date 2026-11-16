@@ -1,0 +1,5 @@
+{{- /* Markdown images: shrunk by partials/image.html. Fails the CI build (--panicOnWarning) when a published post's image has no alt text. */ -}}
+{{- if and (not .Page.Draft) (not .PlainText) -}}
+  {{- warnf "%s: image %q needs alt text: ![what it shows](%s)" .Page.File.Path .Destination .Destination -}}
+{{- end -}}
+{{- partial "image.html" (dict "page" .PageInner "src" .Destination "alt" .PlainText "title" .Title "lazy" true) -}}

@@ -1,0 +1,28 @@
+{{- /* An <img> for an image in the post's folder (or assets/), shrunk at build time: JPG/PNG/WebP become lossy WebP,
+       capped at 1600px wide (2x the 800px content column). width/height let the browser reserve space so text doesn't jump.
+       Remote URLs pass through as-is; SVGs and GIFs keep their format.
+       Usage: partial "image.html" (dict "page" . "src" "cal.png" "alt" "..." "title" "" "lazy" true) */ -}}
+{{- $src := .src -}}
+{{- $width := 0 -}}
+{{- $height := 0 -}}
+{{- $u := urls.Parse .src -}}
+{{- if not $u.IsAbs -}}
+  {{- with or (.page.Resources.Get $u.Path) (resources.Get $u.Path) -}}
+    {{- $img := . -}}
+    {{- if in (slice "jpeg" "png" "webp") .MediaType.SubType -}}
+      {{- /* Phones store portrait photos sideways plus an EXIF rotation tag; conversion drops the tag, so rotate first */ -}}
+      {{- with .Filter images.AutoOrient -}}
+        {{- if gt .Width 1600 }}{{ $img = .Resize "1600x webp" }}{{ else }}{{ $img = .Process "webp" }}{{ end -}}
+      {{- end -}}
+    {{- end -}}
+    {{- $src = $img.RelPermalink -}}
+    {{- if ne .MediaType.SubType "svg" }}{{ $width = $img.Width }}{{ $height = $img.Height }}{{ end -}}
+  {{- else -}}
+    {{- warnf "%s: image %q not found; put it in the post's folder (or assets/ for site-wide images), not static/, so it gets resized" .page.File.Path .src -}}
+  {{- end -}}
+{{- end -}}
+<img src="{{ $src }}" alt="{{ .alt }}"
+  {{- with .title }} title="{{ . }}"{{ end }}
+  {{- with $width }} width="{{ . }}" height="{{ $height }}"{{ end }}
+  {{- if .lazy }} loading="lazy"{{ end }}>
+{{- /* trailing trim: render hooks must not emit a newline into the paragraph */ -}}

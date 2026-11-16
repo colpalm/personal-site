@@ -1,10 +1,10 @@
 <div class="image-pair-container">
     <div class="image-pair-item">
-        <img src="{{ .Get 0 }}" alt="{{ .Get 1 }}">
+        {{ partial "image.html" (dict "page" .Page "src" (.Get 0) "alt" (.Get 1) "lazy" true) }}
         <p><b>{{ .Get 1 }}</b></p>
     </div>
     <div class="image-pair-item">
-        <img src="{{ .Get 2 }}" alt="{{ .Get 3 }}">
+        {{ partial "image.html" (dict "page" .Page "src" (.Get 2) "alt" (.Get 3) "lazy" true) }}
         <p><b>{{ .Get 3 }}</b></p>
     </div>
 </div>

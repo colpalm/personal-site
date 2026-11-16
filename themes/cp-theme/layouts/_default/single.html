@@ -16,9 +16,10 @@
   </div>
   {{ end }}
 
-  {{ if .Params.featured_image }}
+  {{/* Not lazy-loaded: it's at the top of the page, so the browser should fetch it right away */}}
+  {{ with .Params.featured_image }}
   <div class="post-featured-image">
-    <img src="{{ .Params.featured_image }}" alt="{{ .Title }}">
+    {{ partial "image.html" (dict "page" $ "src" . "alt" $.Title) }}
   </div>
   {{ end }}
 
