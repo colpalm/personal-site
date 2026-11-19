@@ -6,7 +6,7 @@ tags = ['misc']
 summary = 'Building and learning in public.'
 +++
 
-Truth is, I'm not sure what this site will be yet. But the idea is to have a home on the internet for any projects I'm working on or new topics I'm learning about. 
+Truth is, I'm not sure what this site will be yet. But the idea is to have a home on the internet for any projects I'm working on or new topics I'm learning about.
 
 I recently listened to a [talk from Tyler Cowen](https://www.youtube.com/watch?v=aJlg6o0A_Js) where he described two possible job categories in the age of AI:
 1. Running experiments

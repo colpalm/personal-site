@@ -15,19 +15,19 @@ What is the best day off during the week to have? Lets look at each day. We'll s
 
 Although an extra day off during midweek is nice and may break up the week, its hard to enjoy it. If I have Tuesday off,
 I am presumably working Monday. By the time work wraps up on Monday, do I have time to do something Monday night to take advantage
-of the day off tomorrow? Maybe, but maybe not. Then I'm off on Tuesday (yay!). But I have to work on Wednesday, so 
+of the day off tomorrow? Maybe, but maybe not. Then I'm off on Tuesday (yay!). But I have to work on Wednesday, so
 do I get to enjoy it or am I thinking about work the next day? Maybe, maybe not. The same logic applies to Wednesday and Thursday.
 
 ## So Friday or Monday
 We've narrowed it down to the bookends of the weekend but I'd argue which bookend is important. Friday has good vibes no matter what. Even
 Thursday has pretty good vibes since its almost Friday. Adding a Friday off gives you the extra day
-but doesn't do much mentally. 
+but doesn't do much mentally.
 
 Monday on the other hand...Everyone knows the classic line:
 
 {{< youtube id="99UgYO07rC0" title="Office Space - Case of the Mondays" >}}
 
-When you get Monday off, you get the three-day weekend and the added benefit of missing Monday. Then, when you start on Tuesday, 
+When you get Monday off, you get the three-day weekend and the added benefit of missing Monday. Then, when you start on Tuesday,
 you already have a head start on the week.
 
 So clearly, the correct day is Monday. QED

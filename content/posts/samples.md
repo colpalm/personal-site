@@ -35,10 +35,10 @@ if __name__ == "__main__":
 ## Chart
 ### Bar Chart
 
-{{< chart 
-    type="bar" 
-    height="350" 
-    title="Monthly Sales Data" 
+{{< chart
+    type="bar"
+    height="350"
+    title="Monthly Sales Data"
     yTitle="Value"
 >}}
 {
@@ -51,9 +51,9 @@ if __name__ == "__main__":
 }
 {{< /chart >}}
 
-{{< chart 
-    type="bar" 
-    height="350" 
+{{< chart
+    type="bar"
+    height="350"
     title="Sales Comparison"
 >}}
 {
@@ -76,10 +76,10 @@ if __name__ == "__main__":
 {{< /chart >}}
 
 ### Line Chart
-{{< chart 
-    type="line" 
-    height="350" 
-    title="Monthly Website Traffic" 
+{{< chart
+    type="line"
+    height="350"
+    title="Monthly Website Traffic"
 >}}
 {
     "labels": ["January", "February", "March", "April", "May", "June"],

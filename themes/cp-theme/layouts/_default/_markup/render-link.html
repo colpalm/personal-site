@@ -7,3 +7,4 @@
   {{- end -}}
 {{- end -}}
 <a href="{{ .Destination | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if strings.HasPrefix .Destination "http" }} target="_blank" rel="noopener"{{ end }}>{{ .Text | safeHTML }}</a>
+{{- /* Keep this trim last: a newline after </a> would render as a space before following punctuation ("link ."). */ -}}
