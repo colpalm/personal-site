@@ -1,5 +1,7 @@
 # Setup: brew install biome && uv tool install pre-commit && pre-commit install
 # Uses the locally installed Biome binary, so the repo needs no Node or package.json.
+# Vendored/generated files and SVGs (e.g. the palm-eval model outputs) stay byte-for-byte as made.
+exclude: ^themes/cp-theme/assets/(lib|icons|css/syntax)/|\.svg$
 repos:
   - repo: local
     hooks:
@@ -8,3 +10,19 @@ repos:
         entry: biome check --write --files-ignore-unknown=true --no-errors-on-unmatched
         language: system
         types_or: [javascript, css, json]
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-added-large-files
+        args: [--maxkb=5000] # accident guard; post images are fine, Hugo shrinks them at build time
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md] # keep two-space line breaks in posts
+
+  - repo: https://github.com/crate-ci/typos
+    rev: v1.52.2
+    hooks:
+      - id: typos
+        args: [--force-exclude] # report only; the default --write-changes would edit posts unasked

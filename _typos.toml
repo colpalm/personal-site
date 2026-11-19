@@ -1,0 +1,3 @@
+# Words typos flags that are correct here
+[default.extend-identifiers]
+PNGs = "PNGs"
