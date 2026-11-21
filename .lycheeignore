@@ -1,0 +1,7 @@
+# Links the weekly check (.github/workflows/links.yaml) skips: sites that block bots
+# but load fine in a browser. One regex per line; comments must be on their own line.
+
+# Returns a made-up 999 status to non-browsers
+^https://(www\.)?linkedin\.com/
+# Returns 403 to GitHub's runners
+^https://(www\.)?marginalrevolution\.com/

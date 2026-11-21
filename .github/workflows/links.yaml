@@ -1,0 +1,31 @@
+# Weekly check for broken links on the built site, internal and external.
+# A broken link fails the run. A GitHub email contains a summary list of what broke.
+# False alarms from bot-blocking sites go in .lycheeignore.
+name: Check links
+
+on:
+  schedule:
+    - cron: "0 15 * * 1" # Mondays, 15:00 UTC (early morning Pacific)
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.169.0 # keep in step with hugo.yaml
+    steps:
+      - name: Install Hugo CLI
+        run: |
+          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
+          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Build with Hugo
+        run: hugo --minify
+      - name: Check links
+        uses: lycheeverse/lychee-action@v2.9.0
+        with:
+          args: --no-progress --root-dir "${{ github.workspace }}/public" 'public/**/*.html'
