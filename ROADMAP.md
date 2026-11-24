@@ -3,7 +3,6 @@
 ## Now
 
 - **Markdown linting:** try `rumdl` on `content/`, checking it handles shortcodes first. Keep structural rules only (heading levels, one H1, code fence languages) and turn off line length
-- **Dependabot:** add `.github/dependabot.yml` for the `github-actions` ecosystem only
 - Add links to headers
 
 ## Next

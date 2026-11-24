@@ -1,0 +1,25 @@
+# Monthly PRs bumping GitHub Actions and pre-commit hooks, one grouped PR per ecosystem.
+# cooldown waits a week after a release so a hijacked or broken one is likely caught and pulled first.
+# Security fixes (repo Settings > Advanced Security > Dependabot alerts and security updates) skip the cooldown.
+# Not covered: HUGO_VERSION in the workflows and the vendored Chart.js.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    cooldown:
+      default-days: 7
+    groups:
+      actions:
+        patterns: ["*"]
+
+  - package-ecosystem: pre-commit
+    directory: /
+    schedule:
+      interval: monthly
+    cooldown:
+      default-days: 7
+    groups:
+      hooks:
+        patterns: ["*"]
